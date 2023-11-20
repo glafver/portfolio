@@ -6,10 +6,10 @@ const Navbar: React.FC = () => {
 
     return (
         <nav className="bg-neutral-200 p-5 px-12">
-            <div className="max-w-7xl mx-auto flex justify-between items-end">
-                <div className="flex flex-col items-center flex-shrink-0 mr-36">
+            <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center lg:items-end">
+                <div className="flex flex-col items-center flex-shrink-0 lg:mr-36">
                     <span className="font-semibold text-8xl font-forum">GV</span>
-                    <span className="font-semibold pl-4">Glafira Veretennikova</span>
+                    <span className="font-semibold pl-4 hidden lg:block">Glafira Veretennikova</span>
                 </div>
                 <div className="block lg:hidden">
                     <button
@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
                         onClick={() => setIsOpen(!isOpen)}
                     >
                         <svg
-                            className="fill-current h-3 w-3"
+                            className="fill-current h-12 w-12"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
                         >
@@ -26,8 +26,8 @@ const Navbar: React.FC = () => {
                         </svg>
                     </button>
                 </div>
-                <div className={`lg:flex ${isOpen ? 'block' : 'hidden'} mt-4 lg:mt-0 lg:items-center lg:w-auto`}>
-                    <div className={`lg:flex ${isOpen ? 'block' : 'hidden'} mt-4 lg:mt-0`}>
+                <div className={`lg:flex ${isOpen ? 'block' : 'hidden'} text-xl text-end w-full mt-4 lg:mt-0 lg:items-center lg:w-auto`}>
+                    <div>
                         <a
                             href="#projects"
                             className="block mt-4 lg:inline-block lg:mt-0 mr-4 transition duration-300 hover:text-white"
@@ -42,20 +42,23 @@ const Navbar: React.FC = () => {
                         </a>
                         <a
                             href="#contact"
-                            className="block mt-4 lg:inline-block lg:mt-0 transition duration-300 hover:text-white"
+                            className="block mt-4 lg:inline-block lg:mt-0 mr-4 transition duration-300 hover:text-white"
                         >
                             Contact
                         </a>
                     </div>
                 </div>
                 <div className="hidden lg:block ml-auto">
-                    <a
-                        href={CV}
-                        download="Glafira_Veretennikova_Frontend_Dev_CV.pdf"
-                        className="uppercase border border-black text-black font-bold py-2 px-4 rounded-full hover:bg-black hover:text-white transition duration-300"
+                    <button
+                        className="uppercase border border-neutral-800 text-neutral-800 font-bold py-2 px-4 rounded-full hover:bg-neutral-800 hover:text-white transition duration-300"
                     >
-                        DOWNLOAD MY CV
-                    </a>
+                        <a
+                            href={CV}
+                            download="Glafira_Veretennikova_Frontend_Dev_CV.pdf"
+                        >
+                            DOWNLOAD MY CV
+                        </a>
+                    </button>
                 </div>
             </div>
         </nav>

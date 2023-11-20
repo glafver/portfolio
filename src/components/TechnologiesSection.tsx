@@ -29,7 +29,7 @@ const Technologies: React.FC = () => {
     return (
         <div className="bg-neutral-200 p-12 py-28 text-center">
             <div className="max-w-7xl mx-auto">
-                <h2 className="text-5xl font-semibold mb-20">Technologies & Techniques I Use</h2>
+                <h2 className="text-5xl font-bold mb-20">Technologies & Techniques I Use</h2>
                 <div className="flex justify-center flex-wrap gap-6">
                     {logos.map((logo, index) => (
                         <img key={index} src={logo} alt={`Logo ${index}`} className="h-20" />

@@ -3,3 +3,55 @@
 @import 'tailwindcss/utilities';
 
 @import url('https://fonts.googleapis.com/css2?family=Forum&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.gv-color-changing-bg {
+    animation: changeColor 5s ease infinite;
+    background: linear-gradient(180deg, rgb(184, 3, 184), red, rgb(255, 170, 12));
+    background-size: 600% 600%;
+}
+
+@keyframes changeColor {
+    0% {
+        background-position: 50% 0%
+    }
+
+    50% {
+        background-position: 50% 100%
+    }
+
+    100% {
+        background-position: 50% 0%
+    }
+}
+
+/* .gv-color-changing-font {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: changeFontColor 5s ease infinite;
+    background: linear-gradient(180deg, rgb(184, 3, 184), red, rgb(255, 170, 12));
+    background-size: 600% 600%;
+}
+
+@keyframes changeFontColor {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+} */
+
+.image-gallery-svg {
+    height: 60px !important;
+}
+
+:hover.image-gallery-icon {
+    color: black !important;
+}
