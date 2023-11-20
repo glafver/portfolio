@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, FC, ReactNode } from 'react';
+import { createContext, useContext, useState, FC, ReactNode } from 'react';
 
 interface ModalContextProps {
     open: boolean;
@@ -17,7 +17,7 @@ export const useModal = (): ModalContextProps => {
 };
 
 interface ModalProviderProps {
-    children: ReactNode; // Using ReactNode to accept any valid React children
+    children: ReactNode;
 }
 
 export const ModalProvider: FC<ModalProviderProps> = ({ children }) => {
