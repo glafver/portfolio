@@ -5,7 +5,7 @@ const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className="bg-neutral-200 p-5 px-12">
+        <nav className="bg-neutral-200 p-5 px-8 lg:px-12">
             <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center lg:items-end">
                 <div className="flex flex-col items-center flex-shrink-0 lg:mr-36">
                     <span className="font-semibold text-8xl font-forum">GV</span>
@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
                         onClick={() => setIsOpen(!isOpen)}
                     >
                         <svg
-                            className="fill-current h-12 w-12"
+                            className="fill-current w-8"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
                         >

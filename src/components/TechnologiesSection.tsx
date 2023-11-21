@@ -27,12 +27,12 @@ const logos: string[] = [
 
 const Technologies: React.FC = () => {
     return (
-        <div className="bg-neutral-200 p-12 py-28 text-center">
+        <div className="bg-neutral-200 px-8 py-16 lg:px-12 lg:py-28 text-center">
             <div className="max-w-7xl mx-auto">
-                <h2 className="text-5xl font-bold mb-20">Technologies & Techniques I Use</h2>
+                <h2 className="text-3xl lg:text-5xl font-bold mb-16 lg:mb-20">Technologies & Techniques I Use</h2>
                 <div className="flex justify-center flex-wrap gap-6">
                     {logos.map((logo, index) => (
-                        <img key={index} src={logo} alt={`Logo ${index}`} className="h-20" />
+                        <img key={index} src={logo} alt={`Logo ${index}`} className="h-12 lg:h-20" />
                     ))}
                 </div>
             </div>

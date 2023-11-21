@@ -5,8 +5,8 @@ import abstr_2 from "../assets/abstr_2.png";
 
 const AboutSection: React.FC = () => {
     return (
-        <div id='about' className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:justify-between px-12 pb-12 lg:py-36 my-24">
-            <div className="relative flex justify-center lg:justify-normal lg:w-1/3 mb-16 lg:mb-0 z-10">
+        <div id='about' className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:justify-between px-8 lg:px-12 py-16 lg:py-36">
+            <div className="relative flex justify-center lg:justify-normal lg:w-1/3 mb-10 lg:mb-0 z-10">
                 <img
                     src={about_img}
                     alt="Profile"
@@ -15,7 +15,7 @@ const AboutSection: React.FC = () => {
             </div>
             <div className="lg:w-2/3 lg:pl-36 z-10">
                 <div className="text-center lg:text-right">
-                    <h2 className="text-6xl font-bold text-neutral-800 pb-16">About
+                    <h2 className="text-5xl lg:text-6xl font-bold text-neutral-800 pb-10 lg:pb-16">About
                         <span className="ml-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-red-500 to-orange-500">
                             Me
                         </span>
@@ -32,12 +32,12 @@ const AboutSection: React.FC = () => {
             <img
                 src={abstr_1}
                 alt=""
-                className="absolute h-auto w-1/2 z-0 top-48 left-72 opacity-20 hidden lg:block"
+                className="absolute h-auto w-96 z-0 top-48 left-72 opacity-20 hidden lg:block"
             />
             <img
                 src={abstr_2}
                 alt=""
-                className="absolute rotate-90 h-auto w-1/2 z-0 top-4 left-24 opacity-20 hidden lg:block"
+                className="absolute rotate-90 h-auto w-96 z-0 top-12 left-24 opacity-20 hidden lg:block"
             />
         </div>
     );
