@@ -15,18 +15,19 @@ const AboutSection: React.FC = () => {
             </div>
             <div className="lg:w-2/3 lg:pl-36 z-10">
                 <div className="text-center lg:text-right">
-                    <h2 className="text-5xl lg:text-6xl font-bold text-neutral-800 pb-10 lg:pb-16">About
+                    <h2 className="text-3xl lg:text-5xl font-bold text-neutral-800 pb-10 lg:pb-16">About
                         <span className="ml-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-red-500 to-orange-500">
                             Me
                         </span>
                     </h2>
                 </div>
-                <p className="text-xl text-justify font-forum">
-                    I am deeply passionate about my work and deliver high-quality results in every task I undertake. I am proficient in React, TypeScript, and Material UI but my skill set extends also to server-side technologies, including Node.js and Express.js. With precise attention to detail and efficient logical solutions, I produce clean, understandable, and well-optimized code.
-
-                    In addition to my work as a Frontend Developer, I also engage in freelance real estate photography. This experience has broadened my creativity and refined my sense of aesthetics.
-
-                    I'm open to new opportunities and collaborations, so if you're looking for a dedicated frontend developer who can bring your web projects to life, feel free to reach out. Let's connect and explore the possibilities of working together.
+                <p className="text-lg lg:text-xl">
+                    <p className='mb-5'>
+                        I am proficient in React, TypeScript, and Material UI but my skill set extends also to server-side technologies, including Node.js and Express.js. With precise attention to detail and efficient logical solutions, I produce clean, understandable, and well-optimized code.
+                    </p>
+                    <p className='mb-5'>
+                        In addition to my work as a Frontend Developer, I also engage in freelance real estate photography. This experience has broadened my creativity and refined my sense of aesthetics.
+                    </p>
                 </p>
             </div>
             <img

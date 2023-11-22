@@ -15,7 +15,7 @@ const ContactModal: React.FC = () => {
                         <h2 className="block text-4xl font-bold sm:inline h-20 my-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-red-500 to-orange-500">
                             My Contacts
                         </h2>
-                        <div className='mb-5 font-forum text-xl'>You can easily reach me by email or phone</div>
+                        <div className='mb-5 text-xl'>You can easily reach me by email or phone</div>
                         <div className='flex items-center mb-3'><img className='h-5 mr-3' src={icon_phone} alt="" />+46760558355</div>
                         <div className='flex items-center'><img className='h-5 mr-3' src={icon_mail} alt="" />glafver22@gmail.com</div>
                         <button

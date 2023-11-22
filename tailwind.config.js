@@ -8,7 +8,7 @@ export default {
     extend: {
       fontFamily: {
         forum: ['Forum', 'serif'],
-        mons: ['Montserrat', 'sans-serif']
+        monst: ['Montserrat', 'sans-serif']
       },
     },
   },

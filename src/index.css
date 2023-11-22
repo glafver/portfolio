@@ -24,30 +24,6 @@
     }
 }
 
-/* .gv-color-changing-font {
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    animation: changeFontColor 5s ease infinite;
-    background: linear-gradient(180deg, rgb(184, 3, 184), red, rgb(255, 170, 12));
-    background-size: 600% 600%;
-}
-
-@keyframes changeFontColor {
-    0% {
-        background-position: 0% 50%
-    }
-
-    50% {
-        background-position: 100% 50%
-    }
-
-    100% {
-        background-position: 0% 50%
-    }
-} */
-
 .image-gallery-svg {
     height: 60px !important;
 }

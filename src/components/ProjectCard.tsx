@@ -30,9 +30,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     return (
         <div className="bg-neutral-200 rounded-lg shadow-md hover:shadow-xl transition duration-300 overflow-hidden border">
             <ImageGallery showThumbnails={false} showFullscreenButton={true} showPlayButton={false} items={galleryItems} />
-            <div className="px-6 py-4 text-xl">
-                <div className="font-bold mb-3 flex flex-col">
-                    <div className='mb-3'>{project.title}</div>
+            <div className="px-6 py-4">
+                <div className="font-bold mb-3 lg:mb-5 flex flex-col">
+                    <div className='mb-3 lg:mb-5 text-xl lg:text-2xl'>{project.title}</div>
                     <div className='flex items-center'>
                         <a target="_blank" href={project.link}><img className='h-5 w-5' src={icon_web} /></a>
                         <a target="_blank" href={project.code}><img className='h-5 w-5 ml-3' src={icon_code} /></a>
@@ -42,7 +42,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                             src={openDropdown ? icon_up : icon_down} />
                     </div>
                 </div>
-                <p className={`mb-3 font-forum transition duration-300 lg:block ${openDropdown ? `block` : `hidden`}`}>
+                <p className={`text-lg lg:text-xl mb-3 lg:mb-5 transition duration-300 lg:block ${openDropdown ? `block` : `hidden`}`}>
                     {project.description}
                 </p>
                 <div className="">

@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
                         </svg>
                     </button>
                 </div>
-                <div className={`lg:flex ${isOpen ? 'block' : 'hidden'} text-xl text-end w-full mt-4 lg:mt-0 lg:items-center lg:w-auto`}>
+                <div className={`lg:flex ${isOpen ? 'block' : 'hidden'} text-lg lg:text-xl text-end w-full lg:items-center lg:w-auto`}>
                     <div>
                         <a
                             href="#projects"
