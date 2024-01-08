@@ -34,10 +34,10 @@ import project_6_3 from '../assets/project_6_3.png';
 // import project_6_4 from '../assets/project_6_4.png';
 // import project_6_5 from '../assets/project_6_5.png';
 
-// import project_7_1 from '../assets/project_7_1.png';
-// import project_7_2 from '../assets/project_7_2.png';
-// import project_7_3 from '../assets/project_7_3.png';
-// import project_7_4 from '../assets/project_7_4.png';
+import project_7_1 from '../assets/project_7_1.png';
+import project_7_2 from '../assets/project_7_2.png';
+import project_7_3 from '../assets/project_7_3.png';
+import project_7_4 from '../assets/project_7_4.png';
 // import project_7_5 from '../assets/project_7_5.png';
 
 // import project_8_1 from '../assets/project_8_1.png';
@@ -110,6 +110,15 @@ const projects: Project[] = [
         imageUrls: [project_6_1, project_6_2, project_6_3],
         tech: ['JS', 'HTML', 'CSS'],
         link: 'https://almi.netlify.app/'
+    },
+    {
+        id: 7,
+        title: 'BonbonBoutique',
+        description: `
+        A delightful candy shop website designed to sweeten your day!`,
+        imageUrls: [project_7_1, project_7_2, project_7_3, project_7_4],
+        tech: ['JS', 'HTML', 'CSS', 'React', 'TypeScript', 'SASS', 'Bootstrap', 'react-router-dom', 'react-query', 'Vite'],
+        link: 'https://bonbonboutique.netlify.app/'
     }
 ];
 export default projects;

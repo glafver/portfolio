@@ -24,7 +24,6 @@ export const ModalProvider: FC<ModalProviderProps> = ({ children }) => {
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => {
-        console.log(open);
         setOpen(true);
     };
 
