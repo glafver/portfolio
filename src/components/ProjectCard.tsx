@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import icon_code from '../assets/icon_code.png';
 import icon_web from '../assets/icon_web.png';
 import icon_down from '../assets/icon_down.png';
 import icon_up from '../assets/icon_up.png';
@@ -12,7 +11,6 @@ interface Project {
     imageUrls: string[];
     tech: string[];
     link: string;
-    code: string;
 }
 
 interface ProjectCardProps {
@@ -35,7 +33,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                     <div className='mb-3 lg:mb-5 text-xl lg:text-2xl'>{project.title}</div>
                     <div className='flex items-center'>
                         <a target="_blank" href={project.link}><img className='h-5 w-5' src={icon_web} /></a>
-                        <a target="_blank" href={project.code}><img className='h-5 w-5 ml-3' src={icon_code} /></a>
                         <img
                             onClick={() => setOpenDropdown(!openDropdown)}
                             className='lg:hidden h-7 w-7 ml-auto cursor-pointer rounded-full p-1 hover:bg-neutral-300 transition duration-300'
