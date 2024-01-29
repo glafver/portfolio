@@ -24,10 +24,20 @@
     }
 }
 
+.image-gallery-icon {
+    color: gray !important;
+    filter: none !important;
+}
+
 .image-gallery-svg {
-    height: 60px !important;
+    width: 20px !important;
+}
+
+.image-gallery-fullscreen-button {
+    right: -10px !important;
+    bottom: -10px !important;
 }
 
 :hover.image-gallery-icon {
-    color: black !important;
+    color: rgb(14, 14, 14) !important;
 }

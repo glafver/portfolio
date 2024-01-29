@@ -1,17 +1,17 @@
 import React from 'react';
-import about_img from '../assets/about_img.jpg';
-import abstr_1 from "../assets/abstr_1.png";
-import abstr_2 from "../assets/abstr_2.png";
+import { Fade } from 'react-awesome-reveal';
 
 const AboutSection: React.FC = () => {
     return (
         <div id='about' className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:justify-between px-8 lg:px-12 py-16 lg:py-36">
             <div className="relative flex justify-center lg:justify-normal lg:w-1/3 mb-10 lg:mb-0 z-10">
-                <img
-                    src={about_img}
-                    alt="Profile"
-                    className="rounded z-10 object-cover object-top aspect-square w-3/4 lg:aspect-auto lg:w-full"
-                />
+                <Fade >
+                    <img
+                        src='https://storage.cloud.google.com/glafver/about_img.jpg'
+                        alt="Profile"
+                        className="rounded z-10 object-cover object-top aspect-square w-3/4 lg:aspect-auto lg:w-full"
+                    />
+                </Fade>
             </div>
             <div className="lg:w-2/3 lg:pl-36 z-10">
                 <div className="text-center lg:text-right">
@@ -30,16 +30,6 @@ const AboutSection: React.FC = () => {
                     </p>
                 </p>
             </div>
-            <img
-                src={abstr_1}
-                alt=""
-                className="absolute h-auto w-96 z-0 top-48 left-72 opacity-20 hidden lg:block"
-            />
-            <img
-                src={abstr_2}
-                alt=""
-                className="absolute rotate-90 h-auto w-96 z-0 top-12 left-24 opacity-20 hidden lg:block"
-            />
         </div>
     );
 };

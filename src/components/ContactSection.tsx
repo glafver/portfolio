@@ -1,6 +1,7 @@
 import React from 'react';
 import CV from '../assets/Glafira_Veretennikova_FrontEndDeveloper_CV.pdf';
 import { useModal } from '../ModalContext';
+import { AttentionSeeker, Fade } from 'react-awesome-reveal';
 
 const Contact: React.FC = () => {
     const { handleOpen } = useModal();
@@ -15,26 +16,32 @@ const Contact: React.FC = () => {
                 }}
             >
                 <div className='p-12 pt-6 lg:pt-20 text-center m-auto'>
+
                     <h1 className="text-3xl lg:text-5xl font-semibold mb-6 lg:mb-12 text-white">
-                        Interested in working with me?
+                        <Fade cascade duration={50}>
+                            Interested in working with me?
+                        </Fade>
                     </h1>
-                    <div className='flex flex-col-reverse lg:flex-row items-center justify-center'>
-                        <button
-                            onClick={() => { handleOpen(); }}
-                            className="w-max uppercase bg-neutral-800 text-white font-bold py-2 px-4 lg:mr-3 rounded-full hover:text-neutral-800 hover:bg-white">
-                            Get in touch
-                        </button>
-                        <button
-                            className="w-max uppercase border border-neutral-800 text-neutral-800 font-bold py-2 px-4 mb-5 lg:mb-0 rounded-full hover:bg-neutral-800 hover:text-white transition duration-300"
-                        >
-                            <a
-                                href={CV}
-                                download="Glafira_Veretennikova_Frontend_Dev_CV.pdf"
+
+                    <AttentionSeeker effect="heartBeat" delay={1000}>
+                        <div className='flex flex-col-reverse lg:flex-row items-center justify-center'>
+                            <button
+                                onClick={() => { handleOpen(); }}
+                                className="w-max uppercase bg-neutral-800 text-white font-bold py-2 px-4 lg:mr-3 rounded-full hover:text-neutral-800 hover:bg-white">
+                                Get in touch
+                            </button>
+                            <button
+                                className="w-max uppercase border border-neutral-800 text-neutral-800 font-bold py-2 px-4 mb-5 lg:mb-0 rounded-full hover:bg-neutral-800 hover:text-white transition duration-300"
                             >
-                                DOWNLOAD MY CV
-                            </a>
-                        </button>
-                    </div>
+                                <a
+                                    href={CV}
+                                    download="Glafira_Veretennikova_Frontend_Dev_CV.pdf"
+                                >
+                                    DOWNLOAD MY CV
+                                </a>
+                            </button>
+                        </div>
+                    </AttentionSeeker>
                 </div>
             </div>
         </div>
