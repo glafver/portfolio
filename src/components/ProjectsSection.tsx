@@ -1,6 +1,6 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
-import projects from '../helpers/projects.ts';
+import { projects } from '../helpers/projects.ts';
 
 const ProjectsSection: React.FC = () => {
 

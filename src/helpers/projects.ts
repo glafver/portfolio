@@ -113,4 +113,6 @@ const projects: Project[] = [
 
 
 ];
-export default projects;
+
+export type { Project };
+export { projects };

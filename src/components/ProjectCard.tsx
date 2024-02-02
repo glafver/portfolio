@@ -3,17 +3,7 @@ import { Fade } from 'react-awesome-reveal';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { SlGlobe } from "react-icons/sl";
 import ImageGallery from 'react-image-gallery';
-import { FaExternalLinkAlt } from "react-icons/fa";
-
-interface Project {
-    id: number;
-    title: string;
-    description: string;
-    imageUrls: string[];
-    tech: string[];
-    link: string;
-    important?: string[];
-}
+import { Project } from '../helpers/projects';
 
 interface ProjectCardProps {
     project: Project;
