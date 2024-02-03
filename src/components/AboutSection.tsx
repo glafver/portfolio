@@ -7,9 +7,9 @@ const AboutSection: React.FC = () => {
             <div className="relative flex justify-center lg:justify-normal lg:w-1/3 mb-10 lg:mb-0 z-10">
                 <Fade >
                     <img
-                        src='https://storage.cloud.google.com/glafver/about_img.jpg'
+                        src='https://storage.googleapis.com/glafver_portfolio/about_img.jpg'
                         alt="Profile"
-                        className="rounded z-10 object-cover object-top aspect-square w-3/4 lg:aspect-auto lg:w-full"
+                        className="rounded z-10 object-cover object-top aspect-square lg:aspect-auto lg:w-full"
                     />
                 </Fade>
             </div>

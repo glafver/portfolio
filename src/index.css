@@ -33,11 +33,6 @@
     width: 20px !important;
 }
 
-.image-gallery-fullscreen-button {
-    right: -10px !important;
-    bottom: -10px !important;
-}
-
 :hover.image-gallery-icon {
     color: rgb(14, 14, 14) !important;
 }

@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
                     <div className="lg:w-1/2 mt-8 lg:mt-0">
                         <Fade >
                             <img
-                                src='https://storage.cloud.google.com/glafver_portfolio/hero_img.jpg'
+                                src='https://storage.googleapis.com/glafver_portfolio/hero_img.jpg'
                                 alt="Hero Image"
                                 className="rounded shadow-lg w-full  lg:w-3/4 mx-auto lg:mr-0"
                             />

@@ -22,32 +22,30 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             <Fade delay={30}>
                 <ImageGallery showThumbnails={false} showFullscreenButton={true} showPlayButton={false} items={galleryItems} />
             </Fade>
-            <div className="px-6 py-4">
-                <div className="font-bold mb-3 lg:mb-5 flex items-center gap-3">
+            <div className="px-6 pt-4">
+                <div className="font-bold mb-3 lg:mb-5 flex items-center justify-between gap-3">
                     <div className='text-xl lg:text-2xl'>{project.title}</div>
-                    <div className=''>
-                        <a target="_blank" href={project.link}><SlGlobe className='h-5 w-5  hover:text-red-500 transition duration-300' /></a>
-                        <div
-                            onClick={() => setOpenDropdown(!openDropdown)}
-                            className='lg:hidden h-7 w-7 ml-auto cursor-pointer rounded-full p-1 hover:bg-neutral-300 transition duration-300'
-                        >
-                            {openDropdown ? <FaChevronUp /> : <FaChevronDown />}
-                        </div>
-                    </div>
+                    <a target="_blank" href={project.link}><SlGlobe className='h-5 w-5  hover:text-red-500 transition duration-300 ml-2' /></a>
                 </div>
-                <p className={`text-lg lg:text-xl mb-3 lg:mb-5 transition duration-300 lg:block ${openDropdown ? `block` : `hidden`}`}>
+                <p className={`text-lg lg:text-xl mb-3 lg:mb-5 transition duration-300 lg:block`}>
                     {project.description}
                 </p>
                 {project.important ?
-                    <p className={`font-bold text-md lg:text-md mb-3 lg:mb-5 transition duration-300 lg:block ${openDropdown ? `block` : `hidden`}`}>
+                    <p className={`font-bold text-md lg:text-md mb-3 lg:mb-5 transition duration-300 lg:block`}>
                         Important: {project.important}
                     </p>
                     : null}
 
             </div>
-            <div className="px-6 pb-4" style={{ marginTop: 'auto' }}>
+            <div
+                onClick={() => setOpenDropdown(!openDropdown)}
+                className='lg:hidden h-7 w-7 mr-4 ml-auto cursor-pointer rounded-full p-1 hover:bg-neutral-300 transition duration-300'
+            >
+                {openDropdown ? <FaChevronUp /> : <FaChevronDown />}
+            </div>
+            <div className="px-6 mt-auto mb-3" >
                 {project.tech.map((tech, index) => (
-                    <span key={index} className="inline-block border border-neutral-800 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#{tech}</span>
+                    <span key={index} className={`border border-neutral-800 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2 ${openDropdown ? `inline-block` : `hidden`} lg:inline-block `}>#{tech}</span>
                 ))}
             </div>
         </div>

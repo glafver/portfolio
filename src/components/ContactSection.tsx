@@ -15,9 +15,13 @@ const Contact: React.FC = () => {
                     borderBottomRightRadius: '12rem'
                 }}
             >
-                <div className='p-12 pt-6 lg:pt-20 text-center m-auto'>
+                <div className='p-12 pt-6 lg:pt-20 text-center m-auto w-full'>
 
-                    <h1 className="text-3xl lg:text-5xl font-semibold mb-6 lg:mb-12 text-white">
+                    <h1 className="text-2xl font-semibold mb-6  text-white lg:hidden">
+                        Interested in working with me?
+                    </h1>
+
+                    <h1 className="text-5xl font-semibold mb-12 text-white hidden lg:block">
                         <Fade cascade duration={50}>
                             Interested in working with me?
                         </Fade>

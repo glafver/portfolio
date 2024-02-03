@@ -3,7 +3,7 @@ import { FaLinkedin, FaFacebook, FaGithub, FaInstagram } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
     return (
-        <footer className="bg-neutral-200 px-12 lg:px-24 pb-12">
+        <footer className="bg-neutral-200 px-8 lg:px-24 pb-12">
             <div className="max-w-5xl mx-auto lg:grid grid-cols-2 gap-4 flex flex-col px-4 align-end justify-between">
                 <div className="flex flex-col items-center text-center w-full lg:w-2/5">
                     <span className="gv-color-changing-font font-semibold text-8xl font-forum">GV</span>
@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
                     <span className="font-semibold pl-4">2024</span>
                 </div>
                 <div className='flex flex-col justify-end'>
-                    <div className="flex items-center justify-between lg:justify-end mb-4">
+                    <div className="flex items-center justify-center flex-wrap lg:justify-end mb-4">
                         <a
                             href="#projects"
                             className="block mt-4 lg:inline-block lg:mt-0 mr-4 transition duration-300 hover:text-white"

@@ -17,7 +17,7 @@ const ProjectsSection: React.FC = () => {
                             </h2>
                         </div>
                         <div className="lg:w-1/2">
-                            <p className="text-lg lg:text-xl text-justify">
+                            <p className="text-lg lg:text-xl ">
                                 Take a peek at some of my standout projects below. It's where creativity meets functionality! Dive into this showcase of my work, crafted with passion and precision.
                             </p>
                         </div>
