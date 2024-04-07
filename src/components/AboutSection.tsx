@@ -21,13 +21,11 @@ const AboutSection: React.FC = () => {
                         </span>
                     </h2>
                 </div>
-                <p className="text-lg lg:text-xl">
-                    <p className='mb-5'>
-                        I am proficient in React, TypeScript, and Material UI but my skill set extends also to server-side technologies, including Node.js and Express.js. With precise attention to detail and efficient logical solutions, I produce clean, understandable, and well-optimized code.
-                    </p>
-                    <p className='mb-5'>
-                        In addition to my work as a Frontend Developer, I also engage in freelance real estate photography. This experience has broadened my creativity and refined my sense of aesthetics.
-                    </p>
+                <p className='mb-5'>
+                    I am proficient in React, TypeScript, and Material UI but my skill set extends also to server-side technologies, including Node.js and Express.js. With precise attention to detail and efficient logical solutions, I produce clean, understandable, and well-optimized code.
+                </p>
+                <p className='mb-5'>
+                    In addition to my work as a Frontend Developer, I also engage in freelance real estate photography. This experience has broadened my creativity and refined my sense of aesthetics.
                 </p>
             </div>
         </div>

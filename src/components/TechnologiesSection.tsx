@@ -21,9 +21,7 @@ const Technologies: React.FC = () => {
                     <div className="flex justify-center flex-wrap gap-6">
                         <Fade cascade duration={300}>
                             {logos.map((logo, index) => (
-
-                                <img src={logo} alt={`Logo ${index}`} className="h-12 lg:h-20" />
-
+                                <img src={logo} alt={`Logo ${index}`} className="h-12 lg:h-20" key={index} />
                             ))}
                         </Fade>
                     </div>
