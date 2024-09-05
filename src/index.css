@@ -24,6 +24,11 @@
     }
 }
 
+.image-gallery-image {
+    aspect-ratio: 16/9;
+    object-fit: cover !important;
+}
+
 .image-gallery-icon {
     color: gray !important;
     filter: none !important;

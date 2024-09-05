@@ -17,10 +17,10 @@ const Hero: React.FC = () => {
                                 Glafira
                             </span>
 
-                            , creative Frontend Developer
+                            , a Frontend Developer
                         </h1>
-                        <p className="py-10 lg:py-12 text-lg lg:text-xl">
-                            Specializing in crafting intuitive user interfaces with a touch of creative finesse. Let's collaborate to bring your digital vision to life!
+                        <p className="py-5 lg:py-5 text-lg lg:text-xl">
+                            with a passion for solving problems and high attention to visual details. My goal in work is to produce clean, understandable, and well-optimized code.
                         </p>
                         <div className='flex w-full justify-center mb-4 lg:mb-0'>
                             <AttentionSeeker effect="heartBeat">

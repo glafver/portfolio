@@ -18,7 +18,7 @@ const ProjectsSection: React.FC = () => {
                         </div>
                         <div className="lg:w-1/2">
                             <p className="text-lg lg:text-xl ">
-                                Take a peek at some of my standout projects below. It's where creativity meets functionality! Dive into this showcase of my work, crafted with passion and precision.
+                                Here are some of my completed projects. While some may be simple, they represent my ongoing effort to grow professionally and continuously learn new skills.
                             </p>
                         </div>
                     </div>

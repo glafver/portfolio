@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import CV from '../assets/Glafira_Veretennikova_FrontEndDeveloper_CV.pdf';
 import { Fade } from 'react-awesome-reveal';
 
 const Navbar: React.FC = () => {
@@ -55,7 +54,7 @@ const Navbar: React.FC = () => {
                             className="uppercase border border-neutral-800 text-neutral-800 font-bold py-2 px-4 rounded-full hover:bg-neutral-800 hover:text-white transition duration-300"
                         >
                             <a
-                                href={CV}
+                                href={"https://storage.googleapis.com/glafver_portfolio/GlafiraVeretennikova_CV.docx"}
                                 download="Glafira_Veretennikova_Frontend_Dev_CV.pdf"
                             >
                                 DOWNLOAD MY CV

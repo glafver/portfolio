@@ -24,8 +24,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             </Fade>
             <div className="px-6 pt-4">
                 <div className="font-bold mb-3 lg:mb-5 flex items-center justify-between gap-3">
-                    <div className='text-xl lg:text-2xl'>{project.title}</div>
-                    <a target="_blank" href={project.link}><SlGlobe className='h-5 w-5  hover:text-red-500 transition duration-300 ml-2' /></a>
+                    <a target="_blank" href={project.link} className='text-xl lg:text-2xl  hover:text-red-500 transition duration-300'>{project.title}</a>
+                    <a target="_blank" href={project.link}>
+                        <SlGlobe className='h-5 w-5 hover:text-red-500 transition duration-300 ml-2' />
+                    </a>
                 </div>
                 <p className={`text-lg lg:text-xl mb-3 lg:mb-5 transition duration-300 lg:block`}>
                     {project.description}

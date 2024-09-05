@@ -17,7 +17,7 @@ const ContactModal: React.FC = () => {
                         <div className='mb-5 text-xl'>You can easily reach me by my email or any of my social media</div>
                         <div className='flex items-center justify-center mb-6'>
                             <FaEnvelope className='h-5 mr-3' />
-                            <a href="mailto:glafver22@gmail.com" className='hover:text-red-500 transition duration-300'>glafver22@gmail.com</a>
+                            <a href="mailto:glafira.se@gmail.com" className='hover:text-red-500 transition duration-300'>glafira.se@gmail.com</a>
                         </div>
                         <div className="flex items-center justify-center space-x-9">
                             <a href="https://www.linkedin.com/in/glafver/"><FaLinkedin className='w-6 h-6 hover:text-red-500 transition duration-300' /></a>

@@ -22,10 +22,23 @@ const AboutSection: React.FC = () => {
                     </h2>
                 </div>
                 <p className='mb-5'>
-                    I am proficient in React, TypeScript, and Material UI but my skill set extends also to server-side technologies, including Node.js and Express.js. With precise attention to detail and efficient logical solutions, I produce clean, understandable, and well-optimized code.
+                    I’m 36 years old and currently based in Malmö, Sweden. I relocated here five years ago from St. Petersburg, Russia.
+                    I am fluent both in Swedish and English.
                 </p>
                 <p className='mb-5'>
-                    In addition to my work as a Frontend Developer, I also engage in freelance real estate photography. This experience has broadened my creativity and refined my sense of aesthetics.
+                    I am non-confrontational and easy-going person, I know how to listen and find the right approach to people and work. Respect, tolerance, democratic resolution of issues ━ are my principles.
+                </p>
+                <p className='mb-5'>
+                    My big hobby and interest is interior design and interior photography, which I have dedicated most of my life to in Sweden.
+                    I also love to travel and learn about new cultures and see how other people live.
+                </p>
+                <p className='mb-5'>
+                    I am a versatile professional with over 15 years of experience, focused on administration and management.
+                    My extensive professional background has honed my organizational skills, problem-solving abilities, and customer focus.
+                </p>
+                <p className='mb-5'>
+                    In recent years, I have dived into programming, which has revealed new talents and passions for me.
+                    I am drawn to the elegance of code and its logic, and I am committed to continuous learning and growth in this field.
                 </p>
             </div>
         </div>
