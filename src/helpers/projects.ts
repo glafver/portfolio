@@ -24,19 +24,19 @@ const projects: Project[] = [
     },
     {
         id: 2,
-        title: 'BonbonBoutique',
+        title: 'Sweet Shop',
         description: `
         A responsive website for a candy store.
         Users can explore the product catalog, add products to the cart, and place orders. After placing an order, users receive an confirmation with the order number.
         `,
         imageUrls: [
-            'https://storage.googleapis.com/glafver_portfolio/bonbon_1.jpg',
-            'https://storage.googleapis.com/glafver_portfolio/bonbon_2.jpg',
-            'https://storage.googleapis.com/glafver_portfolio/bonbon_3.jpg',
-            'https://storage.googleapis.com/glafver_portfolio/bonbon_4.jpg'
+            'https://storage.googleapis.com/glafver_portfolio/sweet_1.png',
+            'https://storage.googleapis.com/glafver_portfolio/sweet_2.png',
+            'https://storage.googleapis.com/glafver_portfolio/sweet_3.png',
+            'https://storage.googleapis.com/glafver_portfolio/sweet_4.png'
         ],
         tech: ['JS', 'HTML', 'CSS', 'React', 'TypeScript', 'SASS', 'Bootstrap', 'react-router-dom', 'react-query', 'Vite'],
-        link: 'https://bonbonboutique.netlify.app/'
+        link: 'https://sweet-shop-glafver.netlify.app/'
     },
     {
         id: 3,
