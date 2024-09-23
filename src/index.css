@@ -60,17 +60,9 @@
 
 .image-gallery-thumbnail:hover {
     border: 2px solid #A8A29E !important;
-    /* border-color: #A8A29E !important; */
 }
 
 .image-gallery-thumbnail.active,
 .image-gallery-thumbnail:focus {
-    /* position: relative;
-    padding: 3px;
-    background-image: linear-gradient(180deg, rgb(184, 3, 184), red, rgb(255, 170, 12));
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    background-size: 100% 100%; */
     border: 2px solid #A8A29E !important;
-    /* border-color: #A8A29E !important; */
 }
