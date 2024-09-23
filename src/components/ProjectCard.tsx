@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import { SlGlobe } from "react-icons/sl";
-import ImageGallery from 'react-image-gallery';
+import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery';
 import { Project } from '../helpers/projects';
 
 interface ProjectCardProps {
@@ -17,17 +16,26 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
     const [openDropdown, setOpenDropdown] = useState(false);
 
+    const renderMainImage = (item: ReactImageGalleryItem) => (
+        <a target="_blank" href={project.link} >
+            <img src={item.original} alt={item.description} />
+        </a>
+    );
+
     return (
         <div className="bg-neutral-200 rounded-lg shadow-md hover:shadow-xl transition duration-300 overflow-hidden border flex flex-col">
             <Fade delay={30}>
-                <ImageGallery showThumbnails={false} showFullscreenButton={true} showPlayButton={false} items={galleryItems} />
+                <ImageGallery
+                    items={galleryItems}
+                    showThumbnails={true}
+                    showFullscreenButton={false}
+                    showPlayButton={false}
+                    renderItem={renderMainImage}
+                />
             </Fade>
             <div className="px-6 pt-4">
                 <div className="font-bold mb-3 lg:mb-5 flex items-center justify-between gap-3">
                     <a target="_blank" href={project.link} className='text-xl lg:text-2xl  hover:text-red-500 transition duration-300'>{project.title}</a>
-                    <a target="_blank" href={project.link}>
-                        <SlGlobe className='h-5 w-5 hover:text-red-500 transition duration-300 ml-2' />
-                    </a>
                 </div>
                 <p className={`text-lg lg:text-xl mb-3 lg:mb-5 transition duration-300 lg:block`}>
                     {project.description}

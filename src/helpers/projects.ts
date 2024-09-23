@@ -11,6 +11,19 @@ interface Project {
 const projects: Project[] = [
     {
         id: 1,
+        title: 'Photographer portfolio',
+        description: 'Web project featuring a real estate photographer`s portfolio. Showcases captivating property visuals, offers easy navigation, and provides contact details for collaborations.',
+        imageUrls: [
+            'https://storage.googleapis.com/glafver_portfolio/photo_portfolio_1.png',
+            'https://storage.googleapis.com/glafver_portfolio/photo_portfolio_2.png',
+            'https://storage.googleapis.com/glafver_portfolio/photo_portfolio_3.png',
+            'https://storage.googleapis.com/glafver_portfolio/photo_portfolio_4.png',
+        ],
+        tech: ['JS', 'HTML', 'CSS', 'React', 'TypeScript', 'Next', 'Tailwind'],
+        link: 'https://photo.glafira.se/'
+    },
+    {
+        id: 2,
         title: 'BonbonBoutique',
         description: `
         A responsive website for a candy store.
@@ -26,7 +39,7 @@ const projects: Project[] = [
         link: 'https://bonbonboutique.netlify.app/'
     },
     {
-        id: 2,
+        id: 3,
         title: 'Videomaker',
         description: `Videomaker app allows users to create video slideshows using uploaded photos. 
         Users can customize slide order, duration, transitions, and add soundtracks. They can save, share, edit settings, or create new videos.`,
@@ -35,19 +48,8 @@ const projects: Project[] = [
             'https://storage.googleapis.com/glafver_portfolio/videomaker_2.jpg',
             'https://storage.googleapis.com/glafver_portfolio/videomaker_3.jpg',
         ],
-        tech: ['JS', 'HTML', 'CSS', 'Node.js', 'Express.js', 'ffmpeg', 'ImageMagick', 'Bootstrap', 'Firebase', 'SASS', 'Docker', 'react-router-dom'],
+        tech: ['JS', 'HTML', 'CSS', 'React', 'Node.js', 'Express.js', 'ffmpeg', 'ImageMagick', 'Bootstrap', 'Firebase', 'SASS', 'Docker', 'react-router-dom'],
         link: 'https://videomaker.netlify.app/'
-    },
-    {
-        id: 3,
-        title: 'Photographer portfolio',
-        description: 'Web project featuring a real estate photographer`s portfolio. Showcases captivating property visuals, offers easy navigation, and provides contact details for collaborations.',
-        imageUrls: [
-            'https://storage.googleapis.com/glafver_portfolio/photoportfolio_1.jpg',
-            'https://storage.googleapis.com/glafver_portfolio/photoportfolio_2.jpg'
-        ],
-        tech: ['JS', 'HTML', 'CSS'],
-        link: 'https://glafiraphoto.netlify.app/'
     },
     {
         id: 4,
@@ -76,7 +78,6 @@ const projects: Project[] = [
         tech: ['JS', 'HTML', 'CSS'],
         link: 'https://almi.netlify.app/'
     },
-
     {
         id: 6,
         title: 'Re-Yacht',
@@ -93,7 +94,6 @@ const projects: Project[] = [
         tech: ['JS', 'HTML', 'CSS', 'React', 'Socket.io', 'Node.js', 'Bootstrap', 'SASS', 'react-router-dom'],
         link: 'https://re-yacht.netlify.app/'
     },
-
     {
         id: 7,
         title: 'Kill the virus',
