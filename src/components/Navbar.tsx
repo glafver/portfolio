@@ -5,11 +5,12 @@ const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className="bg-neutral-200 p-5 px-8 lg:px-12">
+        <nav className="bg-neutral-200 p-5 pt-12 px-8 lg:px-12">
             <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center lg:items-end">
                 <div className="flex flex-col items-center flex-shrink-0 lg:mr-36">
-                    <span className="font-semibold text-8xl font-forum">GV</span>
-                    <span className="font-semibold pl-4 hidden lg:block">Glafira Veretennikova</span>
+                    {/* <span className="logo font-semibold font-teachers text-8xl">GV</span> */}
+                    <img className="w-32" src="https://storage.googleapis.com/glafver_portfolio/GV_logo_dark.png" alt="" />
+                    {/* <span className="font-semibold pl-4 hidden lg:block">Glafira Veretennikova</span> */}
                 </div>
                 <div className="block lg:hidden">
                     <button
@@ -31,20 +32,23 @@ const Navbar: React.FC = () => {
                         <a
                             href="#projects"
                             className="block mt-4 lg:inline-block lg:mt-0 mr-4 transition duration-300 hover:text-white"
+                            onClick={() => setIsOpen(false)}
                         >
                             Projects
                         </a>
                         <a
                             href="#about"
                             className="block mt-4 lg:inline-block lg:mt-0 mr-4 transition duration-300 hover:text-white"
+                            onClick={() => setIsOpen(false)}
                         >
                             About
                         </a>
                         <a
                             href="#contact"
                             className="block mt-4 lg:inline-block lg:mt-0 mr-4 transition duration-300 hover:text-white"
+                            onClick={() => setIsOpen(false)}
                         >
-                            Contact
+                            Contacts
                         </a>
                     </div>
                 </div>

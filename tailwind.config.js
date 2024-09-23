@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        forum: ['Forum', 'serif'],
-        monst: ['Montserrat', 'sans-serif']
+        mont: ['Montserrat', 'sans-serif'],
+        teachers: ['Teachers', 'sans-serif']
       },
     },
   },

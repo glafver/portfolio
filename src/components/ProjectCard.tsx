@@ -18,7 +18,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
     const renderMainImage = (item: ReactImageGalleryItem) => (
         <a target="_blank" href={project.link} >
-            <img src={item.original} alt={item.description} />
+            <img src={item.original} alt={item.description} className='aspect-[1.95]' />
         </a>
     );
 

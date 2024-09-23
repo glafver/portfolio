@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
             <div className="bg-neutral-200 p-8 pb-16 lg:p-12 lg:py-28">
                 <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between">
                     <div className="lg:w-1/2 lg:pr-10">
-                        <h1 className="text-3xl lg:text-5xl font-bold text-neutral-800">
+                        <h1 className="text-3xl lg:text-5xl font-bold">
                             Hey, I'm
 
                             <span className="ml-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-red-500 to-orange-500">
@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
                             <AttentionSeeker effect="heartBeat">
                                 <button
                                     onClick={() => { handleOpen(); }}
-                                    className="uppercase gv-color-changing-bg font-bold py-2 px-4 text-white rounded-full hover:text-black transition duration-300"
+                                    className="uppercase gv-color-changing-bg font-bold py-2 px-4 text-white rounded-full hover:text-neutral-800 transition duration-300"
                                 >
                                     Contact me
                                 </button>

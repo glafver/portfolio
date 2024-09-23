@@ -10,7 +10,7 @@ const ProjectsSection: React.FC = () => {
                 <div className="max-w-7xl mx-auto lg:px-4">
                     <div className="mx-auto pb-16 lg:pb-28 flex flex-col lg:flex-row-reverse items-end lg:items-center justify-between">
                         <div className="lg:w-1/2 text-right">
-                            <h2 className="text-3xl lg:text-5xl font-bold text-neutral-800 lg:pl-24">Have a look at my
+                            <h2 className="text-3xl lg:text-5xl font-bold lg:pl-24">Have a look at my
                                 <span className="block sm:inline h-20  ml-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-red-500 to-orange-500">
                                     projects
                                 </span>

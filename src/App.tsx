@@ -11,7 +11,7 @@ import ContactModal from "./components/ContactModal";
 function App() {
 
   return (
-    <div className="font-monst text-neutral-800">
+    <div className="font-mont text-neutral-800">
       <ModalProvider>
         <Navbar />
         <Hero />

@@ -58,9 +58,9 @@ const projects: Project[] = [
         Multi-Tier Access app for discovering restaurants in Malmö on a map and in a list. 
         Users can explore the map with restaurnts, access detailed pages, see their location, find distances to restaurants, get route directions, and submit suggestions to admins.`,
         imageUrls: [
-            'https://storage.googleapis.com/glafver_portfolio/tasty_1.jpg',
-            'https://storage.googleapis.com/glafver_portfolio/tasty_2.jpg',
-            'https://storage.googleapis.com/glafver_portfolio/tasty_3.jpg',
+            'https://storage.googleapis.com/glafver_portfolio/tasty_1.png',
+            'https://storage.googleapis.com/glafver_portfolio/tasty_2.png',
+            'https://storage.googleapis.com/glafver_portfolio/tasty_3.png',
         ],
         tech: ['JS', 'HTML', 'CSS', 'React', 'Bootstrap', 'ReactQuery', 'Firebase', 'SASS', 'GoogleMapsAPI'],
         link: 'https://tasty-malmo.netlify.app/'

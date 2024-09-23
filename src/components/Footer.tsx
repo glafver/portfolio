@@ -6,9 +6,10 @@ const Footer: React.FC = () => {
         <footer className="bg-neutral-200 px-8 lg:px-24 pb-12">
             <div className="max-w-5xl mx-auto lg:grid grid-cols-2 gap-4 flex flex-col px-4 align-end justify-between">
                 <div className="flex flex-col items-center text-center w-full lg:w-2/5">
-                    <span className="gv-color-changing-font font-semibold text-8xl font-forum">GV</span>
+                    {/* <span className="font-semibold text-8xl font-teachers">GV</span> */}
+                    <img className="w-32 mb-6" src="https://storage.googleapis.com/glafver_portfolio/GV_logo_dark.png" alt="" />
                     <span className="font-semibold pl-4">Glafira Veretennikova</span>
-                    <span className="font-semibold pl-4">2024</span>
+                    <span className="font-semibold pl-4">{new Date().getFullYear()}</span>
                 </div>
                 <div className='flex flex-col justify-end'>
                     <div className="flex items-center justify-center flex-wrap lg:justify-end mb-4">
@@ -28,7 +29,7 @@ const Footer: React.FC = () => {
                             href="#contact"
                             className="block mt-4 lg:inline-block lg:mt-0 mr-4 transition duration-300 hover:text-white"
                         >
-                            Contact
+                            Contacts
                         </a>
                         <a
                             href="#"
