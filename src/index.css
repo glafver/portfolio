@@ -37,6 +37,7 @@
 .image-gallery-icon {
     color: gray !important;
     filter: none !important;
+    display: none;
 }
 
 .image-gallery-svg {
@@ -48,21 +49,28 @@
 }
 
 .image-gallery-thumbnails-wrapper {
-    margin-top: 8px;
+    margin-top: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.image-gallery-thumbnail {
+    border: 2px solid transparent !important;
 }
 
 .image-gallery-thumbnail:hover {
-    border: 3px solid #A8A29E !important;
+    border: 2px solid #A8A29E !important;
+    /* border-color: #A8A29E !important; */
 }
 
 .image-gallery-thumbnail.active,
 .image-gallery-thumbnail:focus {
-    position: relative;
+    /* position: relative;
     padding: 3px;
-    border: 3px solid transparent !important;
     background-image: linear-gradient(180deg, rgb(184, 3, 184), red, rgb(255, 170, 12));
     background-origin: border-box;
     background-clip: padding-box, border-box;
-    background-size: 100% 100%;
-
+    background-size: 100% 100%; */
+    border: 2px solid #A8A29E !important;
+    /* border-color: #A8A29E !important; */
 }

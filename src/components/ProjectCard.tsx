@@ -30,6 +30,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                     showThumbnails={true}
                     showFullscreenButton={false}
                     showPlayButton={false}
+
                     renderItem={renderMainImage}
                 />
             </Fade>
