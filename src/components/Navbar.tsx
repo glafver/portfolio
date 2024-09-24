@@ -5,12 +5,10 @@ const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className="bg-neutral-200 p-5 pt-12 px-8 lg:px-12">
+        <nav className="bg-neutral-200 py-8 lg:py-12 px-8 lg:px-12">
             <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center lg:items-end">
                 <div className="flex flex-col items-center flex-shrink-0 lg:mr-36">
-                    {/* <span className="logo font-semibold font-teachers text-8xl">GV</span> */}
-                    <img className="w-32" src="https://storage.googleapis.com/glafver_portfolio/GV_logo_dark.png" alt="" />
-                    {/* <span className="font-semibold pl-4 hidden lg:block">Glafira Veretennikova</span> */}
+                    <img className="w-20 lg:w-32" src="https://storage.googleapis.com/glafver_portfolio/GV_logo_dark.png" alt="" />
                 </div>
                 <div className="block lg:hidden">
                     <button
@@ -18,7 +16,7 @@ const Navbar: React.FC = () => {
                         onClick={() => setIsOpen(!isOpen)}
                     >
                         <svg
-                            className="fill-current w-8"
+                            className="fill-current w-6"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
                         >
