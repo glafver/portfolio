@@ -24,6 +24,18 @@ const projects: Project[] = [
     },
     {
         id: 2,
+        title: 'WashOverflow',
+        description: 'A car wash booking system that enables users to schedule car wash appointments. The system provides authentication, booking management, and an administrative interface to oversee operations.',
+        imageUrls: [
+            'https://storage.googleapis.com/glafver_portfolio/washoverflow_1.jpg',
+            'https://storage.googleapis.com/glafver_portfolio/washoverflow_2.jpg',
+            'https://storage.googleapis.com/glafver_portfolio/washoverflow_3.jpg'
+        ],
+        tech: ['Razor Pages', 'Entity Framework', 'ASP.NET Identity', 'Azure SQL', 'C#', 'Bootstrap', 'Azure App Service'],
+        link: 'https://washoverflow.azurewebsites.net/'
+    },
+    {
+        id: 3,
         title: 'Sweet Shop',
         description: `
         A responsive website for a candy store.
@@ -39,7 +51,7 @@ const projects: Project[] = [
         link: 'https://sweet-shop-glafver.netlify.app/'
     },
     {
-        id: 3,
+        id: 4,
         title: 'Videomaker',
         description: `Videomaker app allows users to create video slideshows using uploaded photos. 
         Users can customize slide order, duration, transitions, and add soundtracks. They can save, share, edit settings, or create new videos.`,
@@ -52,7 +64,7 @@ const projects: Project[] = [
         link: 'https://videomaker.netlify.app/'
     },
     {
-        id: 4,
+        id: 5,
         title: 'Tasty Malmö',
         description: `
         Multi-Tier Access app for discovering restaurants in Malmö on a map and in a list. 
@@ -66,7 +78,7 @@ const projects: Project[] = [
         link: 'https://tasty-malmo.netlify.app/'
     },
     {
-        id: 5,
+        id: 6,
         title: 'Almi - Uppstartslån',
         description: `
         A web page for Almi's newest product, Uppstartslån. This one-page website serves as a guide to introduce customers to the features and benefits of Uppstartslån.`,
@@ -79,7 +91,7 @@ const projects: Project[] = [
         link: 'https://almi.netlify.app/'
     },
     {
-        id: 6,
+        id: 7,
         title: 'Re-Yacht',
         description: `
         A classic battleship game in real time for two players. `,
@@ -95,7 +107,7 @@ const projects: Project[] = [
         link: 'https://re-yacht.netlify.app/'
     },
     {
-        id: 7,
+        id: 8,
         title: 'Kill the virus',
         description: `
         A game for two players to compete who can kill the malicious virus faster.`,
