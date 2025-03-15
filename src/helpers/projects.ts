@@ -27,9 +27,9 @@ const projects: Project[] = [
         title: 'WashOverflow',
         description: 'A car wash booking system that enables users to schedule car wash appointments. The system provides authentication, booking management, and an administrative interface to oversee operations.',
         imageUrls: [
-            'https://storage.googleapis.com/glafver_portfolio/washoverflow_1.jpg',
-            'https://storage.googleapis.com/glafver_portfolio/washoverflow_2.jpg',
-            'https://storage.googleapis.com/glafver_portfolio/washoverflow_3.jpg'
+            'https://storage.googleapis.com/glafver_portfolio/washoverflow_1.png',
+            'https://storage.googleapis.com/glafver_portfolio/washoverflow_2.png',
+            'https://storage.googleapis.com/glafver_portfolio/washoverflow_3.png'
         ],
         tech: ['Razor Pages', 'Entity Framework', 'ASP.NET Identity', 'Azure SQL', 'C#', 'Bootstrap', 'Azure App Service'],
         link: 'https://washoverflow.azurewebsites.net/'
