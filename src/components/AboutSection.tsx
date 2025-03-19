@@ -22,11 +22,11 @@ const AboutSection: React.FC = () => {
                     </h2>
                 </div>
                 <p className='mb-5'>
-                    I’m 36 years old and currently based in Malmö, Sweden. I relocated here five years ago from St. Petersburg, Russia.
+                    Hi, my name is <strong>Glafira Veretennikova</strong>. I’m 36 years old and currently based in Malmö, Sweden. I relocated here five years ago from St. Petersburg, Russia.
                     I am fluent both in Swedish and English.
                 </p>
                 <p className='mb-5'>
-                    I am non-confrontational and easy-going person, I know how to listen and find the right approach to people and work. Respect, tolerance, democratic resolution of issues ━ are my principles.
+                    I am an easy-going person, I know how to listen and find the right approach to people and work. Respect, tolerance, democratic resolution of issues ━ are my principles.
                 </p>
                 <p className='mb-5'>
                     My big hobby and interest is interior design and interior photography.
