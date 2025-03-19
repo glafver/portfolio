@@ -17,7 +17,7 @@ const Hero: React.FC = () => {
                                 Glafira
                             </span>
 
-                            , a Frontend Developer
+                            , a Software Developer
                         </h1>
                         <p className="py-5 lg:py-5 text-lg lg:text-xl">
                             with a passion for solving problems and high attention to visual details. My goal in work is to produce clean, understandable, and well-optimized code.
