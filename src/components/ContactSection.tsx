@@ -5,6 +5,7 @@ import { AttentionSeeker, Fade } from 'react-awesome-reveal';
 const Contact: React.FC = () => {
     const { handleOpen } = useModal();
 
+
     return (
         <div id='contact' className="bg-neutral-200 h-72 lg:h-96 lg:pb-36 mt-36 lg:mt-36 relative">
             <div
@@ -37,8 +38,8 @@ const Contact: React.FC = () => {
                                 className="w-max uppercase border border-neutral-800 text-neutral-800 font-bold py-2 px-4 mb-5 lg:mb-0 rounded-full hover:bg-neutral-800 hover:text-white transition duration-300"
                             >
                                 <a
-                                    href={"https://storage.googleapis.com/glafver_portfolio/GlafiraVeretennikova_CV.docx"}
-                                    download="Glafira_Veretennikova_Frontend_Dev_CV.pdf"
+                                    href="/assets/Glafira_Veretennikova_fullstack_CV.pdf"
+                                    download={true}
                                 >
                                     DOWNLOAD MY CV
                                 </a>

@@ -2,12 +2,14 @@ import React from 'react';
 import { Zoom, Fade } from 'react-awesome-reveal';
 
 const logos: string[] = [
-    'https://storage.googleapis.com/glafver_portfolio/tech_4.png',
+
     'https://storage.googleapis.com/glafver_portfolio/tech_5.png',
+    'https://storage.googleapis.com/glafver_portfolio/tech_12.png',
+    'https://storage.googleapis.com/glafver_portfolio/tech_13.png',
+    'https://storage.googleapis.com/glafver_portfolio/tech_4.png',
     'https://storage.googleapis.com/glafver_portfolio/tech_6.png',
     'https://storage.googleapis.com/glafver_portfolio/tech_7.png',
     'https://storage.googleapis.com/glafver_portfolio/tech_8.png',
-    'https://storage.googleapis.com/glafver_portfolio/tech_9.png',
     'https://storage.googleapis.com/glafver_portfolio/tech_10.png',
     'https://storage.googleapis.com/glafver_portfolio/tech_11.png'
 ];

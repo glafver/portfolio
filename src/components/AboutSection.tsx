@@ -22,7 +22,7 @@ const AboutSection: React.FC = () => {
                     </h2>
                 </div>
                 <p className='mb-5'>
-                    Hi, my name is <strong>Glafira Veretennikova</strong>. I’m 36 years old and currently based in Malmö, Sweden. I relocated here five years ago from St. Petersburg, Russia.
+                    Hi, my name is <strong>Glafira Veretennikova</strong>. I’m 37 years old and currently based in Malmö, Sweden. I relocated here six years ago from St. Petersburg, Russia.
                     I am fluent both in Swedish and English.
                 </p>
                 <p className='mb-5'>
