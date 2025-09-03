@@ -22,23 +22,22 @@ const AboutSection: React.FC = () => {
                     </h2>
                 </div>
                 <p className='mb-5'>
-                    Hi, my name is <strong>Glafira Veretennikova</strong>. I’m 37 years old and currently based in Malmö, Sweden. I relocated here six years ago from St. Petersburg, Russia.
-                    I am fluent both in Swedish and English.
+                    Hi, my name is <strong>Glafira Veretennikova</strong>. Currently based in Malmö, Sweden, I relocated here six years ago from St. Petersburg, Russia. I am fluent in both Swedish and English.
                 </p>
                 <p className='mb-5'>
-                    I am an easy-going person, I know how to listen and find the right approach to people and work. Respect, tolerance, democratic resolution of issues ━ are my principles.
+                    I am a fullstack developer and my expertise includes C#, .NET, Blazor, React.js, TypeScript, and Node.js.
+                    I have experience working with Redux, Express.js, Socket.io, Tailwind, and Material UI, and writing tests with xUnit and Jest.
                 </p>
                 <p className='mb-5'>
-                    My big hobby and interest is interior design and interior photography.
-                    I also love to travel and learn about new cultures and see how other people live.
+                    Easy-going by nature, I know how to listen and find the right approach to people and work. Skilled at collaborating in teams, I can both lead projects and work independently when needed.
                 </p>
                 <p className='mb-5'>
                     I am a versatile professional with over 15 years of experience, focused on administration and management.
                     My extensive professional background has honed my organizational skills, problem-solving abilities, and customer focus.
                 </p>
-                <p className='mb-0'>
-                    In recent years, I have dived into programming, which has revealed new talents and passions for me.
-                    I am drawn to the elegance of code and its logic, and I am committed to continuous learning and growth in this field.
+                <p className='mb-5'>
+                    I am passionate about interior design and interior photography, working professionally as a freelance photographer.
+                    I also enjoy traveling and exploring different cultures to understand how people live, think and create their spaces.
                 </p>
             </div>
         </div>
