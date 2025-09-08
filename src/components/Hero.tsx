@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
                             </span>
 
                             , a
-                            <br />fullstack developer
+                            <br />Fullstack Developer
                         </h1>
                         <p className="py-5 lg:py-5 text-lg lg:text-xl">
                             with a passion for solving problems and high attention to visual details. My goal in work is to produce clean, understandable, and well-optimized code.
@@ -39,7 +39,7 @@ const Hero: React.FC = () => {
                     <div className="lg:w-1/2 mt-8 lg:mt-0">
                         <Fade >
                             <img
-                                src='https://storage.googleapis.com/glafver_portfolio/hero_img.jpg'
+                                src='/assets/hero_img.jpg'
                                 alt="Hero Image"
                                 className="rounded shadow-lg w-full  lg:w-3/4 mx-auto lg:mr-0"
                             />

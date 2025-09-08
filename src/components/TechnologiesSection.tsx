@@ -3,15 +3,15 @@ import { Zoom, Fade } from 'react-awesome-reveal';
 
 const logos: string[] = [
 
-    'https://storage.googleapis.com/glafver_portfolio/tech_5.png',
-    'https://storage.googleapis.com/glafver_portfolio/tech_12.png',
-    'https://storage.googleapis.com/glafver_portfolio/tech_13.png',
-    'https://storage.googleapis.com/glafver_portfolio/tech_4.png',
-    'https://storage.googleapis.com/glafver_portfolio/tech_6.png',
-    'https://storage.googleapis.com/glafver_portfolio/tech_7.png',
-    'https://storage.googleapis.com/glafver_portfolio/tech_8.png',
-    'https://storage.googleapis.com/glafver_portfolio/tech_10.png',
-    'https://storage.googleapis.com/glafver_portfolio/tech_11.png'
+    '/assets/tech_5.png',
+    '/assets/tech_12.png',
+    '/assets/tech_13.png',
+    '/assets/tech_4.png',
+    '/assets/tech_6.png',
+    '/assets/tech_7.png',
+    '/assets/tech_8.png',
+    '/assets/tech_10.png',
+    '/assets/tech_11.png'
 ];
 
 const Technologies: React.FC = () => {
