@@ -35,7 +35,7 @@ const AboutSection: React.FC = () => {
                     I am a versatile professional with <b>over 15 years of experience</b>, focused on <b>administration</b>  and <b>management</b>.
                     My extensive professional background has honed my <b>organizational</b> skills, <b>problem-solving</b>  abilities, and <b> customer focus</b>.
                 </p>
-                <p className='mb-5'>
+                <p className='mb-0'>
                     I am passionate about interior design and interior photography, working professionally as a <b> freelance photographer. </b>
                     I also enjoy traveling and <b> exploring different cultures</b> to understand how people live, think and create their spaces.
                 </p>
