@@ -21,24 +21,27 @@ const AboutSection: React.FC = () => {
                         </span>
                     </h2>
                 </div>
-                <p className='mb-5'>
-                    Hi, my name is <b>Glafira Veretennikova</b>. Currently based in<b> Malmö, Sweden</b>, I relocated here six years ago from <b> St. Petersburg, Russia</b>. I am fluent in both <b>Swedish</b>  and <b>English</b>.
-                </p>
-                <p className='mb-5'>
-                    I am a <b> Fullstack Developer</b> and my expertise includes <b> C#, .NET, Blazor, React.js, TypeScript,</b> and<b> Node.js</b>.
-                    I have experience working with Redux, Express.js, Socket.io, Tailwind,  and Material UI, and writing tests with xUnit and Jest.
-                </p>
-                <p className='mb-5'>
-                    <b> Easy-going</b> by nature, I know how to listen and find the <b> right approach</b> to people and work. Skilled at <b>collaborating in teams</b>, I can both <b> lead projects</b>  and <b> work independently </b> when needed.
-                </p>
-                <p className='mb-5'>
-                    I am a versatile professional with <b>over 15 years of experience</b>, focused on <b>administration</b>  and <b>management</b>.
-                    My extensive professional background has honed my <b>organizational</b> skills, <b>problem-solving</b>  abilities, and <b> customer focus</b>.
-                </p>
-                <p className='mb-0'>
-                    I am passionate about interior design and interior photography, working professionally as a <b> freelance photographer. </b>
-                    I also enjoy traveling and <b> exploring different cultures</b> to understand how people live, think and create their spaces.
-                </p>
+                <div>
+                    <p className='mb-5'>
+                        Hi, my name is Glafira Veretennikova. Currently based in Malmö, Sweden, I relocated here six years ago from St. Petersburg, Russia. I am fluent in both Swedish and English.
+                    </p>
+                    <p className='mb-5'>
+                        I am a Fullstack Developer and my expertise includes C#, .NET, Blazor, React.js, TypeScript, and Node.js.
+                        I have experience working with Redux, Express.js, Socket.io, Tailwind, and Material UI, and writing tests with xUnit and Jest.
+                    </p>
+                    <p className='mb-5'>
+                        Easy-going by nature, I know how to listen and find the right approach to people and work. Skilled at collaborating in teams, I can both lead projects and work independently when needed.
+                    </p>
+                    <p className='mb-5'>
+                        I am a versatile professional with over 15 years of experience, focused on administration and management.
+                        My extensive professional background has honed my organizational skills, problem-solving abilities, and customer focus.
+                    </p>
+                    <p className='mb-0'>
+                        I am passionate about interior design and interior photography, working professionally as a freelance photographer.
+                        I also enjoy traveling and exploring different cultures to understand how people live, think and create their spaces.
+                    </p>
+                </div>
+
             </div>
         </div>
     );

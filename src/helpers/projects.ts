@@ -37,6 +37,19 @@ const projects: Project[] = [
     },
     {
         id: 3,
+        title: 'SKILLUP',
+        description: 'SKILLUP is a web app for interactive learning where users can enroll in courses, track progress, complete lessons, and earn digital certificates through a diverse course library and personal dashboards.',
+        imageUrls: [
+            '/assets/skillup_1.png',
+            '/assets/skillup_2.png',
+            '/assets/skillup_3.png',
+            '/assets/skillup_4.png',
+        ],
+        tech: ['Entity Framework', 'ASP.NET Identity', 'MongoDB', 'C#', 'Tailwind', 'React', 'TypeScript'],
+        link: 'https://skillup-sysm8.netlify.app/'
+    },
+    {
+        id: 4,
         title: 'WashOverflow',
         description: 'A car wash booking system that enables users to schedule car wash appointments. The system provides authentication, booking management, and an administrative interface to oversee operations.',
         imageUrls: [
@@ -48,7 +61,7 @@ const projects: Project[] = [
         link: 'https://washoverflow.azurewebsites.net/'
     },
     {
-        id: 4,
+        id: 5,
         title: 'Sweet Shop',
         description: `
         A responsive website for a candy store.
@@ -64,7 +77,7 @@ const projects: Project[] = [
         link: 'https://sweet-shop-glafver.netlify.app/'
     },
     {
-        id: 5,
+        id: 6,
         title: 'Videomaker',
         description: `Videomaker app allows users to create video slideshows using uploaded photos. 
         Users can customize slide order, duration, transitions, and add soundtracks. They can save, share, edit settings, or create new videos.`,
@@ -77,7 +90,7 @@ const projects: Project[] = [
         link: 'https://videomaker.netlify.app/'
     },
     {
-        id: 6,
+        id: 7,
         title: 'Tasty Malmö',
         description: `
         Multi-Tier Access app for discovering restaurants in Malmö on a map and in a list. 
@@ -90,21 +103,21 @@ const projects: Project[] = [
         tech: ['JS', 'HTML', 'CSS', 'React', 'Bootstrap', 'ReactQuery', 'Firebase', 'SASS', 'GoogleMapsAPI'],
         link: 'https://tasty-malmo.netlify.app/'
     },
-    // {
-    //     id: 7,
-    //     title: 'Almi - Uppstartslån',
-    //     description: `
-    //     A web page for Almi's newest product, Uppstartslån. This one-page website serves as a guide to introduce customers to the features and benefits of Uppstartslån.`,
-    //     imageUrls: [
-    //         '/assets/almi_1.jpg',
-    //         '/assets/almi_2.jpg',
-    //         '/assets/almi_3.jpg',
-    //     ],
-    //     tech: ['JS', 'HTML', 'CSS'],
-    //     link: 'https://almi.netlify.app/'
-    // },
     {
         id: 8,
+        title: 'Almi - Uppstartslån',
+        description: `
+        A web page for Almi's newest product, Uppstartslån. This one-page website serves as a guide to introduce customers to the features and benefits of Uppstartslån.`,
+        imageUrls: [
+            '/assets/almi_1.png',
+            '/assets/almi_2.png',
+            '/assets/almi_3.png',
+        ],
+        tech: ['JS', 'HTML', 'CSS'],
+        link: 'https://almi.netlify.app/'
+    },
+    {
+        id: 9,
         title: 'Re-Yacht',
         description: `
         A classic battleship game in real time for two players. `,
@@ -120,7 +133,7 @@ const projects: Project[] = [
         link: 'https://re-yacht.netlify.app/'
     },
     {
-        id: 9,
+        id: 10,
         title: 'Kill the virus',
         description: `
         A game for two players to compete who can kill the malicious virus faster.`,

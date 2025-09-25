@@ -56,7 +56,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             </div>
             <div className="px-6 mt-auto mb-3" >
                 {project.tech.map((tech, index) => (
-                    <span key={index} className={`border border-neutral-800 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2 ${openDropdown ? `inline-block` : `hidden`} lg:inline-block `}>#{tech}</span>
+                    <span key={index} className={`border border-neutral-800 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2 ${openDropdown ? `inline-block` : `hidden`} lg:inline-block `}>{tech}</span>
                 ))}
             </div>
         </div>
