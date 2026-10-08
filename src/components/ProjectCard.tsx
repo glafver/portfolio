@@ -106,7 +106,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
                     showPlayButton={false}
                     showNav={false}
                     autoPlay={isHovered}
-                    slideInterval={1500}
+                    slideInterval={3000}
+                    slideDuration={800}
                     lazyLoad={true}
                     renderItem={renderMainImage}
                 />
