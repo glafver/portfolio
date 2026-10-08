@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
-import { FaChevronDown, FaChevronUp, FaEdit, FaTrash, FaArrowUp, FaArrowDown } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp, FaEdit, FaTrash, FaArrowUp, FaArrowDown, FaEye, FaEyeSlash } from 'react-icons/fa';
 import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery';
 import { Project } from '../types';
 import { useAdmin } from '../admin/AdminContext';
-import { deleteProject } from '../lib/adminApi';
+import { deleteProject, setProjectVisibility } from '../lib/adminApi';
 
 interface ProjectCardProps {
     project: Project;
@@ -22,10 +22,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
     const [openDropdown, setOpenDropdown] = useState(false);
     const { isAdmin, openProjectEditor } = useAdmin();
 
+    const hidden = project.visible === false;
+
     const handleDelete = async () => {
         if (!window.confirm(`Delete "${project.title}"? This cannot be undone.`)) return;
         try {
             await deleteProject(project.id);
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
+    const handleToggleVisibility = async () => {
+        try {
+            await setProjectVisibility(project.id, project.visible === false);
         } catch (e) {
             console.error(e);
         }
@@ -44,7 +54,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
     );
 
     return (
-        <div className="relative bg-neutral-200 rounded-md shadow-md hover:shadow-xl transition duration-300 overflow-hidden border flex flex-col">
+        <div className={`relative bg-neutral-200 rounded-md shadow-md hover:shadow-xl transition duration-300 overflow-hidden border flex flex-col ${hidden ? 'opacity-60' : ''}`}>
+            {isAdmin && hidden && (
+                <span className="absolute top-3 left-3 z-20 bg-neutral-900 text-white text-xs font-semibold px-2.5 py-1 rounded-full">
+                    Hidden
+                </span>
+            )}
             {isAdmin && (
                 <div className="absolute top-3 right-3 z-20 flex items-center gap-1.5">
                     <button
@@ -64,6 +79,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
                         title="Move down"
                     >
                         <FaArrowDown size={12} />
+                    </button>
+                    <button
+                        onClick={handleToggleVisibility}
+                        className="flex items-center justify-center bg-white text-neutral-700 border border-neutral-200 rounded-full w-8 h-8 shadow hover:bg-neutral-50 transition"
+                        aria-label={hidden ? 'Show project' : 'Hide project'}
+                        title={hidden ? 'Show project' : 'Hide project'}
+                    >
+                        {hidden ? <FaEye size={12} /> : <FaEyeSlash size={12} />}
                     </button>
                     <button
                         onClick={() => openProjectEditor(project)}

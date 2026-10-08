@@ -33,6 +33,13 @@ export async function deleteProject(id: string): Promise<void> {
     notifyContentChanged();
 }
 
+export async function setProjectVisibility(id: string, visible: boolean): Promise<void> {
+    if (!supabase) throw new Error('Supabase is not configured');
+    const { error } = await supabase.from('projects').update({ visible }).eq('id', id);
+    if (error) throw error;
+    notifyContentChanged();
+}
+
 export async function reorderProjects(ordered: Project[]): Promise<void> {
     if (!supabase) throw new Error('Supabase is not configured');
     for (let i = 0; i < ordered.length; i++) {

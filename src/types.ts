@@ -7,5 +7,6 @@ export interface Project {
     link: string;
     important: string | null;
     sort_order: number;
+    visible?: boolean;
     created_at?: string;
 }

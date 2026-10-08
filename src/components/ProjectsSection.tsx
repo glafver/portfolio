@@ -11,6 +11,8 @@ const ProjectsSection: React.FC = () => {
     const content = useSiteContent();
     const { isAdmin, openContentEditor } = useAdmin();
 
+    const displayedProjects = isAdmin ? projects : projects.filter((p) => p.visible !== false);
+
     const title = (content['projects.title'] ?? '').trim();
     const titleParts = title.split(' ');
     const highlight = titleParts.pop() ?? '';
@@ -18,8 +20,8 @@ const ProjectsSection: React.FC = () => {
 
     const handleMove = async (index: number, direction: 'up' | 'down') => {
         const target = direction === 'up' ? index - 1 : index + 1;
-        if (target < 0 || target >= projects.length) return;
-        const next = [...projects];
+        if (target < 0 || target >= displayedProjects.length) return;
+        const next = [...displayedProjects];
         [next[index], next[target]] = [next[target], next[index]];
         try {
             await reorderProjects(next);
@@ -48,12 +50,12 @@ const ProjectsSection: React.FC = () => {
                         </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-20 lg:gap-28">
-                        {projects.map((project, index) => (
+                        {displayedProjects.map((project, index) => (
                             <ProjectCard
                                 key={project.id}
                                 project={project}
                                 index={index}
-                                total={projects.length}
+                                total={displayedProjects.length}
                                 onMove={(direction) => handleMove(index, direction)}
                             />
                         ))}
