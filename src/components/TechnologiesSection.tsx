@@ -21,7 +21,7 @@ const Technologies: React.FC = () => {
     const { isAdmin, openContentEditor } = useAdmin();
 
     return (
-        <section className="relative bg-neutral-50 dark:bg-neutral-900 px-6 lg:px-8 py-20 lg:py-24 text-center">
+        <section className="relative px-6 lg:px-8 py-20 lg:py-24 text-center">
             {isAdmin && <EditButton onClick={() => openContentEditor('technologies')} className="absolute top-4 right-4 z-20" />}
 
             <div className="max-w-4xl mx-auto">

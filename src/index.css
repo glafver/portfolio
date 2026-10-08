@@ -16,45 +16,22 @@ html.dark body {
     background-color: #171717;
 }
 
-@keyframes float-away-a {
-    0% {
-        opacity: 0;
-        transform: translate(0, 0) scale(0.7);
-    }
-    20% {
-        opacity: 1;
-    }
+@keyframes drift-x {
+    0%,
     100% {
-        opacity: 0;
-        transform: translate(45px, -150px) scale(1.1);
+        transform: translateX(-40px);
+    }
+    50% {
+        transform: translateX(40px);
     }
 }
 
-@keyframes float-away-b {
-    0% {
-        opacity: 0;
-        transform: translate(0, 0) scale(0.7);
-    }
-    20% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-45px, -130px) scale(1.05);
-    }
-}
-
-.animate-float-away-a {
-    animation: float-away-a 10s ease-in-out infinite;
-}
-
-.animate-float-away-b {
-    animation: float-away-b 12s ease-in-out infinite;
+.animate-drift {
+    animation: drift-x 14s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .animate-float-away-a,
-    .animate-float-away-b {
+    .animate-drift {
         animation: none;
     }
 }

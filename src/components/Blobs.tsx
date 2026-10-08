@@ -12,15 +12,17 @@ interface BlobShape {
 }
 
 const FILLED_BLOBS: BlobShape[] = [
-    { left: '-6%', top: '45%', width: 220, height: 220, radius: '60% 40% 55% 45% / 55% 45% 60% 40%', duration: '8s', delay: '-2s', opacity: 0.15 },
-    { left: '82%', top: '55%', width: 240, height: 240, radius: '55% 45% 60% 40% / 45% 60% 40% 55%', duration: '12s', delay: '-5s', opacity: 0.1 },
+    { left: '-4%', top: '12%', width: 240, height: 240, radius: '60% 40% 55% 45% / 55% 45% 60% 40%', duration: '15s', delay: '0s', opacity: 0.08 },
+    { left: '85%', top: '35%', width: 260, height: 260, radius: '55% 45% 60% 40% / 45% 60% 40% 55%', duration: '18s', delay: '-6s', opacity: 0.07 },
+    { left: '20%', top: '70%', width: 220, height: 220, radius: '45% 55% 40% 60% / 60% 40% 55% 45%', duration: '16s', delay: '-10s', opacity: 0.08 },
 ];
 
 const OUTLINE_BLOBS: BlobShape[] = [
-    { left: '72%', top: '30%', width: 170, height: 150, radius: '45% 55% 40% 60% / 60% 40% 55% 45%', duration: '9s', delay: '0s' },
-    { left: '8%', top: '62%', width: 150, height: 130, radius: '40% 60% 55% 45% / 55% 40% 60% 45%', duration: '11s', delay: '-3s' },
-    { left: '45%', top: '40%', width: 110, height: 90, radius: '55% 45% 60% 40% / 45% 60% 40% 55%', duration: '7s', delay: '-6s' },
-    { left: '60%', top: '65%', width: 95, height: 80, radius: '60% 40% 55% 45% / 55% 45% 60% 40%', duration: '13s', delay: '-8s' },
+    { left: '70%', top: '8%', width: 160, height: 140, radius: '45% 55% 40% 60% / 60% 40% 55% 45%', duration: '13s', delay: '-2s' },
+    { left: '10%', top: '30%', width: 130, height: 110, radius: '40% 60% 55% 45% / 55% 40% 60% 45%', duration: '17s', delay: '-8s' },
+    { left: '55%', top: '55%', width: 150, height: 130, radius: '55% 45% 60% 40% / 45% 60% 40% 55%', duration: '14s', delay: '-4s' },
+    { left: '80%', top: '75%', width: 110, height: 95, radius: '60% 40% 55% 45% / 55% 45% 60% 40%', duration: '19s', delay: '-12s' },
+    { left: '30%', top: '88%', width: 120, height: 100, radius: '50% 45% 60% 40% / 45% 55% 50% 60%', duration: '15s', delay: '-7s' },
 ];
 
 const Blobs: React.FC = () => (
@@ -28,7 +30,7 @@ const Blobs: React.FC = () => (
         {FILLED_BLOBS.map((b, i) => (
             <div
                 key={`filled-${i}`}
-                className={`absolute bg-accent dark:bg-accent-light ${i % 2 === 0 ? 'animate-float-away-a' : 'animate-float-away-b'}`}
+                className="absolute bg-accent dark:bg-accent-light animate-drift"
                 style={{
                     left: b.left,
                     top: b.top,
@@ -44,7 +46,7 @@ const Blobs: React.FC = () => (
         {OUTLINE_BLOBS.map((b, i) => (
             <div
                 key={`outline-${i}`}
-                className={`absolute border-2 border-accent/40 dark:border-accent-light/40 ${i % 2 === 0 ? 'animate-float-away-a' : 'animate-float-away-b'}`}
+                className="absolute border border-accent/25 dark:border-accent-light/25 animate-drift"
                 style={{
                     left: b.left,
                     top: b.top,

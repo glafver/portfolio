@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
     const linkClass = 'text-sm text-neutral-600 dark:text-neutral-400 hover:text-accent transition';
 
     return (
-        <footer className="bg-neutral-50 dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800 px-6 lg:px-8 py-12">
+        <footer className="border-t border-neutral-200 dark:border-neutral-800 px-6 lg:px-8 py-12">
             <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
                 <div className="flex flex-col items-center lg:items-start gap-3">
                     <img

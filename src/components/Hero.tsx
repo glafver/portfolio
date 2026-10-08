@@ -4,7 +4,6 @@ import { useModal } from '../ModalContext';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { useAdmin } from '../admin/AdminContext';
 import EditButton from '../admin/EditButton';
-import Blobs from './Blobs';
 
 const Hero: React.FC = () => {
     const { handleOpen } = useModal();
@@ -12,10 +11,8 @@ const Hero: React.FC = () => {
     const { isAdmin, openContentEditor } = useAdmin();
 
     return (
-        <section className="relative bg-neutral-50 dark:bg-neutral-900 overflow-hidden">
+        <section className="relative overflow-hidden">
             {isAdmin && <EditButton onClick={() => openContentEditor('hero')} className="absolute top-4 right-4 z-20" />}
-
-            <Blobs />
 
             <div className="relative max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                 <Fade direction="up" triggerOnce duration={600} className="lg:w-1/2">

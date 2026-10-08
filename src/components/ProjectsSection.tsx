@@ -32,7 +32,7 @@ const ProjectsSection: React.FC = () => {
     };
 
     return (
-        <section id="projects" className="relative bg-neutral-50 dark:bg-neutral-900 px-6 lg:px-8 py-20 lg:py-28">
+        <section id="projects" className="relative px-6 lg:px-8 py-20 lg:py-28">
             {isAdmin && <EditButton onClick={() => openContentEditor('projects')} className="absolute top-4 right-4 z-20" />}
 
             <div className="max-w-6xl mx-auto">
