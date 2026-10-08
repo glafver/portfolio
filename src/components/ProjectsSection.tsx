@@ -2,10 +2,13 @@ import React from 'react';
 import ProjectCard from './ProjectCard';
 import { useProjects } from '../hooks/useProjects';
 import { useSiteContent } from '../hooks/useSiteContent';
+import { useAdmin } from '../admin/AdminContext';
+import EditButton from '../admin/EditButton';
 
 const ProjectsSection: React.FC = () => {
     const projects = useProjects();
     const content = useSiteContent();
+    const { isAdmin, openContentEditor } = useAdmin();
 
     const title = (content['projects.title'] ?? '').trim();
     const titleParts = title.split(' ');
@@ -14,6 +17,7 @@ const ProjectsSection: React.FC = () => {
 
     return (
         <div id='projects' className="bg-white px-8 lg:px-12 py-16 lg:py-28 relative">
+            {isAdmin && <EditButton onClick={() => openContentEditor('projects')} className="absolute top-4 right-4 z-20" />}
             <div className='relative z-10'>
                 <div className="max-w-7xl mx-auto lg:px-4">
                     <div className="mx-auto pb-16 lg:pb-28 flex flex-col lg:flex-row-reverse items-end lg:items-center justify-between">

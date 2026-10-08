@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { notifyContentChanged } from './refresh';
 
 export type ProjectInput = {
     title: string;
@@ -14,18 +15,21 @@ export async function createProject(input: ProjectInput): Promise<void> {
     if (!supabase) throw new Error('Supabase is not configured');
     const { error } = await supabase.from('projects').insert(input);
     if (error) throw error;
+    notifyContentChanged();
 }
 
 export async function updateProject(id: string, input: ProjectInput): Promise<void> {
     if (!supabase) throw new Error('Supabase is not configured');
     const { error } = await supabase.from('projects').update(input).eq('id', id);
     if (error) throw error;
+    notifyContentChanged();
 }
 
 export async function deleteProject(id: string): Promise<void> {
     if (!supabase) throw new Error('Supabase is not configured');
     const { error } = await supabase.from('projects').delete().eq('id', id);
     if (error) throw error;
+    notifyContentChanged();
 }
 
 export async function uploadImage(file: File): Promise<string> {
@@ -47,4 +51,5 @@ export async function saveSiteContent(entries: Record<string, string>): Promise<
         .from('site_content')
         .upsert(rows, { onConflict: 'key' });
     if (error) throw error;
+    notifyContentChanged();
 }

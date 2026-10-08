@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp, FaEdit, FaTrash } from 'react-icons/fa';
 import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery';
 import { Project } from '../types';
+import { useAdmin } from '../admin/AdminContext';
+import { deleteProject } from '../lib/adminApi';
 
 interface ProjectCardProps {
     project: Project;
@@ -15,6 +17,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     }));
 
     const [openDropdown, setOpenDropdown] = useState(false);
+    const { isAdmin, openProjectEditor } = useAdmin();
+
+    const handleDelete = async () => {
+        if (!window.confirm(`Delete "${project.title}"? This cannot be undone.`)) return;
+        try {
+            await deleteProject(project.id);
+        } catch (e) {
+            console.error(e);
+        }
+    };
 
     const renderMainImage = (item: ReactImageGalleryItem) => (
         <a target="_blank" rel="noopener noreferrer" href={project.link}>
@@ -29,7 +41,25 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     );
 
     return (
-        <div className="bg-neutral-200 rounded-md shadow-md hover:shadow-xl transition duration-300 overflow-hidden border flex flex-col">
+        <div className="relative bg-neutral-200 rounded-md shadow-md hover:shadow-xl transition duration-300 overflow-hidden border flex flex-col">
+            {isAdmin && (
+                <div className="absolute top-3 right-3 z-20 flex gap-2">
+                    <button
+                        onClick={() => openProjectEditor(project)}
+                        className="flex items-center gap-1.5 bg-white text-neutral-700 border border-neutral-200 rounded-full px-3 py-1.5 text-xs font-medium shadow hover:bg-neutral-50 transition"
+                    >
+                        <FaEdit /> Edit
+                    </button>
+                    <button
+                        onClick={handleDelete}
+                        className="flex items-center justify-center bg-white text-red-600 border border-neutral-200 rounded-full w-8 h-8 shadow hover:bg-red-50 transition"
+                        aria-label="Delete"
+                        title="Delete"
+                    >
+                        <FaTrash size={13} />
+                    </button>
+                </div>
+            )}
             <Fade delay={30}>
                 <ImageGallery
                     items={galleryItems}

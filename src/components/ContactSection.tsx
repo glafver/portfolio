@@ -2,14 +2,18 @@ import React from 'react';
 import { useModal } from '../ModalContext';
 import { AttentionSeeker, Fade } from 'react-awesome-reveal';
 import { useSiteContent } from '../hooks/useSiteContent';
+import { useAdmin } from '../admin/AdminContext';
+import EditButton from '../admin/EditButton';
 
 const Contact: React.FC = () => {
     const { handleOpen } = useModal();
     const content = useSiteContent();
+    const { isAdmin, openContentEditor } = useAdmin();
 
 
     return (
         <div id='contact' className="bg-neutral-200 h-72 lg:h-96 lg:pb-36 mt-36 lg:mt-36 relative">
+            {isAdmin && <EditButton onClick={() => openContentEditor('contact')} className="absolute top-4 right-4 z-20" />}
             <div
                 className="gv-color-changing-bg absolute inset-0 -top-36 h-96 w-4/5 max-w-7xl mx-auto flex flex-col"
                 style={{

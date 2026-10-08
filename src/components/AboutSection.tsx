@@ -1,12 +1,16 @@
 import React from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { useSiteContent } from '../hooks/useSiteContent';
+import { useAdmin } from '../admin/AdminContext';
+import EditButton from '../admin/EditButton';
 
 const AboutSection: React.FC = () => {
     const content = useSiteContent();
+    const { isAdmin, openContentEditor } = useAdmin();
 
     return (
         <div id='about' className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-end lg:justify-between px-8 lg:px-12 py-16 lg:py-36">
+            {isAdmin && <EditButton onClick={() => openContentEditor('about')} className="absolute top-4 right-4 z-20" />}
             <div className="relative flex justify-center lg:justify-normal lg:w-1/3 mb-10 lg:mb-0 z-10">
                 <Fade >
                     <img

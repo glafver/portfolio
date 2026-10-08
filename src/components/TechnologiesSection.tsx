@@ -1,6 +1,8 @@
 import React from 'react';
 import { Zoom, Fade } from 'react-awesome-reveal';
 import { useSiteContent } from '../hooks/useSiteContent';
+import { useAdmin } from '../admin/AdminContext';
+import EditButton from '../admin/EditButton';
 
 const logos: string[] = [
 
@@ -17,9 +19,11 @@ const logos: string[] = [
 
 const Technologies: React.FC = () => {
     const content = useSiteContent();
+    const { isAdmin, openContentEditor } = useAdmin();
 
     return (
-        <div className="bg-neutral-200 px-8 py-16 lg:px-12 lg:py-28 text-center">
+        <div className="relative bg-neutral-200 px-8 py-16 lg:px-12 lg:py-28 text-center">
+            {isAdmin && <EditButton onClick={() => openContentEditor('technologies')} className="absolute top-4 right-4 z-20" />}
             <Zoom >
                 <div className="max-w-7xl mx-auto">
                     <h2 className="text-3xl lg:text-5xl font-bold mb-16 lg:mb-20">{content['technologies.title']}</h2>

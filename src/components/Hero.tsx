@@ -2,14 +2,18 @@ import React from 'react';
 import { useModal } from '../ModalContext';
 import { AttentionSeeker, Fade } from 'react-awesome-reveal';
 import { useSiteContent } from '../hooks/useSiteContent';
+import { useAdmin } from '../admin/AdminContext';
+import EditButton from '../admin/EditButton';
 
 const Hero: React.FC = () => {
     const { handleOpen } = useModal();
     const content = useSiteContent();
+    const { isAdmin, openContentEditor } = useAdmin();
 
     return (
         <>
-            <div className="bg-neutral-200 p-8 pb-16 lg:p-12 lg:py-28">
+            <div className="relative bg-neutral-200 p-8 pb-16 lg:p-12 lg:py-28">
+                {isAdmin && <EditButton onClick={() => openContentEditor('hero')} className="absolute top-4 right-4 z-20" />}
                 <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between">
                     <div className="lg:w-1/2 lg:pr-10">
                         <h1 className="text-3xl lg:text-5xl font-bold">
