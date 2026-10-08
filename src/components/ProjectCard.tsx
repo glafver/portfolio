@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { FaChevronDown, FaChevronUp, FaEdit, FaTrash, FaArrowUp, FaArrowDown, FaEye, FaEyeSlash } from 'react-icons/fa';
-import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery';
 import { Project } from '../types';
 import { useAdmin } from '../admin/AdminContext';
 import { deleteProject, setProjectVisibility } from '../lib/adminApi';
@@ -14,16 +13,27 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove }) => {
-    const galleryItems = project.images.map((url) => ({
-        original: url,
-        thumbnail: url,
-    }));
-
     const [openDropdown, setOpenDropdown] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
     const { isAdmin, openProjectEditor } = useAdmin();
 
     const hidden = project.visible === false;
+
+    useEffect(() => {
+        if (isHovered && project.images.length > 1) {
+            timerRef.current = setInterval(() => {
+                setCurrentIndex((i) => (i + 1) % project.images.length);
+            }, 3000);
+        } else {
+            setCurrentIndex(0);
+        }
+        return () => {
+            if (timerRef.current) clearInterval(timerRef.current);
+            timerRef.current = null;
+        };
+    }, [isHovered, project.images.length]);
 
     const handleDelete = async () => {
         if (!window.confirm(`Delete "${project.title}"? This cannot be undone.`)) return;
@@ -41,18 +51,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
             console.error(e);
         }
     };
-
-    const renderMainImage = (item: ReactImageGalleryItem) => (
-        <a target="_blank" rel="noopener noreferrer" href={project.link}>
-            <img
-                src={item.original}
-                alt={`${project.title} screenshot`}
-                className="aspect-[16/9] object-cover w-full"
-                loading="lazy"
-                decoding="async"
-            />
-        </a>
-    );
 
     const iconBtn =
         'flex items-center justify-center bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-600 rounded-full w-8 h-8 shadow hover:bg-neutral-50 dark:hover:bg-neutral-800 transition disabled:opacity-30 disabled:cursor-not-allowed';
@@ -98,19 +96,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
             )}
 
             <Fade delay={30}>
-                <ImageGallery
-                    key={isHovered ? 'playing' : 'idle'}
-                    items={galleryItems}
-                    showThumbnails={false}
-                    showFullscreenButton={false}
-                    showPlayButton={false}
-                    showNav={false}
-                    autoPlay={isHovered}
-                    slideInterval={3000}
-                    slideDuration={800}
-                    lazyLoad={true}
-                    renderItem={renderMainImage}
-                />
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={project.link}
+                    className="block relative aspect-[16/9] overflow-hidden bg-neutral-100 dark:bg-neutral-800"
+                >
+                    {project.images.map((url, i) => (
+                        <img
+                            key={url}
+                            src={url}
+                            alt={`${project.title} screenshot`}
+                            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${i === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+                        />
+                    ))}
+                </a>
             </Fade>
 
             <div className="px-6 pt-5 flex flex-col flex-1">
