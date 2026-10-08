@@ -15,30 +15,32 @@ const Hero: React.FC = () => {
             {isAdmin && <EditButton onClick={() => openContentEditor('hero')} className="absolute top-4 right-4 z-20" />}
 
             <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-                <Fade direction="up" triggerOnce duration={600} className="lg:w-1/2 text-center lg:text-left">
-                    <p className="font-display text-accent dark:text-accent-light text-sm lg:text-base uppercase tracking-[0.2em] mb-5">
-                        {content['hero.role']}
-                    </p>
-                    <h1 className="font-display uppercase text-5xl sm:text-7xl lg:text-8xl leading-[0.9] tracking-tight text-neutral-900 dark:text-white">
-                        Hey, I&apos;m{' '}
-                        <span className="text-accent dark:text-accent-light">{content['hero.name']}</span>
-                    </h1>
-                    <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-400 max-w-xl mx-auto lg:mx-0">
-                        {content['hero.subtitle']}
-                    </p>
-                    <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-3">
-                        <button
-                            onClick={() => { handleOpen(); }}
-                            className="bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3 rounded-full transition"
-                        >
-                            Contact me
-                        </button>
-                        <a
-                            href="#projects"
-                            className="border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 font-semibold px-6 py-3 rounded-full hover:border-accent hover:text-accent dark:hover:text-accent-light transition"
-                        >
-                            View projects
-                        </a>
+                <Fade direction="up" triggerOnce duration={600} className="lg:w-1/2">
+                    <div className="text-center lg:text-left">
+                        <p className="font-display text-accent dark:text-accent-light text-sm lg:text-base uppercase tracking-[0.2em] mb-5">
+                            {content['hero.role']}
+                        </p>
+                        <h1 className="font-display uppercase text-5xl sm:text-7xl lg:text-8xl leading-[0.9] tracking-tight text-neutral-900 dark:text-white">
+                            Hey, I&apos;m{' '}
+                            <span className="text-accent dark:text-accent-light">{content['hero.name']}</span>
+                        </h1>
+                        <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-400 max-w-xl mx-auto lg:mx-0">
+                            {content['hero.subtitle']}
+                        </p>
+                        <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-3">
+                            <button
+                                onClick={() => { handleOpen(); }}
+                                className="bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3 rounded-full transition"
+                            >
+                                Contact me
+                            </button>
+                            <a
+                                href="#projects"
+                                className="border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 font-semibold px-6 py-3 rounded-full hover:border-accent hover:text-accent dark:hover:text-accent-light transition"
+                            >
+                                View projects
+                            </a>
+                        </div>
                     </div>
                 </Fade>
 
