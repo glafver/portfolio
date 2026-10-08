@@ -15,7 +15,7 @@ const Contact: React.FC = () => {
 
             <div className="max-w-4xl mx-auto">
                 <div className="bg-neutral-900 dark:bg-neutral-800 rounded-3xl px-6 py-16 lg:py-20 text-center">
-                    <h2 className="font-display text-3xl lg:text-5xl font-semibold tracking-tight text-white">
+                    <h2 className="font-display uppercase text-3xl lg:text-5xl leading-[0.95] tracking-tight text-white">
                         {content['contact.title']}
                     </h2>
                     <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">

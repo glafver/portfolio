@@ -10,15 +10,15 @@ const Hero: React.FC = () => {
     const { isAdmin, openContentEditor } = useAdmin();
 
     return (
-        <section className="relative bg-neutral-50 dark:bg-neutral-900">
+        <section className="relative bg-neutral-50 dark:bg-neutral-900 overflow-hidden">
             {isAdmin && <EditButton onClick={() => openContentEditor('hero')} className="absolute top-4 right-4 z-20" />}
 
             <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                 <div className="lg:w-1/2 text-center lg:text-left">
-                    <p className="text-accent dark:text-accent-light font-semibold mb-4 text-sm tracking-wide uppercase">
-                        Fullstack Developer
+                    <p className="font-display text-accent dark:text-accent-light text-sm lg:text-base uppercase tracking-[0.2em] mb-5">
+                        {content['hero.role']}
                     </p>
-                    <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-neutral-900 dark:text-white leading-[1.1]">
+                    <h1 className="font-display uppercase text-5xl sm:text-7xl lg:text-8xl leading-[0.9] tracking-tight text-neutral-900 dark:text-white">
                         Hey, I&apos;m{' '}
                         <span className="text-accent dark:text-accent-light">{content['hero.name']}</span>
                     </h1>
