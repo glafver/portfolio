@@ -8,7 +8,7 @@ const Navbar: React.FC = () => {
     const content = useSiteContent();
 
     const linkClass =
-        'text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-violet-600 dark:hover:text-violet-400 transition';
+        'text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-orange-700 dark:hover:text-orange-400 transition';
 
     return (
         <nav className="sticky top-0 z-40 bg-neutral-50/80 dark:bg-neutral-900/80 backdrop-blur border-b border-neutral-200 dark:border-neutral-800">
@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
                     <a
                         href={content['cv.url']}
                         download
-                        className="bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold px-4 py-2 rounded-full transition"
+                        className="bg-orange-600 hover:bg-orange-500 text-white text-sm font-semibold px-4 py-2 rounded-full transition"
                     >
                         Download CV
                     </a>
