@@ -1,29 +1,21 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import ProjectsSection from "./components/ProjectsSection";
-import TechnologiesSection from './components/TechnologiesSection';
-import AboutSection from "./components/AboutSection";
-import ContactSection from "./components/ContactSection";
-import Footer from "./components/Footer";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ModalProvider } from './ModalProvider';
-import ContactModal from "./components/ContactModal";
+import Portfolio from './components/Portfolio';
+import AdminLogin from './admin/AdminLogin';
+import AdminPanel from './admin/AdminPanel';
 
 function App() {
-
-  return (
-    <div className="font-mont text-neutral-800">
-      <ModalProvider>
-        <Navbar />
-        <Hero />
-        <ProjectsSection />
-        <TechnologiesSection />
-        <AboutSection />
-        <ContactSection />
-        <Footer />
-        <ContactModal />
-      </ModalProvider>
-    </div>
-  );
+    return (
+        <ModalProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Portfolio />} />
+                    <Route path="/admin/login" element={<AdminLogin />} />
+                    <Route path="/admin/*" element={<AdminPanel />} />
+                </Routes>
+            </BrowserRouter>
+        </ModalProvider>
+    );
 }
 
 export default App;
