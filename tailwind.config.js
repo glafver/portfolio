@@ -11,6 +11,13 @@ export default {
         mont: ['Montserrat', 'sans-serif'],
         display: ['"Space Grotesk"', 'Montserrat', 'sans-serif'],
       },
+      colors: {
+        accent: {
+          DEFAULT: '#be806e',
+          dark: '#a46858',
+          light: '#d3a18e',
+        },
+      },
     },
   },
   plugins: [],

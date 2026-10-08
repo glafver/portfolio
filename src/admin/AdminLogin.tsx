@@ -38,7 +38,7 @@ const AdminLogin: React.FC = () => {
         <div className="min-h-screen bg-neutral-100 flex items-center justify-center px-4">
             <div className="w-full max-w-md">
                 <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-                    <div className="h-1.5 bg-gradient-to-r from-purple-500 via-red-500 to-orange-500" />
+                    <div className="h-1.5 bg-accent" />
                     <div className="p-8 sm:p-10">
                         <div className="text-center mb-8">
                             <div className="text-3xl font-bold text-neutral-900">Portfolio Admin</div>
@@ -78,7 +78,7 @@ const AdminLogin: React.FC = () => {
                             <button
                                 type="submit"
                                 disabled={submitting}
-                                className="w-full bg-gradient-to-r from-purple-500 via-red-500 to-orange-500 text-white font-semibold py-2.5 rounded-lg hover:opacity-90 disabled:opacity-50 transition"
+                                className="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-2.5 rounded-lg disabled:opacity-50 transition"
                             >
                                 {submitting ? 'Signing in…' : 'Sign in'}
                             </button>

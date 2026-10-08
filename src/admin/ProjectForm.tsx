@@ -162,7 +162,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
                     <button
                         onClick={handleSubmit}
                         disabled={saving}
-                        className="bg-gradient-to-r from-purple-500 via-red-500 to-orange-500 text-white font-semibold px-5 py-2 rounded-lg hover:opacity-90 disabled:opacity-50 transition"
+                        className="bg-accent hover:bg-accent-dark text-white font-semibold px-5 py-2 rounded-lg disabled:opacity-50 transition"
                     >
                         {saving ? 'Saving…' : 'Save'}
                     </button>

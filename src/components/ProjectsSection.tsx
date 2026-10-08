@@ -31,38 +31,33 @@ const ProjectsSection: React.FC = () => {
     };
 
     return (
-        <div id='projects' className="bg-white px-8 lg:px-12 py-16 lg:py-28 relative">
+        <section id="projects" className="relative bg-neutral-50 dark:bg-neutral-900 px-6 lg:px-8 py-20 lg:py-28">
             {isAdmin && <EditButton onClick={() => openContentEditor('projects')} className="absolute top-4 right-4 z-20" />}
-            <div className='relative z-10'>
-                <div className="max-w-7xl mx-auto lg:px-4">
-                    <div className="mx-auto pb-16 lg:pb-28 flex flex-col lg:flex-row-reverse items-end lg:items-center justify-between">
-                        <div className="lg:w-1/2 text-right">
-                            <h2 className="text-3xl lg:text-5xl font-bold lg:pl-24">{heading}
-                                <span className="block sm:inline h-20  ml-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-red-500 to-orange-500">
-                                    {highlight}
-                                </span>
-                            </h2>
-                        </div>
-                        <div className="lg:w-1/2">
-                            <p className="text-lg lg:text-xl ">
-                                {content['projects.subtitle']}
-                            </p>
-                        </div>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-20 lg:gap-28">
-                        {displayedProjects.map((project, index) => (
-                            <ProjectCard
-                                key={project.id}
-                                project={project}
-                                index={index}
-                                total={displayedProjects.length}
-                                onMove={(direction) => handleMove(index, direction)}
-                            />
-                        ))}
-                    </div>
+
+            <div className="max-w-6xl mx-auto">
+                <div className="mb-14 lg:mb-20 max-w-2xl">
+                    <h2 className="font-display text-3xl lg:text-5xl font-semibold tracking-tight text-neutral-900 dark:text-white">
+                        {heading}{' '}
+                        <span className="text-accent dark:text-accent-light">{highlight}</span>
+                    </h2>
+                    <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+                        {content['projects.subtitle']}
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+                    {displayedProjects.map((project, index) => (
+                        <ProjectCard
+                            key={project.id}
+                            project={project}
+                            index={index}
+                            total={displayedProjects.length}
+                            onMove={(direction) => handleMove(index, direction)}
+                        />
+                    ))}
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

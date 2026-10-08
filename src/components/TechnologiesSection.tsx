@@ -1,11 +1,9 @@
 import React from 'react';
-import { Zoom, Fade } from 'react-awesome-reveal';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { useAdmin } from '../admin/AdminContext';
 import EditButton from '../admin/EditButton';
 
 const logos: string[] = [
-
     '/assets/tech_5.webp',
     '/assets/tech_12.webp',
     '/assets/tech_13.webp',
@@ -14,7 +12,7 @@ const logos: string[] = [
     '/assets/tech_7.webp',
     '/assets/tech_8.webp',
     '/assets/tech_10.webp',
-    '/assets/tech_11.webp'
+    '/assets/tech_11.webp',
 ];
 
 const Technologies: React.FC = () => {
@@ -22,21 +20,27 @@ const Technologies: React.FC = () => {
     const { isAdmin, openContentEditor } = useAdmin();
 
     return (
-        <div className="relative bg-neutral-200 px-8 py-16 lg:px-12 lg:py-28 text-center">
+        <section className="relative bg-neutral-50 dark:bg-neutral-900 px-6 lg:px-8 py-20 lg:py-24 text-center">
             {isAdmin && <EditButton onClick={() => openContentEditor('technologies')} className="absolute top-4 right-4 z-20" />}
-            <Zoom >
-                <div className="max-w-7xl mx-auto">
-                    <h2 className="text-3xl lg:text-5xl font-bold mb-16 lg:mb-20">{content['technologies.title']}</h2>
-                    <div className="flex justify-center flex-wrap gap-6">
-                        <Fade cascade duration={300}>
-                            {logos.map((logo, index) => (
-                                <img src={logo} alt="" className="h-12 lg:h-20" key={index} loading="lazy" decoding="async" />
-                            ))}
-                        </Fade>
-                    </div>
+
+            <div className="max-w-4xl mx-auto">
+                <h2 className="font-display text-3xl lg:text-5xl font-semibold tracking-tight text-neutral-900 dark:text-white">
+                    {content['technologies.title']}
+                </h2>
+                <div className="mt-12 flex justify-center flex-wrap gap-x-10 gap-y-8">
+                    {logos.map((logo, index) => (
+                        <img
+                            src={logo}
+                            alt=""
+                            className="h-8 lg:h-10 opacity-70 hover:opacity-100 transition"
+                            key={index}
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    ))}
                 </div>
-            </Zoom>
-        </div>
+            </div>
+        </section>
     );
 };
 

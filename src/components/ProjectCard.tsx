@@ -14,7 +14,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove }) => {
-    const galleryItems = project.images.map(url => ({
+    const galleryItems = project.images.map((url) => ({
         original: url,
         thumbnail: url,
     }));
@@ -46,57 +46,44 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
             <img
                 src={item.original}
                 alt={`${project.title} screenshot`}
-                className='aspect-[1.95]'
+                className="aspect-[16/9] object-cover w-full"
                 loading="lazy"
                 decoding="async"
             />
         </a>
     );
 
+    const iconBtn =
+        'flex items-center justify-center bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-600 rounded-full w-8 h-8 shadow hover:bg-neutral-50 dark:hover:bg-neutral-800 transition disabled:opacity-30 disabled:cursor-not-allowed';
+
     return (
-        <div className={`relative bg-neutral-200 rounded-md shadow-md hover:shadow-xl transition duration-300 overflow-hidden border flex flex-col ${hidden ? 'opacity-60' : ''}`}>
+        <div className={`relative bg-white dark:bg-neutral-800 rounded-2xl border border-neutral-200 dark:border-neutral-700 shadow-sm hover:shadow-xl transition duration-300 overflow-hidden flex flex-col ${hidden ? 'opacity-60' : ''}`}>
             {isAdmin && hidden && (
                 <span className="absolute top-3 left-3 z-20 bg-neutral-900 text-white text-xs font-semibold px-2.5 py-1 rounded-full">
                     Hidden
                 </span>
             )}
+
             {isAdmin && (
                 <div className="absolute top-3 right-3 z-20 flex items-center gap-1.5">
-                    <button
-                        onClick={() => onMove('up')}
-                        disabled={index === 0}
-                        className="flex items-center justify-center bg-white text-neutral-700 border border-neutral-200 rounded-full w-8 h-8 shadow hover:bg-neutral-50 transition disabled:opacity-30 disabled:cursor-not-allowed"
-                        aria-label="Move up"
-                        title="Move up"
-                    >
+                    <button onClick={() => onMove('up')} disabled={index === 0} className={iconBtn} aria-label="Move up" title="Move up">
                         <FaArrowUp size={12} />
                     </button>
-                    <button
-                        onClick={() => onMove('down')}
-                        disabled={index === total - 1}
-                        className="flex items-center justify-center bg-white text-neutral-700 border border-neutral-200 rounded-full w-8 h-8 shadow hover:bg-neutral-50 transition disabled:opacity-30 disabled:cursor-not-allowed"
-                        aria-label="Move down"
-                        title="Move down"
-                    >
+                    <button onClick={() => onMove('down')} disabled={index === total - 1} className={iconBtn} aria-label="Move down" title="Move down">
                         <FaArrowDown size={12} />
                     </button>
-                    <button
-                        onClick={handleToggleVisibility}
-                        className="flex items-center justify-center bg-white text-neutral-700 border border-neutral-200 rounded-full w-8 h-8 shadow hover:bg-neutral-50 transition"
-                        aria-label={hidden ? 'Show project' : 'Hide project'}
-                        title={hidden ? 'Show project' : 'Hide project'}
-                    >
+                    <button onClick={handleToggleVisibility} className={iconBtn} aria-label={hidden ? 'Show project' : 'Hide project'} title={hidden ? 'Show project' : 'Hide project'}>
                         {hidden ? <FaEye size={12} /> : <FaEyeSlash size={12} />}
                     </button>
                     <button
                         onClick={() => openProjectEditor(project)}
-                        className="flex items-center gap-1.5 bg-white text-neutral-700 border border-neutral-200 rounded-full px-3 py-1.5 text-xs font-medium shadow hover:bg-neutral-50 transition"
+                        className="flex items-center gap-1.5 bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-600 rounded-full px-3 py-1.5 text-xs font-medium shadow hover:bg-neutral-50 dark:hover:bg-neutral-800 transition"
                     >
                         <FaEdit /> Edit
                     </button>
                     <button
                         onClick={handleDelete}
-                        className="flex items-center justify-center bg-white text-red-600 border border-neutral-200 rounded-full w-8 h-8 shadow hover:bg-red-50 transition"
+                        className="flex items-center justify-center bg-white dark:bg-neutral-900 text-red-600 border border-neutral-200 dark:border-neutral-600 rounded-full w-8 h-8 shadow hover:bg-red-50 dark:hover:bg-red-900/30 transition"
                         aria-label="Delete"
                         title="Delete"
                     >
@@ -104,6 +91,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
                     </button>
                 </div>
             )}
+
             <Fade delay={30}>
                 <ImageGallery
                     items={galleryItems}
@@ -114,29 +102,41 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
                     renderItem={renderMainImage}
                 />
             </Fade>
-            <div className="px-6 pt-4">
-                <div className="font-bold mb-3 lg:mb-5 flex items-center justify-between gap-3">
-                    <a target="_blank" href={project.link} className='text-xl lg:text-2xl  hover:text-red-500 transition duration-300'>{project.title}</a>
-                </div>
-                <p className={`text-lg lg:text-xl mb-3 lg:mb-5 transition duration-300 lg:block`}>
+
+            <div className="px-6 pt-5 flex flex-col flex-1">
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={project.link}
+                    className="font-display text-xl font-semibold text-neutral-900 dark:text-white hover:text-accent dark:hover:text-accent-light transition mb-3"
+                >
+                    {project.title}
+                </a>
+                <p className="text-neutral-600 dark:text-neutral-400 mb-3">
                     {project.description}
                 </p>
-                {project.important ?
-                    <p className={`font-bold text-md lg:text-md mb-3 lg:mb-5 transition duration-300 lg:block`}>
+                {project.important && (
+                    <p className="font-semibold text-sm text-neutral-700 dark:text-neutral-300 mb-3">
                         Important: {project.important}
                     </p>
-                    : null}
-
+                )}
             </div>
+
             <div
                 onClick={() => setOpenDropdown(!openDropdown)}
-                className='lg:hidden h-7 w-7 mr-4 ml-auto cursor-pointer rounded-full p-1 hover:bg-neutral-300 transition duration-300'
+                className="lg:hidden h-7 w-7 mr-4 ml-auto cursor-pointer rounded-full p-1 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition"
             >
                 {openDropdown ? <FaChevronUp /> : <FaChevronDown />}
             </div>
-            <div className="px-6 mt-auto mb-3" >
+
+            <div className="px-6 mt-auto mb-4">
                 {project.tech.map((tech, index) => (
-                    <span key={index} className={`border border-neutral-800 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2 ${openDropdown ? `inline-block` : `hidden`} lg:inline-block `}>{tech}</span>
+                    <span
+                        key={index}
+                        className={`border border-neutral-300 dark:border-neutral-600 rounded-full px-3 py-1 text-sm text-neutral-600 dark:text-neutral-300 mr-2 mb-2 ${openDropdown ? 'inline-block' : 'hidden'} lg:inline-block`}
+                    >
+                        {tech}
+                    </span>
                 ))}
             </div>
         </div>

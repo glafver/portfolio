@@ -25,7 +25,7 @@ const AdminBar: React.FC = () => {
             </button>
             <button
                 onClick={() => openProjectEditor(null)}
-                className="flex items-center gap-2 bg-gradient-to-r from-purple-500 via-red-500 to-orange-500 text-white rounded-full px-5 py-2.5 text-sm font-semibold shadow-lg hover:opacity-90 transition"
+                className="flex items-center gap-2 bg-accent hover:bg-accent-dark text-white rounded-full px-5 py-2.5 text-sm font-semibold shadow-lg transition"
             >
                 <FaPlus /> Add project
             </button>

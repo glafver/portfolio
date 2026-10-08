@@ -3,51 +3,45 @@ import { useSocialLinks } from '../helpers/socials';
 
 const Footer: React.FC = () => {
     const socialLinks = useSocialLinks();
+    const year = new Date().getFullYear();
+
+    const linkClass = 'text-sm text-neutral-600 dark:text-neutral-400 hover:text-accent transition';
 
     return (
-        <footer className="bg-neutral-200 px-8 lg:px-24 pb-12">
-            <div className="max-w-5xl mx-auto lg:grid grid-cols-2 gap-4 flex flex-col px-4 align-end justify-between">
-                <div className="flex flex-col items-center text-center w-full lg:w-2/5">
-                    <img className="w-20 lg:w-32 mb-6" src="/assets/GV_logo_dark.webp" alt="Glafira Veretennikova logo" />
-                    <span className="font-semibold pl-4">Glafira Veretennikova</span>
-                    <span className="font-semibold pl-4">{new Date().getFullYear()}</span>
+        <footer className="bg-neutral-50 dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800 px-6 lg:px-8 py-12">
+            <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div className="flex flex-col items-center lg:items-start gap-3">
+                    <img
+                        src="/assets/GV_logo_dark.webp"
+                        alt="Glafira Veretennikova logo"
+                        className="h-10 w-auto dark:invert"
+                    />
+                    <span className="text-sm text-neutral-500 dark:text-neutral-400">
+                        Glafira Veretennikova · {year}
+                    </span>
                 </div>
-                <div className='flex flex-col justify-end'>
-                    <div className="flex items-center justify-center flex-wrap lg:justify-end mb-4">
-                        <a
-                            href="#projects"
-                            className="block mt-4 lg:inline-block lg:mt-0 mr-4 transition duration-300 hover:text-white"
-                        >
-                            Projects
-                        </a>
-                        <a
-                            href="#about"
-                            className="block mt-4 lg:inline-block lg:mt-0 mr-4 transition duration-300 hover:text-white"
-                        >
-                            About
-                        </a>
-                        <a
-                            href="#contact"
-                            className="block mt-4 lg:inline-block lg:mt-0 mr-4 transition duration-300 hover:text-white"
-                        >
-                            Contacts
-                        </a>
-                        <a
-                            href="#"
-                            className="block mt-4 lg:inline-block lg:mt-0 transition duration-300 hover:text-white"
-                        >
-                            Home
-                        </a>
+
+                <div className="flex flex-col items-center gap-4">
+                    <div className="flex items-center gap-6">
+                        <a href="#projects" className={linkClass}>Projects</a>
+                        <a href="#about" className={linkClass}>About</a>
+                        <a href="#contact" className={linkClass}>Contact</a>
                     </div>
-                    <div className="flex items-center justify-center lg:justify-end space-x-6">
+                    <div className="flex items-center gap-5">
                         {socialLinks.map(({ name, url, icon: Icon }) => (
-                            <a key={name} href={url} target="_blank" rel="noopener noreferrer" aria-label={name}>
-                                <Icon className='w-6 h-6 hover:text-red-500 transition duration-300' />
+                            <a
+                                key={name}
+                                href={url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={name}
+                                className="text-neutral-600 dark:text-neutral-300 hover:text-accent transition"
+                            >
+                                <Icon className="w-5 h-5" />
                             </a>
                         ))}
                     </div>
                 </div>
-
             </div>
         </footer>
     );
