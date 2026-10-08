@@ -49,8 +49,6 @@ const Hero: React.FC = () => {
                         <div className="absolute -inset-6 rounded-full bg-accent/20 dark:bg-accent/15 blur-3xl" aria-hidden="true" />
                         <div className="absolute inset-0 -translate-x-3 -translate-y-3 rounded-t-[9rem] rounded-b-3xl border border-accent/30 dark:border-accent-light/30" aria-hidden="true" />
                         <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-t-[9rem] rounded-b-3xl border border-accent/50 dark:border-accent/40" aria-hidden="true" />
-                        <span className="absolute -top-4 -left-4 w-4 h-4 rounded-full bg-accent" aria-hidden="true" />
-                        <span className="absolute -bottom-5 right-10 h-10 w-px bg-accent/40" aria-hidden="true" />
                         <img
                             src="/assets/hero_img.webp"
                             alt="Glafira Veretennikova, fullstack developer"
