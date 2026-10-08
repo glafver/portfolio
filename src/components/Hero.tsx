@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
     const { isAdmin, openContentEditor } = useAdmin();
 
     return (
-        <section className="relative bg-neutral-50 dark:bg-neutral-950">
+        <section className="relative bg-neutral-50 dark:bg-neutral-900">
             {isAdmin && <EditButton onClick={() => openContentEditor('hero')} className="absolute top-4 right-4 z-20" />}
 
             <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">

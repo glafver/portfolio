@@ -11,13 +11,14 @@ const Navbar: React.FC = () => {
         'text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-violet-600 dark:hover:text-violet-400 transition';
 
     return (
-        <nav className="sticky top-0 z-40 bg-neutral-50/80 dark:bg-neutral-950/80 backdrop-blur border-b border-neutral-200 dark:border-neutral-800">
+        <nav className="sticky top-0 z-40 bg-neutral-50/80 dark:bg-neutral-900/80 backdrop-blur border-b border-neutral-200 dark:border-neutral-800">
             <div className="max-w-6xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
-                <a
-                    href="#"
-                    className="font-display font-bold text-xl tracking-tight text-neutral-900 dark:text-white"
-                >
-                    glafira<span className="text-violet-600 dark:text-violet-400">.</span>
+                <a href="#" className="flex items-center">
+                    <img
+                        src="/assets/GV_logo_dark.webp"
+                        alt="Glafira Veretennikova logo"
+                        className="h-8 lg:h-9 w-auto dark:invert"
+                    />
                 </a>
 
                 <div className="hidden lg:flex items-center gap-8">
@@ -50,7 +51,7 @@ const Navbar: React.FC = () => {
             </div>
 
             {isOpen && (
-                <div className="lg:hidden border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 px-6 py-4 space-y-1">
+                <div className="lg:hidden border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 px-6 py-4 space-y-1">
                     <a href="#projects" onClick={() => setIsOpen(false)} className={`block py-2 ${linkClass}`}>Projects</a>
                     <a href="#about" onClick={() => setIsOpen(false)} className={`block py-2 ${linkClass}`}>About</a>
                     <a href="#contact" onClick={() => setIsOpen(false)} className={`block py-2 ${linkClass}`}>Contact</a>
