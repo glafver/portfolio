@@ -11,7 +11,7 @@ const Contact: React.FC = () => {
     const { isAdmin, openContentEditor } = useAdmin();
 
     return (
-        <section id="contact" className="relative px-6 lg:px-8 py-24 lg:py-32">
+        <section id="contact" className="relative px-6 lg:px-8 pt-6 lg:pt-8 pb-20 lg:pb-24">
             {isAdmin && <EditButton onClick={() => openContentEditor('contact')} className="absolute top-4 right-4 z-20" />}
 
             <Fade direction="up" triggerOnce duration={600}>
