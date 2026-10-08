@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchSiteContent, fallbackContent } from '../lib/content';
-import { saveSiteContent } from '../lib/adminApi';
+import { saveSiteContent, uploadFile } from '../lib/adminApi';
 import { CONTENT_SECTIONS, type ContentSectionKey } from './contentFields';
 
 interface ContentSectionEditorProps {
@@ -12,6 +12,7 @@ const ContentSectionEditor: React.FC<ContentSectionEditorProps> = ({ section, on
     const { label, fields } = CONTENT_SECTIONS[section];
     const [values, setValues] = useState<Record<string, string>>({});
     const [saving, setSaving] = useState(false);
+    const [uploading, setUploading] = useState(false);
     const [message, setMessage] = useState('');
 
     useEffect(() => {
@@ -44,6 +45,20 @@ const ContentSectionEditor: React.FC<ContentSectionEditorProps> = ({ section, on
         }
     };
 
+    const handleFileUpload = async (key: string, file: File) => {
+        setUploading(true);
+        setMessage('');
+        try {
+            const url = await uploadFile(file);
+            setValues((prev) => ({ ...prev, [key]: url }));
+        } catch (e) {
+            console.error(e);
+            setMessage('Failed to upload file.');
+        } finally {
+            setUploading(false);
+        }
+    };
+
     const inputClass =
         'w-full border border-neutral-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500 transition';
 
@@ -56,7 +71,30 @@ const ContentSectionEditor: React.FC<ContentSectionEditorProps> = ({ section, on
                 {fields.map((field) => (
                     <div key={field.key}>
                         <label className="block text-sm font-medium text-neutral-700 mb-1.5">{field.label}</label>
-                        {field.multiline ? (
+
+                        {field.type === 'file' ? (
+                            <div>
+                                {values[field.key] && (
+                                    <div className="text-xs text-neutral-500 mb-2 break-all">
+                                        Current: {values[field.key]}
+                                    </div>
+                                )}
+                                <label className="inline-flex items-center gap-2 border border-dashed border-neutral-400 rounded-lg px-4 py-2.5 text-sm cursor-pointer hover:bg-neutral-50 transition">
+                                    {uploading ? 'Uploading…' : 'Upload file'}
+                                    <input
+                                        type="file"
+                                        accept=".pdf"
+                                        className="hidden"
+                                        disabled={uploading}
+                                        onChange={(e) => {
+                                            const file = e.target.files?.[0];
+                                            if (file) handleFileUpload(field.key, file);
+                                            e.target.value = '';
+                                        }}
+                                    />
+                                </label>
+                            </div>
+                        ) : field.multiline ? (
                             <textarea
                                 className={inputClass}
                                 rows={3}

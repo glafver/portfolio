@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import { useModal } from '../ModalContext';
 import { FaEnvelope } from 'react-icons/fa';
 import { IoMdClose } from "react-icons/io";
-import { socialLinks } from '../helpers/socials';
+import { useSocialLinks } from '../helpers/socials';
 import { useSiteContent } from '../hooks/useSiteContent';
 
 const ContactModal: React.FC = () => {
     const { open, handleClose } = useModal();
     const content = useSiteContent();
+    const socialLinks = useSocialLinks();
 
     useEffect(() => {
         if (!open) return;

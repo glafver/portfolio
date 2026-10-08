@@ -1,5 +1,19 @@
 import { FaLinkedin, FaFacebook, FaGithub, FaInstagram } from 'react-icons/fa';
 import type { IconType } from 'react-icons';
+import { useSiteContent } from '../hooks/useSiteContent';
+
+export interface SocialLinkField {
+    key: string;
+    name: string;
+    icon: IconType;
+}
+
+export const SOCIAL_LINK_FIELDS: SocialLinkField[] = [
+    { key: 'social.linkedin', name: 'LinkedIn', icon: FaLinkedin },
+    { key: 'social.facebook', name: 'Facebook', icon: FaFacebook },
+    { key: 'social.github', name: 'GitHub', icon: FaGithub },
+    { key: 'social.instagram', name: 'Instagram', icon: FaInstagram },
+];
 
 export interface SocialLink {
     name: string;
@@ -7,9 +21,11 @@ export interface SocialLink {
     icon: IconType;
 }
 
-export const socialLinks: SocialLink[] = [
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/glafver/', icon: FaLinkedin },
-    { name: 'Facebook', url: 'https://www.facebook.com/glafver', icon: FaFacebook },
-    { name: 'GitHub', url: 'https://github.com/glafver', icon: FaGithub },
-    { name: 'Instagram', url: 'https://www.instagram.com/glafver/', icon: FaInstagram },
-];
+export function useSocialLinks(): SocialLink[] {
+    const content = useSiteContent();
+    return SOCIAL_LINK_FIELDS.map((field) => ({
+        name: field.name,
+        url: content[field.key] ?? '',
+        icon: field.icon,
+    })).filter((link) => link.url);
+}

@@ -44,7 +44,7 @@ const Contact: React.FC = () => {
                                 className="w-max uppercase border border-neutral-800 text-neutral-800 font-bold py-2 px-4 mb-5 lg:mb-0 rounded-full hover:bg-neutral-800 hover:text-white transition duration-300"
                             >
                                 <a
-                                    href="/assets/Glafira_Veretennikova_fullstack_CV.pdf"
+                                    href={content['cv.url']}
                                     download={true}
                                 >
                                     DOWNLOAD MY CV

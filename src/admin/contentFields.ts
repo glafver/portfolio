@@ -2,6 +2,7 @@ export interface ContentField {
     key: string;
     label: string;
     multiline: boolean;
+    type?: 'text' | 'file';
 }
 
 export interface ContentSection {
@@ -44,7 +45,15 @@ export const CONTENT_SECTIONS: Record<string, ContentSection> = {
         fields: [
             { key: 'contact.title', label: 'Heading', multiline: false },
             { key: 'contact.email', label: 'Email', multiline: false },
+            { key: 'social.linkedin', label: 'LinkedIn URL', multiline: false },
+            { key: 'social.facebook', label: 'Facebook URL', multiline: false },
+            { key: 'social.github', label: 'GitHub URL', multiline: false },
+            { key: 'social.instagram', label: 'Instagram URL', multiline: false },
         ],
+    },
+    settings: {
+        label: 'Settings',
+        fields: [{ key: 'cv.url', label: 'CV (PDF)', multiline: false, type: 'file' }],
     },
 };
 

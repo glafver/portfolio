@@ -123,4 +123,11 @@ export const fallbackContent: Record<string, string> = {
 
     'contact.title': 'Interested in working with me?',
     'contact.email': 'glafira.se@gmail.com',
+
+    'social.linkedin': 'https://www.linkedin.com/in/glafver/',
+    'social.facebook': 'https://www.facebook.com/glafver',
+    'social.github': 'https://github.com/glafver',
+    'social.instagram': 'https://www.instagram.com/glafver/',
+
+    'cv.url': '/assets/Glafira_Veretennikova_fullstack_CV.pdf',
 };

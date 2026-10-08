@@ -1,7 +1,9 @@
 import React from 'react';
-import { socialLinks } from '../helpers/socials';
+import { useSocialLinks } from '../helpers/socials';
 
 const Footer: React.FC = () => {
+    const socialLinks = useSocialLinks();
+
     return (
         <footer className="bg-neutral-200 px-8 lg:px-24 pb-12">
             <div className="max-w-5xl mx-auto lg:grid grid-cols-2 gap-4 flex flex-col px-4 align-end justify-between">

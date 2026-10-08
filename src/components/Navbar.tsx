@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
+import { useSiteContent } from '../hooks/useSiteContent';
 
 const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const content = useSiteContent();
 
     return (
         <nav className="bg-neutral-200 py-8 lg:py-12 px-8 lg:px-12">
@@ -58,7 +60,7 @@ const Navbar: React.FC = () => {
                             className="uppercase border border-neutral-800 text-neutral-800 font-bold py-2 px-4 rounded-full hover:bg-neutral-800 hover:text-white transition duration-300"
                         >
                             <a
-                                href="/assets/Glafira_Veretennikova_fullstack_CV.pdf"
+                                href={content['cv.url']}
                                 download={true}
                             >
                                 DOWNLOAD MY CV

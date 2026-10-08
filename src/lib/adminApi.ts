@@ -44,6 +44,18 @@ export async function uploadImage(file: File): Promise<string> {
     return data.publicUrl;
 }
 
+export async function uploadFile(file: File): Promise<string> {
+    if (!supabase) throw new Error('Supabase is not configured');
+    const ext = (file.name.split('.').pop() || 'pdf').toLowerCase();
+    const fileName = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+    const { error } = await supabase.storage
+        .from('files')
+        .upload(fileName, file, { cacheControl: '3600', upsert: false });
+    if (error) throw error;
+    const { data } = supabase.storage.from('files').getPublicUrl(fileName);
+    return data.publicUrl;
+}
+
 export async function saveSiteContent(entries: Record<string, string>): Promise<void> {
     if (!supabase) throw new Error('Supabase is not configured');
     const rows = Object.entries(entries).map(([key, value]) => ({ key, value }));
