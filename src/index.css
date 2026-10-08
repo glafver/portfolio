@@ -18,6 +18,28 @@ html.dark body {
     background-color: #171717;
 }
 
+@keyframes twinkle {
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+}
+
+.animate-twinkle {
+    animation: twinkle 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-twinkle {
+        animation: none;
+    }
+}
+
 .image-gallery-image {
     aspect-ratio: 16/9;
     object-fit: cover !important;
