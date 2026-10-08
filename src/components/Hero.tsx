@@ -46,13 +46,21 @@ const Hero: React.FC = () => {
 
                 <Fade direction="up" delay={150} triggerOnce duration={600} className="lg:w-1/2">
                     <div className="relative max-w-sm mx-auto">
-                        <div className="absolute -top-10 -right-10 w-44 h-44 rounded-full bg-accent" aria-hidden="true" />
-                        <div className="absolute -bottom-8 -left-8 w-28 h-28 rounded-full border-2 border-accent/50 dark:border-accent/40" aria-hidden="true" />
+                        <div
+                            className="absolute -top-8 -right-8 w-44 h-44 bg-accent animate-float"
+                            style={{ borderRadius: '60% 40% 55% 45% / 55% 45% 60% 40%' }}
+                            aria-hidden="true"
+                        />
+                        <div
+                            className="absolute -bottom-6 -left-6 w-28 h-28 border-2 border-accent/50 dark:border-accent/40 animate-float-slow"
+                            style={{ borderRadius: '45% 55% 40% 60% / 60% 40% 55% 45%' }}
+                            aria-hidden="true"
+                        />
                         <div className="absolute -inset-6 rounded-full bg-accent/20 dark:bg-accent/15 blur-3xl" aria-hidden="true" />
                         <img
                             src="/assets/hero_img.webp"
                             alt="Glafira Veretennikova, fullstack developer"
-                            className="relative rounded-t-full rounded-b-3xl shadow-xl w-full object-cover aspect-[4/5]"
+                            className="relative rounded-t-[3rem] rounded-b-3xl shadow-xl w-full object-cover aspect-[4/5]"
                         />
                     </div>
                 </Fade>

@@ -18,6 +18,32 @@ html.dark body {
     background-color: #171717;
 }
 
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-14px) rotate(5deg);
+    }
+}
+
+.animate-float {
+    animation: float 7s ease-in-out infinite;
+}
+
+.animate-float-slow {
+    animation: float 11s ease-in-out infinite;
+    animation-delay: -3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-float-slow {
+        animation: none;
+    }
+}
+
 .image-gallery-image {
     aspect-ratio: 16/9;
     object-fit: cover !important;
