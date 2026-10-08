@@ -1,4 +1,5 @@
 import React from 'react';
+import { Fade } from 'react-awesome-reveal';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { useAdmin } from '../admin/AdminContext';
 import EditButton from '../admin/EditButton';
@@ -12,7 +13,7 @@ const AboutSection: React.FC = () => {
             {isAdmin && <EditButton onClick={() => openContentEditor('about')} className="absolute top-4 right-4 z-20" />}
 
             <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-20">
-                <div className="lg:w-2/5 w-full max-w-sm shrink-0">
+                <Fade direction="left" triggerOnce duration={600} className="lg:w-2/5 w-full max-w-sm shrink-0">
                     <div className="relative">
                         <div className="absolute -inset-6 rounded-[2.5rem] bg-accent/20 dark:bg-accent/15 blur-3xl" aria-hidden="true" />
                         <img
@@ -23,9 +24,9 @@ const AboutSection: React.FC = () => {
                             decoding="async"
                         />
                     </div>
-                </div>
+                </Fade>
 
-                <div className="lg:w-3/5">
+                <Fade direction="right" triggerOnce duration={600} className="lg:w-3/5">
                     <h2 className="font-display uppercase text-3xl lg:text-5xl leading-[0.95] tracking-tight text-neutral-900 dark:text-white mb-8">
                         About <span className="text-accent dark:text-accent-light">Me</span>
                     </h2>
@@ -36,7 +37,7 @@ const AboutSection: React.FC = () => {
                         <p>{content['about.p4']}</p>
                         <p>{content['about.p5']}</p>
                     </div>
-                </div>
+                </Fade>
             </div>
         </section>
     );

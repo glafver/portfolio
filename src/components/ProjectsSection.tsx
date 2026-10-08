@@ -1,4 +1,5 @@
 import React from 'react';
+import { Fade } from 'react-awesome-reveal';
 import ProjectCard from './ProjectCard';
 import { useProjects } from '../hooks/useProjects';
 import { useSiteContent } from '../hooks/useSiteContent';
@@ -35,26 +36,30 @@ const ProjectsSection: React.FC = () => {
             {isAdmin && <EditButton onClick={() => openContentEditor('projects')} className="absolute top-4 right-4 z-20" />}
 
             <div className="max-w-6xl mx-auto">
-                <div className="mb-14 lg:mb-20">
-                    <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-6xl leading-[0.95] tracking-tight text-neutral-900 dark:text-white">
-                        {heading}{' '}
-                        <span className="text-accent dark:text-accent-light">{highlight}</span>
-                    </h2>
-                    <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl">
-                        {content['projects.subtitle']}
-                    </p>
-                </div>
+                <Fade direction="up" triggerOnce duration={600}>
+                    <div className="mb-14 lg:mb-20">
+                        <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-6xl leading-[0.95] tracking-tight text-neutral-900 dark:text-white">
+                            {heading}{' '}
+                            <span className="text-accent dark:text-accent-light">{highlight}</span>
+                        </h2>
+                        <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl">
+                            {content['projects.subtitle']}
+                        </p>
+                    </div>
+                </Fade>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-                    {displayedProjects.map((project, index) => (
-                        <ProjectCard
-                            key={project.id}
-                            project={project}
-                            index={index}
-                            total={displayedProjects.length}
-                            onMove={(direction) => handleMove(index, direction)}
-                        />
-                    ))}
+                    <Fade cascade damping={0.15} direction="up" triggerOnce duration={600}>
+                        {displayedProjects.map((project, index) => (
+                            <ProjectCard
+                                key={project.id}
+                                project={project}
+                                index={index}
+                                total={displayedProjects.length}
+                                onMove={(direction) => handleMove(index, direction)}
+                            />
+                        ))}
+                    </Fade>
                 </div>
             </div>
         </section>
