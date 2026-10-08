@@ -35,8 +35,8 @@ const AboutSection: React.FC = () => {
                         Easy-going by nature, I know how to listen and find the right approach to people and work. Skilled at collaborating in teams, I can both lead projects and work independently when needed.
                     </p>
                     <p className='mb-5'>
-                        I am a versatile professional with over 15 years of experience, focused on administration and management.
-                        My extensive professional background has honed my organizational skills, problem-solving abilities, and customer focus.
+                        Before transitioning into development, I spent over 15 years in administration and management.
+                        That experience sharpened my organizational skills, problem-solving, and customer focus — qualities I now bring to every project I build.
                     </p>
                     <p className='mb-0'>
                         I am passionate about interior design and interior photography, working professionally as a freelance photographer.
