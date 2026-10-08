@@ -16,22 +16,37 @@ html.dark body {
     background-color: #171717;
 }
 
-@keyframes drift-x {
+@keyframes float-a {
     0%,
     100% {
-        transform: translateX(-40px);
+        transform: translate(0, 0);
     }
     50% {
-        transform: translateX(40px);
+        transform: translate(24px, -12px);
     }
 }
 
-.animate-drift {
-    animation: drift-x 14s ease-in-out infinite;
+@keyframes float-b {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-22px, -14px);
+    }
+}
+
+.animate-float-a {
+    animation: float-a 15s ease-in-out infinite;
+}
+
+.animate-float-b {
+    animation: float-b 17s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .animate-drift {
+    .animate-float-a,
+    .animate-float-b {
         animation: none;
     }
 }
