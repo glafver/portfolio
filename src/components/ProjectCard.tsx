@@ -20,6 +20,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
     }));
 
     const [openDropdown, setOpenDropdown] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
     const { isAdmin, openProjectEditor } = useAdmin();
 
     const hidden = project.visible === false;
@@ -46,7 +47,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
             <img
                 src={item.original}
                 alt={`${project.title} screenshot`}
-                className="aspect-[16/9] object-cover w-full transition-transform duration-500 group-hover:scale-105"
+                className="aspect-[16/9] object-cover w-full"
                 loading="lazy"
                 decoding="async"
             />
@@ -57,7 +58,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
         'flex items-center justify-center bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-600 rounded-full w-8 h-8 shadow hover:bg-neutral-50 dark:hover:bg-neutral-800 transition disabled:opacity-30 disabled:cursor-not-allowed';
 
     return (
-        <div className={`group relative h-full bg-white dark:bg-neutral-800 rounded-2xl border border-neutral-200 dark:border-neutral-700 shadow-md hover:shadow-2xl hover:-translate-y-1 transition duration-300 overflow-hidden flex flex-col ${hidden ? 'opacity-60' : ''}`}>
+        <div
+            className={`group relative h-full bg-white dark:bg-neutral-800 rounded-2xl border border-neutral-200 dark:border-neutral-700 shadow-md hover:shadow-2xl hover:-translate-y-1 transition duration-300 overflow-hidden flex flex-col ${hidden ? 'opacity-60' : ''}`}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
             {isAdmin && hidden && (
                 <span className="absolute top-3 left-3 z-20 bg-neutral-900 text-white text-xs font-semibold px-2.5 py-1 rounded-full">
                     Hidden
@@ -95,32 +100,28 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
             <Fade delay={30}>
                 <ImageGallery
                     items={galleryItems}
-                    showThumbnails={true}
+                    showThumbnails={false}
                     showFullscreenButton={false}
                     showPlayButton={false}
+                    showNav={false}
+                    autoPlay={isHovered}
+                    slideInterval={1500}
                     lazyLoad={true}
                     renderItem={renderMainImage}
                 />
             </Fade>
 
             <div className="px-6 pt-5 flex flex-col flex-1">
-                <div className="flex items-start justify-between gap-3 mb-3">
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={project.link}
-                        className="font-display uppercase text-xl leading-tight text-neutral-900 dark:text-white hover:text-accent dark:hover:text-accent-light transition"
-                    >
-                        {project.title}
-                    </a>
-                    <span
-                        className="text-accent dark:text-accent-light text-lg leading-none shrink-0 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition duration-300"
-                        aria-hidden="true"
-                    >
-                        ↗
-                    </span>
-                </div>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-3">
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={project.link}
+                    className="font-display uppercase text-xl leading-tight text-neutral-900 dark:text-white group-hover:text-accent dark:group-hover:text-accent-light transition mb-3"
+                >
+                    {project.title}
+                    <span className="block h-0.5 w-0 bg-accent dark:bg-accent-light group-hover:w-full transition-all duration-300 mt-1.5" />
+                </a>
+                <p className="text-neutral-600 dark:text-neutral-400 mb-3 line-clamp-3">
                     {project.description}
                 </p>
                 {project.important && (
