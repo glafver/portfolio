@@ -99,6 +99,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
 
             <Fade delay={30}>
                 <ImageGallery
+                    key={isHovered ? 'playing' : 'idle'}
                     items={galleryItems}
                     showThumbnails={false}
                     showFullscreenButton={false}
