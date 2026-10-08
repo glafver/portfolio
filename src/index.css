@@ -18,28 +18,22 @@ html.dark body {
     background-color: #171717;
 }
 
-@keyframes twinkle {
+@keyframes blob-float {
     0%,
     100% {
-        opacity: 0;
-        transform: scale(0.3) rotate(0deg);
+        transform: translate(0, 0);
     }
     50% {
-        opacity: 1;
-        transform: scale(1) rotate(20deg);
+        transform: translate(12px, -28px);
     }
 }
 
-.animate-twinkle {
-    animation: twinkle 4s ease-in-out infinite;
-}
-
-.sparkle-shape {
-    clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+.animate-blob {
+    animation: blob-float 10s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .animate-twinkle {
+    .animate-blob {
         animation: none;
     }
 }
