@@ -61,7 +61,7 @@ const Blobs: React.FC = () => (
         {FILLED_BLOBS.map((b, i) => (
             <div
                 key={`filled-${i}`}
-                className="absolute bg-accent dark:bg-accent-light animate-drift"
+                className="absolute bg-accent dark:bg-accent-light animate-drift blur-2xl"
                 style={{
                     left: b.left,
                     top: b.top,
@@ -77,7 +77,7 @@ const Blobs: React.FC = () => (
         {OUTLINE_BLOBS.map((b, i) => (
             <div
                 key={`outline-${i}`}
-                className="absolute border border-accent/25 dark:border-accent-light/25 animate-drift"
+                className="absolute border border-accent/25 dark:border-accent-light/25 animate-drift blur-xl"
                 style={{
                     left: b.left,
                     top: b.top,
