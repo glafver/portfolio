@@ -12,7 +12,7 @@ const AboutSection: React.FC = () => {
         <section id="about" className="relative px-6 lg:px-8 py-20 lg:py-28">
             {isAdmin && <EditButton onClick={() => openContentEditor('about')} className="absolute top-4 right-4 z-20" />}
 
-            <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-20">
+            <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
                 <Fade direction="left" triggerOnce duration={600} className="lg:w-2/5 w-full max-w-sm shrink-0">
                     <div className="relative">
                         <div className="absolute -inset-6 rounded-full bg-accent/20 dark:bg-accent/15 blur-3xl" aria-hidden="true" />
