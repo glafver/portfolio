@@ -17,13 +17,13 @@ const Hero: React.FC = () => {
             <div className="relative max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                 <Fade direction="up" triggerOnce duration={600} className="lg:w-1/2">
                     <div className="text-center lg:text-left">
-                        <p className="font-display text-accent dark:text-accent-light text-sm lg:text-base uppercase tracking-[0.2em] mb-5">
-                            {content['hero.role']}
-                        </p>
                         <h1 className="font-display uppercase text-5xl sm:text-7xl lg:text-8xl leading-[0.9] tracking-tight text-neutral-900 dark:text-white">
                             Hey, I&apos;m{' '}
                             <span className="text-accent dark:text-accent-light">{content['hero.name']}</span>
                         </h1>
+                        <p className="font-display text-accent dark:text-accent-light uppercase tracking-[0.2em] text-lg lg:text-xl mt-4">
+                            {content['hero.role']}
+                        </p>
                         <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-400 max-w-xl mx-auto lg:mx-0">
                             {content['hero.subtitle']}
                         </p>
