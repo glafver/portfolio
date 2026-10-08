@@ -1,5 +1,6 @@
 import { supabase } from './supabase';
 import { notifyContentChanged } from './refresh';
+import type { Project } from '../types';
 
 export type ProjectInput = {
     title: string;
@@ -29,6 +30,18 @@ export async function deleteProject(id: string): Promise<void> {
     if (!supabase) throw new Error('Supabase is not configured');
     const { error } = await supabase.from('projects').delete().eq('id', id);
     if (error) throw error;
+    notifyContentChanged();
+}
+
+export async function reorderProjects(ordered: Project[]): Promise<void> {
+    if (!supabase) throw new Error('Supabase is not configured');
+    for (let i = 0; i < ordered.length; i++) {
+        const { error } = await supabase
+            .from('projects')
+            .update({ sort_order: i + 1 })
+            .eq('id', ordered[i].id);
+        if (error) throw error;
+    }
     notifyContentChanged();
 }
 

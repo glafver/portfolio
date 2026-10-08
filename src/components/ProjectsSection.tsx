@@ -4,6 +4,7 @@ import { useProjects } from '../hooks/useProjects';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { useAdmin } from '../admin/AdminContext';
 import EditButton from '../admin/EditButton';
+import { reorderProjects } from '../lib/adminApi';
 
 const ProjectsSection: React.FC = () => {
     const projects = useProjects();
@@ -14,6 +15,18 @@ const ProjectsSection: React.FC = () => {
     const titleParts = title.split(' ');
     const highlight = titleParts.pop() ?? '';
     const heading = titleParts.join(' ');
+
+    const handleMove = async (index: number, direction: 'up' | 'down') => {
+        const target = direction === 'up' ? index - 1 : index + 1;
+        if (target < 0 || target >= projects.length) return;
+        const next = [...projects];
+        [next[index], next[target]] = [next[target], next[index]];
+        try {
+            await reorderProjects(next);
+        } catch (e) {
+            console.error(e);
+        }
+    };
 
     return (
         <div id='projects' className="bg-white px-8 lg:px-12 py-16 lg:py-28 relative">
@@ -35,8 +48,14 @@ const ProjectsSection: React.FC = () => {
                         </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-20 lg:gap-28">
-                        {projects.map((project) => (
-                            <ProjectCard key={project.id} project={project} />
+                        {projects.map((project, index) => (
+                            <ProjectCard
+                                key={project.id}
+                                project={project}
+                                index={index}
+                                total={projects.length}
+                                onMove={(direction) => handleMove(index, direction)}
+                            />
                         ))}
                     </div>
                 </div>

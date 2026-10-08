@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
-import { FaChevronDown, FaChevronUp, FaEdit, FaTrash } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp, FaEdit, FaTrash, FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery';
 import { Project } from '../types';
 import { useAdmin } from '../admin/AdminContext';
@@ -8,9 +8,12 @@ import { deleteProject } from '../lib/adminApi';
 
 interface ProjectCardProps {
     project: Project;
+    index: number;
+    total: number;
+    onMove: (direction: 'up' | 'down') => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove }) => {
     const galleryItems = project.images.map(url => ({
         original: url,
         thumbnail: url,
@@ -43,7 +46,25 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     return (
         <div className="relative bg-neutral-200 rounded-md shadow-md hover:shadow-xl transition duration-300 overflow-hidden border flex flex-col">
             {isAdmin && (
-                <div className="absolute top-3 right-3 z-20 flex gap-2">
+                <div className="absolute top-3 right-3 z-20 flex items-center gap-1.5">
+                    <button
+                        onClick={() => onMove('up')}
+                        disabled={index === 0}
+                        className="flex items-center justify-center bg-white text-neutral-700 border border-neutral-200 rounded-full w-8 h-8 shadow hover:bg-neutral-50 transition disabled:opacity-30 disabled:cursor-not-allowed"
+                        aria-label="Move up"
+                        title="Move up"
+                    >
+                        <FaArrowUp size={12} />
+                    </button>
+                    <button
+                        onClick={() => onMove('down')}
+                        disabled={index === total - 1}
+                        className="flex items-center justify-center bg-white text-neutral-700 border border-neutral-200 rounded-full w-8 h-8 shadow hover:bg-neutral-50 transition disabled:opacity-30 disabled:cursor-not-allowed"
+                        aria-label="Move down"
+                        title="Move down"
+                    >
+                        <FaArrowDown size={12} />
+                    </button>
                     <button
                         onClick={() => openProjectEditor(project)}
                         className="flex items-center gap-1.5 bg-white text-neutral-700 border border-neutral-200 rounded-full px-3 py-1.5 text-xs font-medium shadow hover:bg-neutral-50 transition"
