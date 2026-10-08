@@ -23,8 +23,7 @@ const AboutSection: React.FC = () => {
                 </div>
 
                 <div className="lg:w-3/5">
-                    <span className="font-display text-accent dark:text-accent-light text-sm uppercase tracking-[0.2em]">03</span>
-                    <h2 className="font-display uppercase text-3xl lg:text-5xl leading-[0.95] tracking-tight text-neutral-900 dark:text-white mt-2 mb-8">
+                    <h2 className="font-display uppercase text-3xl lg:text-5xl leading-[0.95] tracking-tight text-neutral-900 dark:text-white mb-8">
                         About <span className="text-accent dark:text-accent-light">Me</span>
                     </h2>
                     <div className="space-y-5 text-lg text-neutral-600 dark:text-neutral-400">

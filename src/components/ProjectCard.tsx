@@ -104,19 +104,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
             </Fade>
 
             <div className="px-6 pt-5 flex flex-col flex-1">
-                <div className="flex items-start gap-3 mb-3">
-                    <span className="font-display text-accent dark:text-accent-light text-sm pt-1">
-                        {(index + 1).toString().padStart(2, '0')}
-                    </span>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={project.link}
-                        className="font-display uppercase text-xl leading-tight text-neutral-900 dark:text-white hover:text-accent dark:hover:text-accent-light transition"
-                    >
-                        {project.title}
-                    </a>
-                </div>
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={project.link}
+                    className="font-display uppercase text-xl leading-tight text-neutral-900 dark:text-white hover:text-accent dark:hover:text-accent-light transition mb-3"
+                >
+                    {project.title}
+                </a>
                 <p className="text-neutral-600 dark:text-neutral-400 mb-3">
                     {project.description}
                 </p>

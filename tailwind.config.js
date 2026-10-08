@@ -9,7 +9,7 @@ export default {
     extend: {
       fontFamily: {
         mont: ['Montserrat', 'sans-serif'],
-        display: ['"Archivo Black"', 'Montserrat', 'sans-serif'],
+        display: ['"Fraunces"', 'Georgia', 'serif'],
       },
       colors: {
         accent: {

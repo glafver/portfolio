@@ -24,8 +24,7 @@ const Technologies: React.FC = () => {
             {isAdmin && <EditButton onClick={() => openContentEditor('technologies')} className="absolute top-4 right-4 z-20" />}
 
             <div className="max-w-4xl mx-auto">
-                <span className="font-display text-accent dark:text-accent-light text-sm uppercase tracking-[0.2em]">02</span>
-                <h2 className="font-display uppercase text-3xl lg:text-5xl leading-[0.95] tracking-tight text-neutral-900 dark:text-white mt-2">
+                <h2 className="font-display uppercase text-3xl lg:text-5xl leading-[0.95] tracking-tight text-neutral-900 dark:text-white">
                     {content['technologies.title']}
                 </h2>
                 <div className="mt-12 flex justify-center flex-wrap gap-x-10 gap-y-8">

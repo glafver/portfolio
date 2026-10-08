@@ -36,8 +36,7 @@ const ProjectsSection: React.FC = () => {
 
             <div className="max-w-6xl mx-auto">
                 <div className="mb-14 lg:mb-20">
-                    <span className="font-display text-accent dark:text-accent-light text-sm uppercase tracking-[0.2em]">01</span>
-                    <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-6xl leading-[0.95] tracking-tight text-neutral-900 dark:text-white mt-2">
+                    <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-6xl leading-[0.95] tracking-tight text-neutral-900 dark:text-white">
                         {heading}{' '}
                         <span className="text-accent dark:text-accent-light">{highlight}</span>
                     </h2>
