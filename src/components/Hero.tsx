@@ -3,12 +3,16 @@ import { Fade } from 'react-awesome-reveal';
 import { useModal } from '../ModalContext';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { useAdmin } from '../admin/AdminContext';
+import { useParallax } from '../hooks/useParallax';
 import EditButton from '../admin/EditButton';
 
 const Hero: React.FC = () => {
     const { handleOpen } = useModal();
     const content = useSiteContent();
     const { isAdmin, openContentEditor } = useAdmin();
+
+    const photoOffset = useParallax(0.15);
+    const glowOffset = useParallax(0.3);
 
     return (
         <section className="relative bg-neutral-50 dark:bg-neutral-900 overflow-hidden">
@@ -46,11 +50,16 @@ const Hero: React.FC = () => {
 
                 <Fade direction="up" delay={150} triggerOnce duration={600} className="lg:w-1/2">
                     <div className="relative max-w-sm mx-auto">
-                        <div className="absolute -inset-6 rounded-[2.5rem] bg-accent/20 dark:bg-accent/15 blur-3xl" aria-hidden="true" />
+                        <div
+                            className="absolute -inset-6 rounded-[2.5rem] bg-accent/20 dark:bg-accent/15 blur-3xl"
+                            style={{ transform: `translateY(${glowOffset}px)` }}
+                            aria-hidden="true"
+                        />
                         <img
                             src="/assets/hero_img.webp"
                             alt="Glafira Veretennikova, fullstack developer"
                             className="relative rounded-3xl shadow-xl w-full object-cover aspect-[4/5]"
+                            style={{ transform: `translateY(${photoOffset}px)` }}
                         />
                     </div>
                 </Fade>
