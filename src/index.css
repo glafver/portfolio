@@ -16,40 +16,7 @@ html.dark body {
     background-color: #171717;
 }
 
-@keyframes float-a {
-    0%,
-    100% {
-        transform: translate(0, 0);
-    }
-    50% {
-        transform: translate(24px, -12px);
-    }
-}
 
-@keyframes float-b {
-    0%,
-    100% {
-        transform: translate(0, 0);
-    }
-    50% {
-        transform: translate(-22px, -14px);
-    }
-}
-
-.animate-float-a {
-    animation: float-a 15s ease-in-out infinite;
-}
-
-.animate-float-b {
-    animation: float-b 17s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .animate-float-a,
-    .animate-float-b {
-        animation: none;
-    }
-}
 
 .image-gallery-image {
     aspect-ratio: 16/9;
