@@ -113,7 +113,7 @@ export const fallbackContent: Record<string, string> = {
     'projects.title': 'Have a look at my projects',
     'projects.subtitle': 'Here are some of my completed projects. While some may be simple, they represent my ongoing effort to grow professionally and continuously learn new skills.',
 
-    'technologies.title': 'Technologies & Techniques I Use',
+    'technologies.title': 'Tech Stack',
 
     'about.p1': 'Hi, my name is Glafira Veretennikova. Currently based in Malmö, Sweden, I relocated here six years ago from St. Petersburg, Russia. I am fluent in both Swedish and English.',
     'about.p2': 'I am a Fullstack Developer and my expertise includes C#, .NET, Blazor, React.js, TypeScript, and Node.js. I have experience working with Redux, Express.js, Socket.io, Tailwind, and Material UI, and writing tests with xUnit and Jest.',
