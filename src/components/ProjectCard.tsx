@@ -46,7 +46,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
             <img
                 src={item.original}
                 alt={`${project.title} screenshot`}
-                className="aspect-[16/9] object-cover w-full"
+                className="aspect-[16/9] object-cover w-full transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
             />
@@ -57,7 +57,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
         'flex items-center justify-center bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-600 rounded-full w-8 h-8 shadow hover:bg-neutral-50 dark:hover:bg-neutral-800 transition disabled:opacity-30 disabled:cursor-not-allowed';
 
     return (
-        <div className={`relative h-full bg-white dark:bg-neutral-800 rounded-2xl border border-neutral-200 dark:border-neutral-700 shadow-md hover:shadow-2xl hover:-translate-y-1 transition duration-300 overflow-hidden flex flex-col ${hidden ? 'opacity-60' : ''}`}>
+        <div className={`group relative h-full bg-white dark:bg-neutral-800 rounded-2xl border border-neutral-200 dark:border-neutral-700 shadow-md hover:shadow-2xl hover:-translate-y-1 transition duration-300 overflow-hidden flex flex-col ${hidden ? 'opacity-60' : ''}`}>
             {isAdmin && hidden && (
                 <span className="absolute top-3 left-3 z-20 bg-neutral-900 text-white text-xs font-semibold px-2.5 py-1 rounded-full">
                     Hidden
@@ -104,14 +104,22 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
             </Fade>
 
             <div className="px-6 pt-5 flex flex-col flex-1">
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={project.link}
-                    className="font-display uppercase text-xl leading-tight text-neutral-900 dark:text-white hover:text-accent dark:hover:text-accent-light transition mb-3"
-                >
-                    {project.title}
-                </a>
+                <div className="flex items-start justify-between gap-3 mb-3">
+                    <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={project.link}
+                        className="font-display uppercase text-xl leading-tight text-neutral-900 dark:text-white hover:text-accent dark:hover:text-accent-light transition"
+                    >
+                        {project.title}
+                    </a>
+                    <span
+                        className="text-accent dark:text-accent-light text-lg leading-none shrink-0 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition duration-300"
+                        aria-hidden="true"
+                    >
+                        ↗
+                    </span>
+                </div>
                 <p className="text-neutral-600 dark:text-neutral-400 mb-3">
                     {project.description}
                 </p>
@@ -133,7 +141,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
                 {project.tech.map((tech, index) => (
                     <span
                         key={index}
-                        className={`border border-neutral-300 dark:border-neutral-600 rounded-full px-3 py-1 text-sm text-neutral-600 dark:text-neutral-300 mr-2 mb-2 ${openDropdown ? 'inline-block' : 'hidden'} lg:inline-block`}
+                        className={`bg-neutral-100 dark:bg-neutral-700/60 rounded-full px-2.5 py-1 text-xs text-neutral-600 dark:text-neutral-300 mr-2 mb-2 ${openDropdown ? 'inline-block' : 'hidden'} lg:inline-block`}
                     >
                         {tech}
                     </span>
