@@ -53,6 +53,26 @@ const Hero: React.FC = () => {
                             alt="Glafira Veretennikova, fullstack developer"
                             className="relative rounded-t-full rounded-b-3xl shadow-xl w-full object-cover aspect-[4/5]"
                         />
+
+                        <div className="absolute -bottom-6 -left-6 w-28 h-28 z-10">
+                            <svg viewBox="0 0 120 120" className="w-full h-full animate-spin-slow">
+                                <defs>
+                                    <path id="hero-badge-circle" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" />
+                                </defs>
+                                <circle cx="60" cy="60" r="60" className="fill-accent" />
+                                <text
+                                    className="fill-white"
+                                    fontSize="9.5"
+                                    letterSpacing="1.8"
+                                    style={{ textTransform: 'uppercase' }}
+                                >
+                                    <textPath href="#hero-badge-circle">Fullstack developer · Glafira ·</textPath>
+                                </text>
+                            </svg>
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="w-2.5 h-2.5 rounded-full bg-white" />
+                            </div>
+                        </div>
                     </div>
                 </Fade>
             </div>
