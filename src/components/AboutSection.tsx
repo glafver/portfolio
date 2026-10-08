@@ -27,15 +27,17 @@ const AboutSection: React.FC = () => {
                 </Fade>
 
                 <Fade direction="right" triggerOnce duration={600} className="lg:w-3/5">
-                    <h2 className="font-display uppercase text-3xl lg:text-5xl leading-[0.95] tracking-tight text-neutral-900 dark:text-white mb-8">
-                        About <span className="text-accent dark:text-accent-light">Me</span>
-                    </h2>
-                    <div className="space-y-5 text-lg text-neutral-600 dark:text-neutral-400">
-                        <p>{content['about.p1']}</p>
-                        <p>{content['about.p2']}</p>
-                        <p>{content['about.p3']}</p>
-                        <p>{content['about.p4']}</p>
-                        <p>{content['about.p5']}</p>
+                    <div>
+                        <h2 className="font-display uppercase text-3xl lg:text-5xl leading-[0.95] tracking-tight text-neutral-900 dark:text-white mb-8">
+                            About <span className="text-accent dark:text-accent-light">Me</span>
+                        </h2>
+                        <div className="space-y-5 text-lg text-neutral-600 dark:text-neutral-400">
+                            <p>{content['about.p1']}</p>
+                            <p>{content['about.p2']}</p>
+                            <p>{content['about.p3']}</p>
+                            <p>{content['about.p4']}</p>
+                            <p>{content['about.p5']}</p>
+                        </div>
                     </div>
                 </Fade>
             </div>
