@@ -21,7 +21,7 @@ const AboutSection: React.FC = () => {
                         <img
                             src="/assets/about_img.webp"
                             alt="Glafira Veretennikova"
-                            className="relative rounded-t-[3rem] rounded-b-3xl object-cover aspect-square w-full shadow-xl"
+                            className="relative rounded-t-[3rem] rounded-b-3xl object-cover object-top aspect-[3/4] w-full shadow-xl"
                             loading="lazy"
                             decoding="async"
                         />
