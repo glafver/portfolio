@@ -5,7 +5,7 @@ import TechnologiesSection from './components/TechnologiesSection';
 import AboutSection from "./components/AboutSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
-import { ModalProvider } from './ModalContext';
+import { ModalProvider } from './ModalProvider';
 import ContactModal from "./components/ContactModal";
 
 function App() {

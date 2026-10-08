@@ -8,7 +8,6 @@ export default {
     extend: {
       fontFamily: {
         mont: ['Montserrat', 'sans-serif'],
-        teachers: ['Teachers', 'sans-serif']
       },
     },
   },

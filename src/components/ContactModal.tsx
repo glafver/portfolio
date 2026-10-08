@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useModal } from '../ModalContext';
-import { FaLinkedin, FaFacebook, FaGithub, FaInstagram, FaEnvelope } from 'react-icons/fa';
+import { FaEnvelope } from 'react-icons/fa';
 import { IoMdClose } from "react-icons/io";
+import { socialLinks } from '../helpers/socials';
 
 const ContactModal: React.FC = () => {
     const { open, handleClose } = useModal();
@@ -37,10 +38,11 @@ const ContactModal: React.FC = () => {
                             <a href="mailto:glafira.se@gmail.com" className='hover:text-red-500 transition duration-300'>glafira.se@gmail.com</a>
                         </div>
                         <div className="flex items-center justify-center space-x-9 mb-12">
-                            <a href="https://www.linkedin.com/in/glafver/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedin className='w-6 h-6 hover:text-red-500 transition duration-300' /></a>
-                            <a href="https://www.facebook.com/glafver" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebook className='w-6 h-6 hover:text-red-500 transition duration-300' /></a>
-                            <a href="https://github.com/glafver" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FaGithub className='w-6 h-6 hover:text-red-500 transition duration-300' /></a>
-                            <a href="https://www.instagram.com/glafver/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram className='w-6 h-6 hover:text-red-500 transition duration-300' /></a>
+                            {socialLinks.map(({ name, url, icon: Icon }) => (
+                                <a key={name} href={url} target="_blank" rel="noopener noreferrer" aria-label={name}>
+                                    <Icon className='w-6 h-6 hover:text-red-500 transition duration-300' />
+                                </a>
+                            ))}
                         </div>
                         <IoMdClose
                             onClick={handleClose}
