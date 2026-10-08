@@ -13,13 +13,16 @@ const AboutSection: React.FC = () => {
 
             <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-20">
                 <div className="lg:w-2/5 w-full max-w-sm shrink-0">
-                    <img
-                        src="/assets/about_img.webp"
-                        alt="Glafira Veretennikova"
-                        className="rounded-3xl object-cover aspect-square w-full shadow-lg"
-                        loading="lazy"
-                        decoding="async"
-                    />
+                    <div className="relative">
+                        <div className="absolute -inset-6 rounded-[2.5rem] bg-accent/20 dark:bg-accent/15 blur-3xl" aria-hidden="true" />
+                        <img
+                            src="/assets/about_img.webp"
+                            alt="Glafira Veretennikova"
+                            className="relative rounded-3xl object-cover aspect-square w-full shadow-xl"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
                 </div>
 
                 <div className="lg:w-3/5">

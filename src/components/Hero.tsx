@@ -1,4 +1,5 @@
 import React from 'react';
+import { Fade } from 'react-awesome-reveal';
 import { useModal } from '../ModalContext';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { useAdmin } from '../admin/AdminContext';
@@ -14,7 +15,7 @@ const Hero: React.FC = () => {
             {isAdmin && <EditButton onClick={() => openContentEditor('hero')} className="absolute top-4 right-4 z-20" />}
 
             <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-                <div className="lg:w-1/2 text-center lg:text-left">
+                <Fade direction="up" triggerOnce duration={600} className="lg:w-1/2 text-center lg:text-left">
                     <p className="font-display text-accent dark:text-accent-light text-sm lg:text-base uppercase tracking-[0.2em] mb-5">
                         {content['hero.role']}
                     </p>
@@ -39,17 +40,18 @@ const Hero: React.FC = () => {
                             View projects
                         </a>
                     </div>
-                </div>
+                </Fade>
 
-                <div className="lg:w-1/2">
+                <Fade direction="up" delay={150} triggerOnce duration={600} className="lg:w-1/2">
                     <div className="relative max-w-sm mx-auto">
+                        <div className="absolute -inset-6 rounded-[2.5rem] bg-accent/20 dark:bg-accent/15 blur-3xl" aria-hidden="true" />
                         <img
                             src="/assets/hero_img.webp"
                             alt="Glafira Veretennikova, fullstack developer"
-                            className="relative rounded-3xl shadow-lg w-full object-cover aspect-[4/5]"
+                            className="relative rounded-3xl shadow-xl w-full object-cover aspect-[4/5]"
                         />
                     </div>
-                </div>
+                </Fade>
             </div>
         </section>
     );
