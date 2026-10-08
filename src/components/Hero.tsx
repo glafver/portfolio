@@ -1,6 +1,5 @@
 import React from 'react';
 import { useModal } from '../ModalContext';
-import { AttentionSeeker, Fade } from 'react-awesome-reveal';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { useAdmin } from '../admin/AdminContext';
 import EditButton from '../admin/EditButton';
@@ -11,51 +10,48 @@ const Hero: React.FC = () => {
     const { isAdmin, openContentEditor } = useAdmin();
 
     return (
-        <>
-            <div className="relative bg-neutral-200 p-8 pb-16 lg:p-12 lg:py-28">
-                {isAdmin && <EditButton onClick={() => openContentEditor('hero')} className="absolute top-4 right-4 z-20" />}
-                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between">
-                    <div className="lg:w-1/2 lg:pr-10">
-                        <h1 className="text-3xl lg:text-5xl font-bold">
-                            Hey, I'm
+        <section className="relative bg-neutral-50 dark:bg-neutral-950">
+            {isAdmin && <EditButton onClick={() => openContentEditor('hero')} className="absolute top-4 right-4 z-20" />}
 
-                            <span className="ml-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-red-500 to-orange-500">
-                                {content['hero.name']}
-                            </span>
-
-                            , a
-                            <br />{content['hero.role']}
-                        </h1>
-                        <p className="py-5 lg:py-5 text-lg lg:text-xl">
-                            {content['hero.subtitle']}
-                        </p>
-                        <div className='flex w-full justify-center mb-4 lg:mb-0'>
-                            <AttentionSeeker effect="heartBeat">
-                                <button
-                                    onClick={() => { handleOpen(); }}
-                                    className="uppercase gv-color-changing-bg font-bold py-2 px-4 text-white rounded-full hover:text-neutral-800 transition duration-300"
-                                >
-                                    Contact me
-                                </button>
-                            </AttentionSeeker>
-                        </div>
-
+            <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                <div className="lg:w-1/2 text-center lg:text-left">
+                    <p className="text-violet-600 dark:text-violet-400 font-semibold mb-4 text-sm tracking-wide uppercase">
+                        Fullstack Developer
+                    </p>
+                    <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-neutral-900 dark:text-white leading-[1.1]">
+                        Hey, I&apos;m{' '}
+                        <span className="text-violet-600 dark:text-violet-400">{content['hero.name']}</span>
+                    </h1>
+                    <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-400 max-w-xl mx-auto lg:mx-0">
+                        {content['hero.subtitle']}
+                    </p>
+                    <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-3">
+                        <button
+                            onClick={() => { handleOpen(); }}
+                            className="bg-violet-600 hover:bg-violet-500 text-white font-semibold px-6 py-3 rounded-full transition"
+                        >
+                            Contact me
+                        </button>
+                        <a
+                            href="#projects"
+                            className="border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 font-semibold px-6 py-3 rounded-full hover:border-violet-600 hover:text-violet-600 dark:hover:text-violet-400 transition"
+                        >
+                            View projects
+                        </a>
                     </div>
+                </div>
 
-                    <div className="lg:w-1/2 mt-8 lg:mt-0">
-                        <Fade >
-                            <img
-                                src='/assets/hero_img.webp'
-                                alt="Glafira Veretennikova, fullstack developer"
-                                className="rounded shadow-lg w-full  lg:w-3/4 mx-auto lg:mr-0"
-                            />
-                        </Fade>
+                <div className="lg:w-1/2">
+                    <div className="relative max-w-sm mx-auto">
+                        <img
+                            src="/assets/hero_img.webp"
+                            alt="Glafira Veretennikova, fullstack developer"
+                            className="relative rounded-3xl shadow-lg w-full object-cover aspect-[4/5]"
+                        />
                     </div>
-
-
                 </div>
             </div>
-        </>
+        </section>
     );
 };
 
