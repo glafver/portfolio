@@ -8,7 +8,7 @@ const AboutSection: React.FC = () => {
                 <Fade >
                     <img
                         src='/assets/about_img.jpg'
-                        alt="Profile"
+                        alt="Glafira Veretennikova"
                         className="rounded z-10 object-cover object-top aspect-square lg:aspect-auto lg:w-full"
                     />
                 </Fade>

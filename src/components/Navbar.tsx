@@ -8,12 +8,14 @@ const Navbar: React.FC = () => {
         <nav className="bg-neutral-200 py-8 lg:py-12 px-8 lg:px-12">
             <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center lg:items-end">
                 <div className="flex flex-col items-center flex-shrink-0 lg:mr-36">
-                    <img className="w-20 lg:w-32" src="https://storage.googleapis.com/glafver_portfolio/GV_logo_dark.png" alt="" />
+                    <img className="w-20 lg:w-32" src="/assets/GV_logo_dark.png" alt="Glafira Veretennikova logo" />
                 </div>
                 <div className="block lg:hidden">
                     <button
                         className="flex items-center px-3 py-2 "
                         onClick={() => setIsOpen(!isOpen)}
+                        aria-label="Toggle navigation menu"
+                        aria-expanded={isOpen}
                     >
                         <svg
                             className="fill-current w-6"

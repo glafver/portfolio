@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
                         <Fade >
                             <img
                                 src='/assets/hero_img.jpg'
-                                alt="Hero Image"
+                                alt="Glafira Veretennikova, fullstack developer"
                                 className="rounded shadow-lg w-full  lg:w-3/4 mx-auto lg:mr-0"
                             />
                         </Fade>
