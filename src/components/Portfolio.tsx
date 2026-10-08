@@ -9,7 +9,7 @@ import ContactModal from './ContactModal';
 
 const Portfolio: React.FC = () => {
     return (
-        <div className="font-mont text-neutral-800">
+        <div className="font-mont text-neutral-800 dark:text-neutral-200 bg-neutral-50 dark:bg-neutral-900">
             <Navbar />
             <Hero />
             <ProjectsSection />
