@@ -1,5 +1,6 @@
 import React from 'react';
 import { Zoom, Fade } from 'react-awesome-reveal';
+import { useSiteContent } from '../hooks/useSiteContent';
 
 const logos: string[] = [
 
@@ -15,11 +16,13 @@ const logos: string[] = [
 ];
 
 const Technologies: React.FC = () => {
+    const content = useSiteContent();
+
     return (
         <div className="bg-neutral-200 px-8 py-16 lg:px-12 lg:py-28 text-center">
             <Zoom >
                 <div className="max-w-7xl mx-auto">
-                    <h2 className="text-3xl lg:text-5xl font-bold mb-16 lg:mb-20">Technologies & Techniques I Use</h2>
+                    <h2 className="text-3xl lg:text-5xl font-bold mb-16 lg:mb-20">{content['technologies.title']}</h2>
                     <div className="flex justify-center flex-wrap gap-6">
                         <Fade cascade duration={300}>
                             {logos.map((logo, index) => (

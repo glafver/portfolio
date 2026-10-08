@@ -1,9 +1,11 @@
 import React from 'react';
 import { useModal } from '../ModalContext';
 import { AttentionSeeker, Fade } from 'react-awesome-reveal';
+import { useSiteContent } from '../hooks/useSiteContent';
 
 const Contact: React.FC = () => {
     const { handleOpen } = useModal();
+    const content = useSiteContent();
 
 
     return (
@@ -18,12 +20,12 @@ const Contact: React.FC = () => {
                 <div className='p-12 pt-6 lg:pt-20 text-center m-auto w-full'>
 
                     <h1 className="text-2xl font-semibold mb-6  text-white lg:hidden">
-                        Interested in working with me?
+                        {content['contact.title']}
                     </h1>
 
                     <h1 className="text-5xl font-semibold mb-12 text-white hidden lg:block">
                         <Fade cascade duration={50}>
-                            Interested in working with me?
+                            {content['contact.title']}
                         </Fade>
                     </h1>
 

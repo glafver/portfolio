@@ -1,7 +1,10 @@
 import React from 'react';
 import { Fade } from 'react-awesome-reveal';
+import { useSiteContent } from '../hooks/useSiteContent';
 
 const AboutSection: React.FC = () => {
+    const content = useSiteContent();
+
     return (
         <div id='about' className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-end lg:justify-between px-8 lg:px-12 py-16 lg:py-36">
             <div className="relative flex justify-center lg:justify-normal lg:w-1/3 mb-10 lg:mb-0 z-10">
@@ -25,22 +28,19 @@ const AboutSection: React.FC = () => {
                 </div>
                 <div>
                     <p className='mb-5'>
-                        Hi, my name is Glafira Veretennikova. Currently based in Malmö, Sweden, I relocated here six years ago from St. Petersburg, Russia. I am fluent in both Swedish and English.
+                        {content['about.p1']}
                     </p>
                     <p className='mb-5'>
-                        I am a Fullstack Developer and my expertise includes C#, .NET, Blazor, React.js, TypeScript, and Node.js.
-                        I have experience working with Redux, Express.js, Socket.io, Tailwind, and Material UI, and writing tests with xUnit and Jest.
+                        {content['about.p2']}
                     </p>
                     <p className='mb-5'>
-                        Easy-going by nature, I know how to listen and find the right approach to people and work. Skilled at collaborating in teams, I can both lead projects and work independently when needed.
+                        {content['about.p3']}
                     </p>
                     <p className='mb-5'>
-                        Before transitioning into development, I spent over 15 years in administration and management.
-                        That experience sharpened my organizational skills, problem-solving, and customer focus — qualities I now bring to every project I build.
+                        {content['about.p4']}
                     </p>
                     <p className='mb-0'>
-                        I am passionate about interior design and interior photography, working professionally as a freelance photographer.
-                        I also enjoy traveling and exploring different cultures to understand how people live, think and create their spaces.
+                        {content['about.p5']}
                     </p>
                 </div>
 

@@ -1,8 +1,16 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
-import { projects } from '../helpers/projects.ts';
+import { useProjects } from '../hooks/useProjects';
+import { useSiteContent } from '../hooks/useSiteContent';
 
 const ProjectsSection: React.FC = () => {
+    const projects = useProjects();
+    const content = useSiteContent();
+
+    const title = (content['projects.title'] ?? '').trim();
+    const titleParts = title.split(' ');
+    const highlight = titleParts.pop() ?? '';
+    const heading = titleParts.join(' ');
 
     return (
         <div id='projects' className="bg-white px-8 lg:px-12 py-16 lg:py-28 relative">
@@ -10,15 +18,15 @@ const ProjectsSection: React.FC = () => {
                 <div className="max-w-7xl mx-auto lg:px-4">
                     <div className="mx-auto pb-16 lg:pb-28 flex flex-col lg:flex-row-reverse items-end lg:items-center justify-between">
                         <div className="lg:w-1/2 text-right">
-                            <h2 className="text-3xl lg:text-5xl font-bold lg:pl-24">Have a look at my
+                            <h2 className="text-3xl lg:text-5xl font-bold lg:pl-24">{heading}
                                 <span className="block sm:inline h-20  ml-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-red-500 to-orange-500">
-                                    projects
+                                    {highlight}
                                 </span>
                             </h2>
                         </div>
                         <div className="lg:w-1/2">
                             <p className="text-lg lg:text-xl ">
-                                Here are some of my completed projects. While some may be simple, they represent my ongoing effort to grow professionally and continuously learn new skills.
+                                {content['projects.subtitle']}
                             </p>
                         </div>
                     </div>

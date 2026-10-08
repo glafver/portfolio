@@ -3,9 +3,11 @@ import { useModal } from '../ModalContext';
 import { FaEnvelope } from 'react-icons/fa';
 import { IoMdClose } from "react-icons/io";
 import { socialLinks } from '../helpers/socials';
+import { useSiteContent } from '../hooks/useSiteContent';
 
 const ContactModal: React.FC = () => {
     const { open, handleClose } = useModal();
+    const content = useSiteContent();
 
     useEffect(() => {
         if (!open) return;
@@ -35,7 +37,7 @@ const ContactModal: React.FC = () => {
                         <div className='mb-5 text-xl'>You can easily reach me by email or any of my social media</div>
                         <div className='flex items-center justify-center mb-6'>
                             <FaEnvelope className='h-5 mr-3' />
-                            <a href="mailto:glafira.se@gmail.com" className='hover:text-red-500 transition duration-300'>glafira.se@gmail.com</a>
+                            <a href={`mailto:${content['contact.email']}`} className='hover:text-red-500 transition duration-300'>{content['contact.email']}</a>
                         </div>
                         <div className="flex items-center justify-center space-x-9 mb-12">
                             {socialLinks.map(({ name, url, icon: Icon }) => (

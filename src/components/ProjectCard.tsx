@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery';
-import { Project } from '../helpers/projects';
+import { Project } from '../types';
 
 interface ProjectCardProps {
     project: Project;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
-    const galleryItems = project.imageUrls.map(url => ({
+    const galleryItems = project.images.map(url => ({
         original: url,
         thumbnail: url,
     }));

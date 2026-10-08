@@ -1,9 +1,11 @@
 import React from 'react';
 import { useModal } from '../ModalContext';
 import { AttentionSeeker, Fade } from 'react-awesome-reveal';
+import { useSiteContent } from '../hooks/useSiteContent';
 
 const Hero: React.FC = () => {
     const { handleOpen } = useModal();
+    const content = useSiteContent();
 
     return (
         <>
@@ -14,14 +16,14 @@ const Hero: React.FC = () => {
                             Hey, I'm
 
                             <span className="ml-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-red-500 to-orange-500">
-                                Glafira
+                                {content['hero.name']}
                             </span>
 
                             , a
-                            <br />Fullstack Developer
+                            <br />{content['hero.role']}
                         </h1>
                         <p className="py-5 lg:py-5 text-lg lg:text-xl">
-                            with a passion for solving problems and high attention to visual details. My goal in work is to produce clean, understandable, and well-optimized code.
+                            {content['hero.subtitle']}
                         </p>
                         <div className='flex w-full justify-center mb-4 lg:mb-0'>
                             <AttentionSeeker effect="heartBeat">
