@@ -3,15 +3,15 @@ import { Zoom, Fade } from 'react-awesome-reveal';
 
 const logos: string[] = [
 
-    '/assets/tech_5.png',
-    '/assets/tech_12.png',
-    '/assets/tech_13.png',
-    '/assets/tech_4.png',
-    '/assets/tech_6.png',
-    '/assets/tech_7.png',
-    '/assets/tech_8.png',
-    '/assets/tech_10.png',
-    '/assets/tech_11.png'
+    '/assets/tech_5.webp',
+    '/assets/tech_12.webp',
+    '/assets/tech_13.webp',
+    '/assets/tech_4.webp',
+    '/assets/tech_6.webp',
+    '/assets/tech_7.webp',
+    '/assets/tech_8.webp',
+    '/assets/tech_10.webp',
+    '/assets/tech_11.webp'
 ];
 
 const Technologies: React.FC = () => {
@@ -23,7 +23,7 @@ const Technologies: React.FC = () => {
                     <div className="flex justify-center flex-wrap gap-6">
                         <Fade cascade duration={300}>
                             {logos.map((logo, index) => (
-                                <img src={logo} alt={`Logo ${index}`} className="h-12 lg:h-20" key={index} />
+                                <img src={logo} alt="" className="h-12 lg:h-20" key={index} loading="lazy" decoding="async" />
                             ))}
                         </Fade>
                     </div>

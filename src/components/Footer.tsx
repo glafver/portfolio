@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
         <footer className="bg-neutral-200 px-8 lg:px-24 pb-12">
             <div className="max-w-5xl mx-auto lg:grid grid-cols-2 gap-4 flex flex-col px-4 align-end justify-between">
                 <div className="flex flex-col items-center text-center w-full lg:w-2/5">
-                    <img className="w-20 lg:w-32 mb-6" src="/assets/GV_logo_dark.png" alt="Glafira Veretennikova logo" />
+                    <img className="w-20 lg:w-32 mb-6" src="/assets/GV_logo_dark.webp" alt="Glafira Veretennikova logo" />
                     <span className="font-semibold pl-4">Glafira Veretennikova</span>
                     <span className="font-semibold pl-4">{new Date().getFullYear()}</span>
                 </div>

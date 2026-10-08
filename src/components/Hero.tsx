@@ -39,7 +39,7 @@ const Hero: React.FC = () => {
                     <div className="lg:w-1/2 mt-8 lg:mt-0">
                         <Fade >
                             <img
-                                src='/assets/hero_img.jpg'
+                                src='/assets/hero_img.webp'
                                 alt="Glafira Veretennikova, fullstack developer"
                                 className="rounded shadow-lg w-full  lg:w-3/4 mx-auto lg:mr-0"
                             />

@@ -17,8 +17,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     const [openDropdown, setOpenDropdown] = useState(false);
 
     const renderMainImage = (item: ReactImageGalleryItem) => (
-        <a target="_blank" href={project.link} >
-            <img src={item.original} alt={item.description} className='aspect-[1.95]' />
+        <a target="_blank" rel="noopener noreferrer" href={project.link}>
+            <img
+                src={item.original}
+                alt={`${project.title} screenshot`}
+                className='aspect-[1.95]'
+                loading="lazy"
+                decoding="async"
+            />
         </a>
     );
 
@@ -30,7 +36,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                     showThumbnails={true}
                     showFullscreenButton={false}
                     showPlayButton={false}
-
+                    lazyLoad={true}
                     renderItem={renderMainImage}
                 />
             </Fade>

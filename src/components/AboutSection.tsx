@@ -7,9 +7,11 @@ const AboutSection: React.FC = () => {
             <div className="relative flex justify-center lg:justify-normal lg:w-1/3 mb-10 lg:mb-0 z-10">
                 <Fade >
                     <img
-                        src='/assets/about_img.jpg'
+                        src='/assets/about_img.webp'
                         alt="Glafira Veretennikova"
                         className="rounded z-10 object-cover object-top aspect-square lg:aspect-auto lg:w-full"
+                        loading="lazy"
+                        decoding="async"
                     />
                 </Fade>
             </div>
