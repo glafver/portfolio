@@ -21,7 +21,7 @@ const Technologies: React.FC = () => {
     const { isAdmin, openContentEditor } = useAdmin();
 
     return (
-        <section className="relative px-6 lg:px-8 py-20 lg:py-24 text-center">
+        <section className="relative px-6 lg:px-8 py-12 lg:py-16 text-center">
             {isAdmin && <EditButton onClick={() => openContentEditor('technologies')} className="absolute top-4 right-4 z-20" />}
 
             <div className="max-w-4xl mx-auto">
@@ -30,7 +30,7 @@ const Technologies: React.FC = () => {
                         {content['technologies.title']}
                     </h2>
                 </Fade>
-                <div className="mt-12 flex justify-center flex-wrap gap-x-10 gap-y-8">
+                <div className="mt-8 flex justify-center flex-wrap gap-x-10 gap-y-8">
                     <Fade cascade damping={0.05} direction="up" triggerOnce duration={600}>
                         {logos.map((logo, index) => (
                             <img
