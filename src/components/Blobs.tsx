@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface Blob {
+interface BlobShape {
     left: string;
     top: string;
     width: number;
@@ -8,35 +8,26 @@ interface Blob {
     radius: string;
     duration: string;
     delay: string;
-    opacity: number;
+    opacity?: number;
 }
 
-const BLOBS: Blob[] = [
+const FILLED_BLOBS: BlobShape[] = [
     { left: '-6%', top: '8%', width: 220, height: 220, radius: '60% 40% 55% 45% / 55% 45% 60% 40%', duration: '9s', delay: '0s', opacity: 0.15 },
-    { left: '72%', top: '4%', width: 170, height: 170, radius: '45% 55% 40% 60% / 60% 40% 55% 45%', duration: '11s', delay: '-4s', opacity: 0.12 },
     { left: '82%', top: '55%', width: 240, height: 240, radius: '55% 45% 60% 40% / 45% 60% 40% 55%', duration: '13s', delay: '-2s', opacity: 0.1 },
-    { left: '8%', top: '62%', width: 150, height: 150, radius: '40% 60% 55% 45% / 55% 40% 60% 45%', duration: '10s', delay: '-6s', opacity: 0.14 },
 ];
 
-interface Line {
-    left: string;
-    top: string;
-    width: number;
-    rotate: number;
-}
-
-const LINES: Line[] = [
-    { left: '12%', top: '38%', width: 110, rotate: 18 },
-    { left: '55%', top: '72%', width: 90, rotate: -22 },
-    { left: '70%', top: '18%', width: 80, rotate: 28 },
-    { left: '35%', top: '12%', width: 70, rotate: -14 },
+const OUTLINE_BLOBS: BlobShape[] = [
+    { left: '72%', top: '4%', width: 170, height: 150, radius: '45% 55% 40% 60% / 60% 40% 55% 45%', duration: '11s', delay: '-4s' },
+    { left: '8%', top: '62%', width: 150, height: 130, radius: '40% 60% 55% 45% / 55% 40% 60% 45%', duration: '10s', delay: '-6s' },
+    { left: '45%', top: '28%', width: 110, height: 90, radius: '55% 45% 60% 40% / 45% 60% 40% 55%', duration: '12s', delay: '-1s' },
+    { left: '60%', top: '60%', width: 95, height: 80, radius: '60% 40% 55% 45% / 55% 45% 60% 40%', duration: '9s', delay: '-3.5s' },
 ];
 
 const Blobs: React.FC = () => (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        {BLOBS.map((b, i) => (
+        {FILLED_BLOBS.map((b, i) => (
             <div
-                key={`blob-${i}`}
+                key={`filled-${i}`}
                 className="absolute bg-accent dark:bg-accent-light animate-blob"
                 style={{
                     left: b.left,
@@ -50,15 +41,18 @@ const Blobs: React.FC = () => (
                 }}
             />
         ))}
-        {LINES.map((l, i) => (
-            <span
-                key={`line-${i}`}
-                className="absolute h-px bg-accent/40 dark:bg-accent-light/40"
+        {OUTLINE_BLOBS.map((b, i) => (
+            <div
+                key={`outline-${i}`}
+                className="absolute border-2 border-accent/40 dark:border-accent-light/40 animate-blob"
                 style={{
-                    left: l.left,
-                    top: l.top,
-                    width: l.width,
-                    transform: `rotate(${l.rotate}deg)`,
+                    left: b.left,
+                    top: b.top,
+                    width: b.width,
+                    height: b.height,
+                    borderRadius: b.radius,
+                    animationDuration: b.duration,
+                    animationDelay: b.delay,
                 }}
             />
         ))}
