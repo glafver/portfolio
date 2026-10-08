@@ -28,7 +28,6 @@ const Navbar: React.FC = () => {
                 </div>
 
                 <div className="hidden lg:flex items-center gap-3">
-                    <ThemeToggle />
                     <a
                         href={content['cv.url']}
                         download
@@ -36,6 +35,7 @@ const Navbar: React.FC = () => {
                     >
                         Download CV
                     </a>
+                    <ThemeToggle />
                 </div>
 
                 <div className="lg:hidden flex items-center gap-2">
