@@ -46,33 +46,14 @@ const Hero: React.FC = () => {
 
                 <Fade direction="up" delay={150} triggerOnce duration={600} className="lg:w-1/2">
                     <div className="relative max-w-sm mx-auto">
+                        <div className="absolute -top-10 -right-10 w-44 h-44 rounded-full bg-accent" aria-hidden="true" />
+                        <div className="absolute -bottom-8 -left-8 w-28 h-28 rounded-full border-2 border-accent/50 dark:border-accent/40" aria-hidden="true" />
                         <div className="absolute -inset-6 rounded-full bg-accent/20 dark:bg-accent/15 blur-3xl" aria-hidden="true" />
-                        <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-t-full rounded-b-3xl border border-accent/50 dark:border-accent/40" aria-hidden="true" />
                         <img
                             src="/assets/hero_img.webp"
                             alt="Glafira Veretennikova, fullstack developer"
                             className="relative rounded-t-full rounded-b-3xl shadow-xl w-full object-cover aspect-[4/5]"
                         />
-
-                        <div className="absolute -bottom-6 -left-6 w-28 h-28 z-10">
-                            <svg viewBox="0 0 120 120" className="w-full h-full animate-spin-slow">
-                                <defs>
-                                    <path id="hero-badge-circle" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" />
-                                </defs>
-                                <circle cx="60" cy="60" r="60" className="fill-accent" />
-                                <text
-                                    className="fill-white"
-                                    fontSize="9.5"
-                                    letterSpacing="1.8"
-                                    style={{ textTransform: 'uppercase' }}
-                                >
-                                    <textPath href="#hero-badge-circle">Fullstack developer · Glafira ·</textPath>
-                                </text>
-                            </svg>
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="w-2.5 h-2.5 rounded-full bg-white" />
-                            </div>
-                        </div>
                     </div>
                 </Fade>
             </div>
