@@ -1,7 +1,13 @@
+import { lazy, Suspense } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import type { EditorTarget } from './types';
-import ProjectForm from './ProjectForm';
-import ContentSectionEditor from './ContentSectionEditor';
+
+const ProjectForm = lazy(() => import('./ProjectForm'));
+const ContentSectionEditor = lazy(() => import('./ContentSectionEditor'));
+
+const EditorLoading = () => (
+    <div className="p-8 text-neutral-500">Loading…</div>
+);
 
 interface EditorModalProps {
     target: EditorTarget | null;
@@ -25,11 +31,13 @@ const EditorModal: React.FC<EditorModalProps> = ({ target, onClose }) => {
                     className="text-xl cursor-pointer absolute top-4 right-4 text-neutral-400 hover:text-neutral-700 transition z-10"
                     aria-label="Close"
                 />
-                {target.kind === 'project' ? (
-                    <ProjectForm initial={target.project} onCancel={onClose} onSaved={onClose} />
-                ) : (
-                    <ContentSectionEditor section={target.section} onClose={onClose} />
-                )}
+                <Suspense fallback={<EditorLoading />}>
+                    {target.kind === 'project' ? (
+                        <ProjectForm initial={target.project} onCancel={onClose} onSaved={onClose} />
+                    ) : (
+                        <ContentSectionEditor section={target.section} onClose={onClose} />
+                    )}
+                </Suspense>
             </div>
         </div>
     );
