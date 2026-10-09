@@ -17,6 +17,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
     const [isHovered, setIsHovered] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
     const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+    const videoRef = useRef<HTMLVideoElement | null>(null);
     const { isAdmin, openProjectEditor } = useAdmin();
 
     const hidden = project.visible === false;
@@ -34,6 +35,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
             timerRef.current = null;
         };
     }, [isHovered, project.images.length]);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+        if (isHovered) {
+            video.play().catch(() => {});
+        } else {
+            video.pause();
+            video.currentTime = 0;
+        }
+    }, [isHovered]);
 
     const handleDelete = async () => {
         if (!window.confirm(`Delete "${project.title}"? This cannot be undone.`)) return;
@@ -102,14 +114,27 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
                     href={project.link}
                     className="block relative aspect-[16/9] overflow-hidden bg-neutral-100 dark:bg-neutral-800"
                 >
-                    {project.images.map((url, i) => (
-                        <img
-                            key={url}
-                            src={url}
-                            alt={`${project.title} screenshot`}
-                            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${i === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+                    {project.video ? (
+                        <video
+                            ref={videoRef}
+                            src={project.video}
+                            poster={project.images[0]}
+                            muted
+                            loop
+                            playsInline
+                            preload="metadata"
+                            className="absolute inset-0 w-full h-full object-cover"
                         />
-                    ))}
+                    ) : (
+                        project.images.map((url, i) => (
+                            <img
+                                key={url}
+                                src={url}
+                                alt={`${project.title} screenshot`}
+                                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${i === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+                            />
+                        ))
+                    )}
                 </a>
             </Fade>
 

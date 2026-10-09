@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Project } from '../types';
-import { uploadImage, createProject, updateProject, type ProjectInput } from '../lib/adminApi';
+import { uploadImage, uploadFile, createProject, updateProject, type ProjectInput } from '../lib/adminApi';
 
 interface ProjectFormProps {
     initial: Project | null;
@@ -15,6 +15,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
     const [important, setImportant] = useState(initial?.important ?? '');
     const [tech, setTech] = useState((initial?.tech ?? []).join(', '));
     const [images, setImages] = useState<string[]>(initial?.images ?? []);
+    const [video, setVideo] = useState(initial?.video ?? '');
     const [sortOrder, setSortOrder] = useState(initial?.sort_order ?? 0);
 
     const [saving, setSaving] = useState(false);
@@ -35,6 +36,20 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
         }
     };
 
+    const handleVideoUpload = async (file: File) => {
+        setUploading(true);
+        setError('');
+        try {
+            const url = await uploadFile(file);
+            setVideo(url);
+        } catch (e) {
+            console.error(e);
+            setError('Failed to upload video.');
+        } finally {
+            setUploading(false);
+        }
+    };
+
     const handleSubmit = async () => {
         setError('');
         if (!title.trim()) {
@@ -50,6 +65,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
                 important: important.trim() || null,
                 tech: tech.split(',').map((t) => t.trim()).filter(Boolean),
                 images,
+                video: video.trim() || undefined,
                 sort_order: Number(sortOrder) || 0,
             };
             if (initial) {
@@ -154,6 +170,38 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
                             }}
                         />
                     </label>
+                </div>
+
+                <div>
+                    <label className={labelClass}>Screencast video (mp4, optional)</label>
+                    {video && (
+                        <div className="text-xs text-neutral-500 mb-2 break-all">{video}</div>
+                    )}
+                    <div className="flex items-center gap-2">
+                        <label className="inline-flex items-center gap-2 border border-dashed border-neutral-400 rounded-lg px-4 py-2.5 text-sm cursor-pointer hover:bg-neutral-50 transition">
+                            {uploading ? 'Uploading…' : 'Upload video'}
+                            <input
+                                type="file"
+                                accept="video/*"
+                                className="hidden"
+                                disabled={uploading}
+                                onChange={(e) => {
+                                    const file = e.target.files?.[0];
+                                    if (file) handleVideoUpload(file);
+                                    e.target.value = '';
+                                }}
+                            />
+                        </label>
+                        {video && (
+                            <button
+                                type="button"
+                                onClick={() => setVideo('')}
+                                className="text-red-600 text-sm hover:underline"
+                            >
+                                Remove
+                            </button>
+                        )}
+                    </div>
                 </div>
 
                 {error && <p className="text-red-600 text-sm">{error}</p>}

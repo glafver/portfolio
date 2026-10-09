@@ -10,6 +10,7 @@ export type ProjectInput = {
     link: string;
     important: string | null;
     sort_order: number;
+    video?: string;
 };
 
 export async function createProject(input: ProjectInput): Promise<void> {
