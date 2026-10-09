@@ -12,6 +12,7 @@ const TimelineEntryForm: React.FC<TimelineEntryFormProps> = ({ initial, onCancel
     const [type, setType] = useState(initial?.type ?? 'work');
     const [title, setTitle] = useState(initial?.title ?? '');
     const [place, setPlace] = useState(initial?.place ?? '');
+    const [link, setLink] = useState(initial?.link ?? '');
     const [period, setPeriod] = useState(initial?.period ?? '');
     const [description, setDescription] = useState(initial?.description ?? '');
     const [sortOrder, setSortOrder] = useState(initial?.sort_order ?? 0);
@@ -35,6 +36,7 @@ const TimelineEntryForm: React.FC<TimelineEntryFormProps> = ({ initial, onCancel
                 type,
                 title: title.trim(),
                 place: place.trim(),
+                link: link.trim(),
                 period: period.trim(),
                 description: description.trim(),
                 sort_order: Number(sortOrder) || 0,
@@ -74,6 +76,10 @@ const TimelineEntryForm: React.FC<TimelineEntryFormProps> = ({ initial, onCancel
                 <div>
                     <label className={labelClass}>Place (school / company)</label>
                     <input className={inputClass} value={place} onChange={(e) => setPlace(e.target.value)} placeholder="Malmö University" />
+                </div>
+                <div>
+                    <label className={labelClass}>Link (optional)</label>
+                    <input className={inputClass} value={link} onChange={(e) => setLink(e.target.value)} placeholder="https://…" />
                 </div>
                 <div>
                     <label className={labelClass}>Period</label>

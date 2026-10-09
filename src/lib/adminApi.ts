@@ -91,6 +91,7 @@ export type TimelineInput = {
     type: string;
     title: string;
     place: string;
+    link: string;
     period: string;
     description: string;
     sort_order: number;
