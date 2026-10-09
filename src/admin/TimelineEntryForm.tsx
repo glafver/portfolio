@@ -15,7 +15,6 @@ const TimelineEntryForm: React.FC<TimelineEntryFormProps> = ({ initial, onCancel
     const [link, setLink] = useState(initial?.link ?? '');
     const [period, setPeriod] = useState(initial?.period ?? '');
     const [description, setDescription] = useState(initial?.description ?? '');
-    const [sortOrder, setSortOrder] = useState(initial?.sort_order ?? 0);
 
     const [saving, setSaving] = useState(false);
     const [error, setError] = useState('');
@@ -39,7 +38,6 @@ const TimelineEntryForm: React.FC<TimelineEntryFormProps> = ({ initial, onCancel
                 link: link.trim(),
                 period: period.trim(),
                 description: description.trim(),
-                sort_order: Number(sortOrder) || 0,
             };
             if (initial) {
                 await updateTimelineEntry(initial.id, input);
@@ -89,11 +87,6 @@ const TimelineEntryForm: React.FC<TimelineEntryFormProps> = ({ initial, onCancel
                     <label className={labelClass}>Description</label>
                     <textarea className={inputClass} rows={3} value={description} onChange={(e) => setDescription(e.target.value)} />
                 </div>
-                <div>
-                    <label className={labelClass}>Sort order</label>
-                    <input className={inputClass} type="number" value={sortOrder} onChange={(e) => setSortOrder(Number(e.target.value))} />
-                </div>
-
                 {error && <p className="text-red-600 text-sm">{error}</p>}
 
                 <div className="flex gap-3 pt-2">

@@ -1,6 +1,6 @@
 import { supabase } from './supabase';
 import { notifyContentChanged } from './refresh';
-import type { Project } from '../types';
+import type { Project, TimelineEntry } from '../types';
 
 export type ProjectInput = {
     title: string;
@@ -94,12 +94,17 @@ export type TimelineInput = {
     link: string;
     period: string;
     description: string;
-    sort_order: number;
 };
 
 export async function createTimelineEntry(input: TimelineInput): Promise<void> {
     if (!supabase) throw new Error('Supabase is not configured');
-    const { error } = await supabase.from('timeline').insert(input);
+    const { data } = await supabase
+        .from('timeline')
+        .select('sort_order')
+        .order('sort_order', { ascending: false })
+        .limit(1);
+    const next = (data && data.length > 0 ? data[0].sort_order : 0) + 1;
+    const { error } = await supabase.from('timeline').insert({ ...input, sort_order: next });
     if (error) throw error;
     notifyContentChanged();
 }
@@ -108,6 +113,18 @@ export async function updateTimelineEntry(id: string, input: TimelineInput): Pro
     if (!supabase) throw new Error('Supabase is not configured');
     const { error } = await supabase.from('timeline').update(input).eq('id', id);
     if (error) throw error;
+    notifyContentChanged();
+}
+
+export async function reorderTimeline(ordered: TimelineEntry[]): Promise<void> {
+    if (!supabase) throw new Error('Supabase is not configured');
+    for (let i = 0; i < ordered.length; i++) {
+        const { error } = await supabase
+            .from('timeline')
+            .update({ sort_order: i + 1 })
+            .eq('id', ordered[i].id);
+        if (error) throw error;
+    }
     notifyContentChanged();
 }
 

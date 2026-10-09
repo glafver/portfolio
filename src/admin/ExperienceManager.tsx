@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import { useTimeline } from '../hooks/useTimeline';
 import { useCertificates } from '../hooks/useCertificates';
-import { deleteTimelineEntry, deleteCertificate, createCertificate, uploadImage } from '../lib/adminApi';
+import { deleteTimelineEntry, deleteCertificate, createCertificate, uploadImage, reorderTimeline } from '../lib/adminApi';
 import TimelineEntryForm from './TimelineEntryForm';
 import type { TimelineEntry } from '../types';
 
@@ -18,6 +19,18 @@ const ExperienceManager: React.FC = () => {
         if (!window.confirm(`Delete "${entry.title}"?`)) return;
         try {
             await deleteTimelineEntry(entry.id);
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
+    const handleMove = async (index: number, direction: 'up' | 'down') => {
+        const target = direction === 'up' ? index - 1 : index + 1;
+        if (target < 0 || target >= timeline.length) return;
+        const next = [...timeline];
+        [next[index], next[target]] = [next[target], next[index]];
+        try {
+            await reorderTimeline(next);
         } catch (e) {
             console.error(e);
         }
@@ -86,7 +99,7 @@ const ExperienceManager: React.FC = () => {
                         </button>
                     </div>
                     <ul className="space-y-2">
-                        {timeline.map((entry) => (
+                        {timeline.map((entry, index) => (
                             <li key={entry.id} className="bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg p-3 flex items-center justify-between gap-3">
                                 <div className="min-w-0">
                                     <div className="font-semibold truncate">{entry.title}</div>
@@ -94,7 +107,23 @@ const ExperienceManager: React.FC = () => {
                                         {entry.type === 'education' ? 'Education' : 'Experience'} · {entry.period}
                                     </div>
                                 </div>
-                                <div className="flex gap-2 shrink-0">
+                                <div className="flex items-center gap-1.5 shrink-0">
+                                    <button
+                                        onClick={() => handleMove(index, 'up')}
+                                        disabled={index === 0}
+                                        className="w-7 h-7 flex items-center justify-center border border-neutral-300 rounded-md text-neutral-600 hover:bg-neutral-100 transition disabled:opacity-30 disabled:cursor-not-allowed"
+                                        aria-label="Move up"
+                                    >
+                                        <FaArrowUp size={11} />
+                                    </button>
+                                    <button
+                                        onClick={() => handleMove(index, 'down')}
+                                        disabled={index === timeline.length - 1}
+                                        className="w-7 h-7 flex items-center justify-center border border-neutral-300 rounded-md text-neutral-600 hover:bg-neutral-100 transition disabled:opacity-30 disabled:cursor-not-allowed"
+                                        aria-label="Move down"
+                                    >
+                                        <FaArrowDown size={11} />
+                                    </button>
                                     <button onClick={() => setEditing(entry)} className="border border-neutral-300 px-3 py-1 rounded-md text-sm hover:bg-neutral-100 transition">Edit</button>
                                     <button onClick={() => handleDeleteEntry(entry)} className="border border-red-300 text-red-600 px-3 py-1 rounded-md text-sm hover:bg-red-50 transition">Delete</button>
                                 </div>
