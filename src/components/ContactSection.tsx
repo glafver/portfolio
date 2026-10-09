@@ -1,12 +1,10 @@
 import React from 'react';
 import Reveal from './Reveal';
-import { useModal } from '../ModalContext';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { useAdmin } from '../admin/AdminContext';
 import EditButton from '../admin/EditButton';
 
 const Contact: React.FC = () => {
-    const { handleOpen } = useModal();
     const content = useSiteContent();
     const { isAdmin, openContentEditor } = useAdmin();
 
@@ -20,12 +18,13 @@ const Contact: React.FC = () => {
                         {content['contact.title']}
                     </h2>
                     <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <button
-                            onClick={() => { handleOpen(); }}
+                        <a
+                            href={content['cv.url']}
+                            download
                             className="bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3.5 rounded-full transition"
                         >
-                            Get in touch
-                        </button>
+                            Download CV
+                        </a>
                         <a
                             href={`mailto:${content['contact.email']}`}
                             className="text-neutral-700 dark:text-neutral-200 font-medium hover:text-accent transition"
