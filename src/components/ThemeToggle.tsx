@@ -6,6 +6,17 @@ const ThemeToggle: React.FC = () => {
 
     useEffect(() => {
         setDark(document.documentElement.classList.contains('dark'));
+
+        const media = window.matchMedia('(prefers-color-scheme: dark)');
+        const onChange = (event: MediaQueryListEvent) => {
+            // Follow the system theme only if the user hasn't chosen manually.
+            if (!localStorage.getItem('theme')) {
+                document.documentElement.classList.toggle('dark', event.matches);
+                setDark(event.matches);
+            }
+        };
+        media.addEventListener('change', onChange);
+        return () => media.removeEventListener('change', onChange);
     }, []);
 
     const toggle = () => {
