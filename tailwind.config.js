@@ -9,7 +9,7 @@ export default {
     extend: {
       fontFamily: {
         mont: ['Montserrat', 'sans-serif'],
-        display: ['"Anta"', 'Montserrat', 'sans-serif'],
+        display: ['"IBM Plex Sans"', 'Montserrat', 'sans-serif'],
       },
       colors: {
         accent: {
