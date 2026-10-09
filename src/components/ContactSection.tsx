@@ -2,6 +2,7 @@ import React from 'react';
 import Reveal from './Reveal';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { useAdmin } from '../admin/AdminContext';
+import { downloadFile } from '../lib/download';
 import EditButton from '../admin/EditButton';
 
 const Contact: React.FC = () => {
@@ -18,13 +19,12 @@ const Contact: React.FC = () => {
                         {content['contact.title']}
                     </h2>
                     <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <a
-                            href={content['cv.url']}
-                            download
+                        <button
+                            onClick={() => downloadFile(content['cv.url'], 'Glafira_Veretennikova_CV.pdf')}
                             className="bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3.5 rounded-full transition"
                         >
                             Download CV
-                        </a>
+                        </button>
                         <a
                             href={`mailto:${content['contact.email']}`}
                             className="text-neutral-700 dark:text-neutral-200 font-medium hover:text-accent transition"

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { useSiteContent } from '../hooks/useSiteContent';
+import { downloadFile } from '../lib/download';
 import ThemeToggle from './ThemeToggle';
 
 const Navbar: React.FC = () => {
@@ -29,13 +30,12 @@ const Navbar: React.FC = () => {
                 </div>
 
                 <div className="hidden lg:flex items-center gap-3">
-                    <a
-                        href={content['cv.url']}
-                        download
+                    <button
+                        onClick={() => downloadFile(content['cv.url'], 'Glafira_Veretennikova_CV.pdf')}
                         className="bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-4 py-2 rounded-full transition"
                     >
                         Download CV
-                    </a>
+                    </button>
                     <ThemeToggle />
                 </div>
 
@@ -57,9 +57,15 @@ const Navbar: React.FC = () => {
                     <a href="#about" onClick={() => setIsOpen(false)} className={`block py-2 ${linkClass}`}>About</a>
                     <a href="#experience" onClick={() => setIsOpen(false)} className={`block py-2 ${linkClass}`}>Experience</a>
                     <a href="#contact" onClick={() => setIsOpen(false)} className={`block py-2 ${linkClass}`}>Contact</a>
-                    <a href={content['cv.url']} download onClick={() => setIsOpen(false)} className={`block py-2 ${linkClass}`}>
+                    <button
+                        onClick={() => {
+                            downloadFile(content['cv.url'], 'Glafira_Veretennikova_CV.pdf');
+                            setIsOpen(false);
+                        }}
+                        className={`block py-2 ${linkClass} w-full text-left`}
+                    >
                         Download CV
-                    </a>
+                    </button>
                 </div>
             )}
         </nav>
