@@ -69,7 +69,7 @@ const ProjectsSection: React.FC = () => {
                             onClick={() => setShowAll(!showAll)}
                             className="border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 font-semibold px-8 py-3 rounded-full hover:border-accent hover:text-accent dark:hover:text-accent-light transition"
                         >
-                            {showAll ? 'Show less ↑' : 'Show more ↓'}
+                            {showAll ? 'Show less' : 'Show more projects'}
                         </button>
                     </div>
                 )}
