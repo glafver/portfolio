@@ -112,7 +112,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
                     target="_blank"
                     rel="noopener noreferrer"
                     href={project.link}
-                    className="block relative aspect-[16/9] overflow-hidden bg-neutral-100 dark:bg-neutral-800"
+                    className="block relative aspect-[16/10] overflow-hidden bg-neutral-100 dark:bg-neutral-800"
                 >
                     {project.video ? (
                         <video

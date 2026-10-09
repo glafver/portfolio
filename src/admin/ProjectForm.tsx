@@ -44,7 +44,8 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
             setVideo(url);
         } catch (e) {
             console.error(e);
-            setError('Failed to upload video.');
+            const msg = e instanceof Error ? e.message : String(e);
+            setError(`Failed to upload video: ${msg}`);
         } finally {
             setUploading(false);
         }
