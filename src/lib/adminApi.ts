@@ -86,3 +86,47 @@ export async function saveSiteContent(entries: Record<string, string>): Promise<
     if (error) throw error;
     notifyContentChanged();
 }
+
+export type TimelineInput = {
+    title: string;
+    period: string;
+    description: string;
+    sort_order: number;
+};
+
+export async function createTimelineEntry(input: TimelineInput): Promise<void> {
+    if (!supabase) throw new Error('Supabase is not configured');
+    const { error } = await supabase.from('timeline').insert(input);
+    if (error) throw error;
+    notifyContentChanged();
+}
+
+export async function updateTimelineEntry(id: string, input: TimelineInput): Promise<void> {
+    if (!supabase) throw new Error('Supabase is not configured');
+    const { error } = await supabase.from('timeline').update(input).eq('id', id);
+    if (error) throw error;
+    notifyContentChanged();
+}
+
+export async function deleteTimelineEntry(id: string): Promise<void> {
+    if (!supabase) throw new Error('Supabase is not configured');
+    const { error } = await supabase.from('timeline').delete().eq('id', id);
+    if (error) throw error;
+    notifyContentChanged();
+}
+
+export async function createCertificate(image_url: string, title: string): Promise<void> {
+    if (!supabase) throw new Error('Supabase is not configured');
+    const { error } = await supabase
+        .from('certificates')
+        .insert({ image_url, title, sort_order: 0 });
+    if (error) throw error;
+    notifyContentChanged();
+}
+
+export async function deleteCertificate(id: string): Promise<void> {
+    if (!supabase) throw new Error('Supabase is not configured');
+    const { error } = await supabase.from('certificates').delete().eq('id', id);
+    if (error) throw error;
+    notifyContentChanged();
+}

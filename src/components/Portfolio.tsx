@@ -3,6 +3,7 @@ import Hero from './Hero';
 import ProjectsSection from './ProjectsSection';
 import TechnologiesSection from './TechnologiesSection';
 import AboutSection from './AboutSection';
+import ExperienceSection from './ExperienceSection';
 import ContactSection from './ContactSection';
 import Footer from './Footer';
 import ContactModal from './ContactModal';
@@ -18,6 +19,7 @@ const Portfolio: React.FC = () => {
                 <ProjectsSection />
                 <TechnologiesSection />
                 <AboutSection />
+                <ExperienceSection />
                 <ContactSection />
                 <Footer />
                 <ContactModal />

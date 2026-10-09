@@ -130,4 +130,7 @@ export const fallbackContent: Record<string, string> = {
     'social.instagram': 'https://www.instagram.com/glafver/',
 
     'cv.url': '/assets/Glafira_Veretennikova_fullstack_CV.pdf',
+
+    'experience.title': 'Experience & Education',
+    'experience.subtitle': '',
 };

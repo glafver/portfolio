@@ -40,6 +40,13 @@ export const CONTENT_SECTIONS: Record<string, ContentSection> = {
             { key: 'about.p5', label: 'Paragraph 5', multiline: true },
         ],
     },
+    experience: {
+        label: 'Experience & Education',
+        fields: [
+            { key: 'experience.title', label: 'Heading', multiline: false },
+            { key: 'experience.subtitle', label: 'Subtitle', multiline: true },
+        ],
+    },
     contact: {
         label: 'Contact',
         fields: [

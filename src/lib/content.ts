@@ -1,6 +1,6 @@
 import { supabase } from './supabase';
 import { fallbackProjects, fallbackContent } from '../helpers/fallbackData';
-import type { Project } from '../types';
+import type { Project, TimelineEntry, Certificate } from '../types';
 
 export async function fetchProjects(): Promise<Project[] | null> {
     if (!supabase) return null;
@@ -29,6 +29,32 @@ export async function fetchSiteContent(): Promise<Record<string, string> | null>
         map[row.key] = row.value;
     }
     return map;
+}
+
+export async function fetchTimeline(): Promise<TimelineEntry[] | null> {
+    if (!supabase) return null;
+    const { data, error } = await supabase
+        .from('timeline')
+        .select('*')
+        .order('sort_order', { ascending: true });
+    if (error) {
+        console.error('Failed to fetch timeline:', error);
+        return null;
+    }
+    return data as TimelineEntry[];
+}
+
+export async function fetchCertificates(): Promise<Certificate[] | null> {
+    if (!supabase) return null;
+    const { data, error } = await supabase
+        .from('certificates')
+        .select('*')
+        .order('sort_order', { ascending: true });
+    if (error) {
+        console.error('Failed to fetch certificates:', error);
+        return null;
+    }
+    return data as Certificate[];
 }
 
 export { fallbackProjects, fallbackContent };

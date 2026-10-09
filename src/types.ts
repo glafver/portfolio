@@ -11,3 +11,20 @@ export interface Project {
     video?: string;
     created_at?: string;
 }
+
+export interface Certificate {
+    id: string;
+    image_url: string;
+    title: string;
+    sort_order: number;
+    created_at?: string;
+}
+
+export interface TimelineEntry {
+    id: string;
+    title: string;
+    period: string;
+    description: string;
+    sort_order: number;
+    created_at?: string;
+}

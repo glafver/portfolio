@@ -14,6 +14,7 @@ export const AdminProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         loading,
         openProjectEditor: (project) => setEditor({ kind: 'project', project }),
         openContentEditor: (section) => setEditor({ kind: 'content', section }),
+        openExperienceEditor: () => setEditor({ kind: 'experience' }),
         closeEditor: () => setEditor(null),
     };
 

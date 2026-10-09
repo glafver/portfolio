@@ -7,6 +7,7 @@ export interface AdminContextValue {
     loading: boolean;
     openProjectEditor: (project: Project | null) => void;
     openContentEditor: (section: ContentSectionKey) => void;
+    openExperienceEditor: () => void;
     closeEditor: () => void;
 }
 

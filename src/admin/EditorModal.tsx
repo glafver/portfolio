@@ -4,6 +4,7 @@ import type { EditorTarget } from './types';
 
 const ProjectForm = lazy(() => import('./ProjectForm'));
 const ContentSectionEditor = lazy(() => import('./ContentSectionEditor'));
+const ExperienceManager = lazy(() => import('./ExperienceManager'));
 
 const EditorLoading = () => (
     <div className="p-8 text-neutral-500">Loading…</div>
@@ -34,8 +35,10 @@ const EditorModal: React.FC<EditorModalProps> = ({ target, onClose }) => {
                 <Suspense fallback={<EditorLoading />}>
                     {target.kind === 'project' ? (
                         <ProjectForm initial={target.project} onCancel={onClose} onSaved={onClose} />
-                    ) : (
+                    ) : target.kind === 'content' ? (
                         <ContentSectionEditor section={target.section} onClose={onClose} />
+                    ) : (
+                        <ExperienceManager />
                     )}
                 </Suspense>
             </div>
