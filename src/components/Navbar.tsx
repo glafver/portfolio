@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
                             downloadFile(content['cv.url'], 'Glafira_Veretennikova_CV.pdf');
                             setIsOpen(false);
                         }}
-                        className={`block py-2 ${linkClass} w-full`}
+                        className={`block py-2 ${linkClass} w-full text-right`}
                     >
                         Download CV
                     </button>
