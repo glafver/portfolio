@@ -53,7 +53,8 @@ const Technologies: React.FC = () => {
                             <img
                                 src={logo}
                                 alt=""
-                                className="h-8 lg:h-10 opacity-70 hover:opacity-100 transition"
+                                className="h-8 lg:h-10 opacity-70 hover:opacity-100 transition animate-float"
+                                style={{ animationDelay: `${(index % 5) * 0.7}s` }}
                                 loading="lazy"
                                 decoding="async"
                             />
