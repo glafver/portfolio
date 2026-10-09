@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Reveal from './Reveal';
 import ProjectCard from './ProjectCard';
 import { useProjects } from '../hooks/useProjects';
@@ -11,8 +11,10 @@ const ProjectsSection: React.FC = () => {
     const projects = useProjects();
     const content = useSiteContent();
     const { isAdmin, openContentEditor } = useAdmin();
+    const [showAll, setShowAll] = useState(false);
 
     const displayedProjects = isAdmin ? projects : projects.filter((p) => p.visible !== false);
+    const visibleProjects = isAdmin || showAll ? displayedProjects : displayedProjects.slice(0, 4);
 
     const title = (content['projects.title'] ?? '').trim();
     const titleParts = title.split(' ');
@@ -49,17 +51,28 @@ const ProjectsSection: React.FC = () => {
                 </Reveal>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-                    {displayedProjects.map((project, index) => (
+                    {visibleProjects.map((project, index) => (
                         <Reveal key={project.id} delay={index * 80} className="h-full">
                             <ProjectCard
                                 project={project}
                                 index={index}
-                                total={displayedProjects.length}
+                                total={visibleProjects.length}
                                 onMove={(direction) => handleMove(index, direction)}
                             />
                         </Reveal>
                     ))}
                 </div>
+
+                {!isAdmin && displayedProjects.length > 4 && (
+                    <div className="mt-10 text-center">
+                        <button
+                            onClick={() => setShowAll(!showAll)}
+                            className="border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 font-semibold px-8 py-3 rounded-full hover:border-accent hover:text-accent dark:hover:text-accent-light transition"
+                        >
+                            {showAll ? 'Show less ↑' : 'Show more ↓'}
+                        </button>
+                    </div>
+                )}
             </div>
         </section>
     );
