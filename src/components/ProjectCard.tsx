@@ -15,8 +15,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
     const [openDropdown, setOpenDropdown] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [tilt, setTilt] = useState({ x: 0, y: 0 });
     const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
     const videoRef = useRef<HTMLVideoElement | null>(null);
+    const cardRef = useRef<HTMLDivElement>(null);
     const { isAdmin, openProjectEditor } = useAdmin();
 
     const hidden = project.visible === false;
@@ -63,14 +65,29 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
         }
     };
 
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const el = cardRef.current;
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width - 0.5;
+        const py = (e.clientY - rect.top) / rect.height - 0.5;
+        setTilt({ x: -py * 5, y: px * 5 });
+    };
+
     const iconBtn =
         'flex items-center justify-center bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-600 rounded-full w-8 h-8 shadow hover:bg-neutral-50 dark:hover:bg-neutral-800 transition disabled:opacity-30 disabled:cursor-not-allowed';
 
     return (
         <div
-            className={`group relative h-full bg-white dark:bg-neutral-800 rounded-2xl border border-neutral-200 dark:border-neutral-700 shadow-md hover:shadow-2xl hover:-translate-y-1 transition duration-300 overflow-hidden flex flex-col ${hidden ? 'opacity-60' : ''}`}
+            ref={cardRef}
+            className={`group relative h-full bg-white dark:bg-neutral-800 rounded-2xl border border-neutral-200 dark:border-neutral-700 shadow-md hover:shadow-2xl transition-all duration-200 overflow-hidden flex flex-col ${hidden ? 'opacity-60' : ''}`}
             onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={() => {
+                setTilt({ x: 0, y: 0 });
+                setIsHovered(false);
+            }}
+            style={{ transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` }}
         >
             {isAdmin && hidden && (
                 <span className="absolute top-3 left-3 z-20 bg-neutral-900 text-white text-xs font-semibold px-2.5 py-1 rounded-full">
