@@ -24,6 +24,7 @@ export interface TimelineEntry {
     id: string;
     type: string;
     title: string;
+    place: string;
     period: string;
     description: string;
     sort_order: number;

@@ -15,6 +15,9 @@ const Timeline: React.FC<{ entries: TimelineEntry[] }> = ({ entries }) => (
             <div key={entry.id} className="relative pb-8">
                 <span className="absolute -left-8 top-1.5 w-[15px] h-[15px] rounded-full bg-accent border-2 border-white dark:border-neutral-900" aria-hidden="true" />
                 <div className="font-display text-lg text-neutral-900 dark:text-white">{entry.title}</div>
+                {entry.place && (
+                    <div className="font-semibold text-neutral-800 dark:text-neutral-100">{entry.place}</div>
+                )}
                 <div className="text-sm font-medium text-accent dark:text-accent-light">{entry.period}</div>
                 {entry.description && (
                     <p className="mt-1 text-neutral-600 dark:text-neutral-400 whitespace-pre-line">{entry.description}</p>

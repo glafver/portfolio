@@ -8,6 +8,7 @@ create table if not exists public.timeline (
   id uuid primary key default gen_random_uuid(),
   type text not null default 'work',
   title text not null,
+  place text not null default '',
   period text not null default '',
   description text not null default '',
   sort_order integer not null default 0,
