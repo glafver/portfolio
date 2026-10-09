@@ -24,6 +24,7 @@ const Navbar: React.FC = () => {
                 <div className="hidden lg:flex items-center gap-8">
                     <a href="#projects" className={linkClass}>Projects</a>
                     <a href="#about" className={linkClass}>About</a>
+                    <a href="#experience" className={linkClass}>Experience</a>
                     <a href="#contact" className={linkClass}>Contact</a>
                 </div>
 
@@ -54,6 +55,7 @@ const Navbar: React.FC = () => {
                 <div className="lg:hidden border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 px-6 py-4 space-y-1">
                     <a href="#projects" onClick={() => setIsOpen(false)} className={`block py-2 ${linkClass}`}>Projects</a>
                     <a href="#about" onClick={() => setIsOpen(false)} className={`block py-2 ${linkClass}`}>About</a>
+                    <a href="#experience" onClick={() => setIsOpen(false)} className={`block py-2 ${linkClass}`}>Experience</a>
                     <a href="#contact" onClick={() => setIsOpen(false)} className={`block py-2 ${linkClass}`}>Contact</a>
                     <a href={content['cv.url']} download onClick={() => setIsOpen(false)} className={`block py-2 ${linkClass}`}>
                         Download CV

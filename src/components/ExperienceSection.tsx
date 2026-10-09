@@ -54,7 +54,7 @@ const ExperienceSection: React.FC = () => {
     const visibleWork = showAllWork ? work : work.slice(0, 4);
 
     return (
-        <section className="relative px-6 lg:px-8 py-20 lg:py-28">
+        <section id="experience" className="relative px-6 lg:px-8 py-20 lg:py-28">
             {isAdmin && (
                 <>
                     <EditButton onClick={() => openContentEditor('experience')} className="absolute top-4 right-4 z-20" />
