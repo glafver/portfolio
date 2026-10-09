@@ -33,7 +33,7 @@ const Reveal: React.FC<RevealProps> = ({ children, delay = 0, className = '' }) 
     return (
         <div
             ref={ref}
-            className={`${className} transition-all duration-700 ease-out will-change-transform ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+            className={`${className} transition-opacity duration-700 ease-out ${visible ? 'opacity-100' : 'opacity-0'}`}
             style={delay ? { transitionDelay: `${delay}ms` } : undefined}
         >
             {children}
