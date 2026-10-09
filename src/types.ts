@@ -22,6 +22,7 @@ export interface Certificate {
 
 export interface TimelineEntry {
     id: string;
+    type: string;
     title: string;
     period: string;
     description: string;

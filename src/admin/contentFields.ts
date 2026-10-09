@@ -43,8 +43,10 @@ export const CONTENT_SECTIONS: Record<string, ContentSection> = {
     experience: {
         label: 'Experience & Education',
         fields: [
-            { key: 'experience.title', label: 'Heading', multiline: false },
-            { key: 'experience.subtitle', label: 'Subtitle', multiline: true },
+            { key: 'experience.title', label: 'Section heading', multiline: false },
+            { key: 'education.title', label: 'Education heading', multiline: false },
+            { key: 'work.title', label: 'Experience heading', multiline: false },
+            { key: 'certificates.title', label: 'Certificates heading', multiline: false },
         ],
     },
     contact: {

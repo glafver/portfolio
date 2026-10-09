@@ -88,6 +88,7 @@ export async function saveSiteContent(entries: Record<string, string>): Promise<
 }
 
 export type TimelineInput = {
+    type: string;
     title: string;
     period: string;
     description: string;

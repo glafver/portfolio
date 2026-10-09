@@ -132,5 +132,7 @@ export const fallbackContent: Record<string, string> = {
     'cv.url': '/assets/Glafira_Veretennikova_fullstack_CV.pdf',
 
     'experience.title': 'Experience & Education',
-    'experience.subtitle': '',
+    'education.title': 'Education',
+    'work.title': 'Experience',
+    'certificates.title': 'Certificates',
 };

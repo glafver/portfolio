@@ -90,7 +90,9 @@ const ExperienceManager: React.FC = () => {
                             <li key={entry.id} className="bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg p-3 flex items-center justify-between gap-3">
                                 <div className="min-w-0">
                                     <div className="font-semibold truncate">{entry.title}</div>
-                                    <div className="text-xs text-neutral-500 truncate">{entry.period}</div>
+                                    <div className="text-xs text-neutral-500 truncate">
+                                        {entry.type === 'education' ? 'Education' : 'Experience'} · {entry.period}
+                                    </div>
                                 </div>
                                 <div className="flex gap-2 shrink-0">
                                     <button onClick={() => setEditing(entry)} className="border border-neutral-300 px-3 py-1 rounded-md text-sm hover:bg-neutral-100 transition">Edit</button>

@@ -6,6 +6,7 @@
 -- Timeline entries ----------------------------------------------------------
 create table if not exists public.timeline (
   id uuid primary key default gen_random_uuid(),
+  type text not null default 'work',
   title text not null,
   period text not null default '',
   description text not null default '',

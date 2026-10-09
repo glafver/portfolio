@@ -9,6 +9,7 @@ interface TimelineEntryFormProps {
 }
 
 const TimelineEntryForm: React.FC<TimelineEntryFormProps> = ({ initial, onCancel, onSaved }) => {
+    const [type, setType] = useState(initial?.type ?? 'work');
     const [title, setTitle] = useState(initial?.title ?? '');
     const [period, setPeriod] = useState(initial?.period ?? '');
     const [description, setDescription] = useState(initial?.description ?? '');
@@ -30,6 +31,7 @@ const TimelineEntryForm: React.FC<TimelineEntryFormProps> = ({ initial, onCancel
         setSaving(true);
         try {
             const input: TimelineInput = {
+                type,
                 title: title.trim(),
                 period: period.trim(),
                 description: description.trim(),
@@ -56,6 +58,13 @@ const TimelineEntryForm: React.FC<TimelineEntryFormProps> = ({ initial, onCancel
             <p className="text-sm text-neutral-500 mb-6">A stage on your timeline.</p>
 
             <div className="space-y-5">
+                <div>
+                    <label className={labelClass}>Type</label>
+                    <select className={inputClass} value={type} onChange={(e) => setType(e.target.value)}>
+                        <option value="work">Experience</option>
+                        <option value="education">Education</option>
+                    </select>
+                </div>
                 <div>
                     <label className={labelClass}>Title</label>
                     <input className={inputClass} value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Fullstack Developer" />
