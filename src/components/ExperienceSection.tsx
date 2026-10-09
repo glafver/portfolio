@@ -12,8 +12,8 @@ const Timeline: React.FC<{ entries: TimelineEntry[] }> = ({ entries }) => (
     <div className="relative pl-8">
         <div className="absolute left-[7px] top-2 bottom-2 w-px bg-neutral-300 dark:bg-neutral-700" aria-hidden="true" />
         {entries.map((entry) => (
-            <div key={entry.id} className="relative pb-8">
-                <span className="absolute -left-8 top-1.5 w-[15px] h-[15px] rounded-full bg-accent border-2 border-white dark:border-neutral-900" aria-hidden="true" />
+            <div key={entry.id} className="relative pb-8 group">
+                <span className="absolute -left-8 top-1.5 w-[15px] h-[15px] rounded-full bg-accent border-2 border-white dark:border-neutral-900 transition-transform duration-300 group-hover:scale-150" aria-hidden="true" />
                 <div className="font-display text-lg text-neutral-900 dark:text-white">{entry.title}</div>
                 {entry.place && (
                     <div className="font-semibold text-neutral-800 dark:text-neutral-100">
