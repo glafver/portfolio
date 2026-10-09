@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { FaListUl } from 'react-icons/fa';
 import { useSiteContent } from '../hooks/useSiteContent';
@@ -45,9 +45,11 @@ const ExperienceSection: React.FC = () => {
     const timeline = useTimeline();
     const certificates = useCertificates();
     const { isAdmin, openContentEditor, openExperienceEditor } = useAdmin();
+    const [showAllWork, setShowAllWork] = useState(false);
 
     const education = timeline.filter((t) => t.type === 'education');
     const work = timeline.filter((t) => t.type !== 'education');
+    const visibleWork = showAllWork ? work : work.slice(0, 4);
 
     return (
         <section className="relative px-6 lg:px-8 py-20 lg:py-28">
@@ -90,7 +92,15 @@ const ExperienceSection: React.FC = () => {
                                 {content['work.title']}
                             </h3>
                         </Fade>
-                        <Timeline entries={work} />
+                        <Timeline entries={visibleWork} />
+                        {work.length > 4 && (
+                            <button
+                                onClick={() => setShowAllWork(!showAllWork)}
+                                className="mt-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-accent dark:hover:text-accent-light transition"
+                            >
+                                {showAllWork ? 'Show less ↑' : 'Show more ↓'}
+                            </button>
+                        )}
                     </div>
                 )}
 
