@@ -8,6 +8,7 @@ export interface AdminContextValue {
     openProjectEditor: (project: Project | null) => void;
     openContentEditor: (section: ContentSectionKey) => void;
     openExperienceEditor: () => void;
+    openTechLogosEditor: () => void;
     closeEditor: () => void;
 }
 

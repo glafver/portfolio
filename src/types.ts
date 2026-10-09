@@ -20,6 +20,13 @@ export interface Certificate {
     created_at?: string;
 }
 
+export interface TechLogo {
+    id: string;
+    image_url: string;
+    sort_order: number;
+    created_at?: string;
+}
+
 export interface TimelineEntry {
     id: string;
     type: string;

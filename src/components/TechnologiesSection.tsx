@@ -1,10 +1,12 @@
 import React from 'react';
 import { Fade } from 'react-awesome-reveal';
+import { FaImage } from 'react-icons/fa';
 import { useSiteContent } from '../hooks/useSiteContent';
+import { useTechLogos } from '../hooks/useTechLogos';
 import { useAdmin } from '../admin/AdminContext';
 import EditButton from '../admin/EditButton';
 
-const logos: string[] = [
+const FALLBACK_LOGOS: string[] = [
     '/assets/tech_5.webp',
     '/assets/tech_12.webp',
     '/assets/tech_13.webp',
@@ -18,11 +20,26 @@ const logos: string[] = [
 
 const Technologies: React.FC = () => {
     const content = useSiteContent();
-    const { isAdmin, openContentEditor } = useAdmin();
+    const dbLogos = useTechLogos();
+    const { isAdmin, openContentEditor, openTechLogosEditor } = useAdmin();
+
+    const logos = dbLogos.length > 0 ? dbLogos.map((l) => l.image_url) : FALLBACK_LOGOS;
 
     return (
         <section className="relative px-6 lg:px-8 py-12 lg:py-16 text-center">
-            {isAdmin && <EditButton onClick={() => openContentEditor('technologies')} className="absolute top-4 right-4 z-20" />}
+            {isAdmin && (
+                <>
+                    <EditButton onClick={() => openContentEditor('technologies')} className="absolute top-4 right-4 z-20" />
+                    <button
+                        onClick={openTechLogosEditor}
+                        className="absolute top-4 right-16 z-20 bg-white/90 text-neutral-700 border border-neutral-200 rounded-full w-9 h-9 flex items-center justify-center shadow-md hover:bg-white transition backdrop-blur"
+                        aria-label="Manage logos"
+                        title="Manage logos"
+                    >
+                        <FaImage size={14} />
+                    </button>
+                </>
+            )}
 
             <div className="max-w-4xl mx-auto">
                 <Fade direction="up" triggerOnce duration={600}>

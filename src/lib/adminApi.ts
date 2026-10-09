@@ -135,6 +135,26 @@ export async function deleteTimelineEntry(id: string): Promise<void> {
     notifyContentChanged();
 }
 
+export async function createTechLogo(image_url: string): Promise<void> {
+    if (!supabase) throw new Error('Supabase is not configured');
+    const { data } = await supabase
+        .from('tech_logos')
+        .select('sort_order')
+        .order('sort_order', { ascending: false })
+        .limit(1);
+    const next = (data && data.length > 0 ? data[0].sort_order : 0) + 1;
+    const { error } = await supabase.from('tech_logos').insert({ image_url, sort_order: next });
+    if (error) throw error;
+    notifyContentChanged();
+}
+
+export async function deleteTechLogo(id: string): Promise<void> {
+    if (!supabase) throw new Error('Supabase is not configured');
+    const { error } = await supabase.from('tech_logos').delete().eq('id', id);
+    if (error) throw error;
+    notifyContentChanged();
+}
+
 export async function createCertificate(image_url: string, title: string): Promise<void> {
     if (!supabase) throw new Error('Supabase is not configured');
     const { error } = await supabase
