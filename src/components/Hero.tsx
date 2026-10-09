@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
 
                 <Fade direction="up" delay={150} triggerOnce duration={600} className="lg:w-1/2">
                     <div className="relative max-w-md mx-auto">
-                        <div className="absolute -inset-14 rounded-full bg-accent/50 dark:bg-accent/35 blur-2xl" aria-hidden="true" />
+                        <div className="absolute -inset-12 rounded-full bg-accent/35 dark:bg-accent/25 blur-3xl" aria-hidden="true" />
                         <div className="absolute inset-0 -translate-x-3 -translate-y-3 rounded-t-[9rem] rounded-b-3xl border border-accent/30 dark:border-accent-light/30" aria-hidden="true" />
                         <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-t-[9rem] rounded-b-3xl border border-accent/50 dark:border-accent/40" aria-hidden="true" />
                         <img
