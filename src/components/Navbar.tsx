@@ -52,7 +52,7 @@ const Navbar: React.FC = () => {
             </div>
 
             {isOpen && (
-                <div className="lg:hidden border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 px-6 py-4 space-y-1">
+                <div className="lg:hidden border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 px-6 py-4 space-y-1 text-right">
                     <a href="#projects" onClick={() => setIsOpen(false)} className={`block py-2 ${linkClass}`}>Projects</a>
                     <a href="#about" onClick={() => setIsOpen(false)} className={`block py-2 ${linkClass}`}>About</a>
                     <a href="#experience" onClick={() => setIsOpen(false)} className={`block py-2 ${linkClass}`}>Experience</a>
@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
                             downloadFile(content['cv.url'], 'Glafira_Veretennikova_CV.pdf');
                             setIsOpen(false);
                         }}
-                        className={`block py-2 ${linkClass} w-full text-left`}
+                        className={`block py-2 ${linkClass} w-full`}
                     >
                         Download CV
                     </button>

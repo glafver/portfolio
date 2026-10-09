@@ -9,7 +9,7 @@ const AboutSection: React.FC = () => {
     const { isAdmin, openContentEditor } = useAdmin();
 
     return (
-        <section id="about" className="relative px-6 lg:px-8 pt-20 lg:pt-24 pb-12 lg:pb-14">
+        <section id="about" className="relative overflow-hidden px-6 lg:px-8 pt-20 lg:pt-24 pb-12 lg:pb-14">
             {isAdmin && <EditButton onClick={() => openContentEditor('about')} className="absolute top-4 right-4 z-20" />}
 
             <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
