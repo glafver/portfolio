@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Fade } from 'react-awesome-reveal';
+import Reveal from './Reveal';
 import { FaListUl } from 'react-icons/fa';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { useTimeline } from '../hooks/useTimeline';
@@ -70,11 +70,11 @@ const ExperienceSection: React.FC = () => {
             )}
 
             <div className="max-w-3xl mx-auto">
-                <Fade direction="up" triggerOnce duration={600}>
+                <Reveal>
                     <h2 className="font-display uppercase text-3xl lg:text-5xl leading-[0.95] tracking-tight text-neutral-900 dark:text-white">
                         {content['experience.title']}
                     </h2>
-                </Fade>
+                </Reveal>
 
                 <div className="flex gap-6 mt-10 mb-8 border-b border-neutral-200 dark:border-neutral-700">
                     <button
@@ -115,11 +115,11 @@ const ExperienceSection: React.FC = () => {
 
                 {certificates.length > 0 && (
                     <div className="mt-12">
-                        <Fade direction="up" triggerOnce duration={600}>
+                        <Reveal>
                             <h3 className="font-display uppercase text-xl lg:text-2xl text-accent dark:text-accent-light mb-6">
                                 {content['certificates.title']}
                             </h3>
-                        </Fade>
+                        </Reveal>
                         <div className="flex flex-wrap gap-4">
                             {certificates.map((cert) => (
                                 <button

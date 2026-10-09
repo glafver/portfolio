@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fade } from 'react-awesome-reveal';
+import Reveal from './Reveal';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { useAdmin } from '../admin/AdminContext';
 import EditButton from '../admin/EditButton';
@@ -13,7 +13,7 @@ const AboutSection: React.FC = () => {
             {isAdmin && <EditButton onClick={() => openContentEditor('about')} className="absolute top-4 right-4 z-20" />}
 
             <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-                <Fade direction="left" triggerOnce duration={600} className="lg:w-2/5 w-full max-w-sm shrink-0">
+                <Reveal className="lg:w-2/5 w-full max-w-sm shrink-0">
                     <div className="relative">
                         <div className="absolute -inset-12 rounded-full bg-accent/35 dark:bg-accent/25 blur-3xl" aria-hidden="true" />
                         <div className="absolute inset-0 -translate-x-3 -translate-y-3 rounded-t-[3rem] rounded-b-3xl border border-accent/30 dark:border-accent-light/30" aria-hidden="true" />
@@ -26,9 +26,9 @@ const AboutSection: React.FC = () => {
                             decoding="async"
                         />
                     </div>
-                </Fade>
+                </Reveal>
 
-                <Fade direction="right" triggerOnce duration={600} className="lg:w-3/5">
+                <Reveal className="lg:w-3/5">
                     <div>
                         <h2 className="font-display uppercase text-3xl lg:text-5xl leading-[0.95] tracking-tight text-neutral-900 dark:text-white mb-8">
                             About <span className="text-accent dark:text-accent-light">Me</span>
@@ -41,7 +41,7 @@ const AboutSection: React.FC = () => {
                             <p>{content['about.p5']}</p>
                         </div>
                     </div>
-                </Fade>
+                </Reveal>
             </div>
         </section>
     );

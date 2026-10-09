@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fade } from 'react-awesome-reveal';
+import Reveal from './Reveal';
 import { useModal } from '../ModalContext';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { useAdmin } from '../admin/AdminContext';
@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
             {isAdmin && <EditButton onClick={() => openContentEditor('hero')} className="absolute top-4 right-4 z-20" />}
 
             <div className="relative max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-                <Fade direction="up" triggerOnce duration={600} className="lg:w-1/2">
+                <Reveal className="lg:w-1/2">
                     <div className="text-center lg:text-left">
                         <h1 className="font-display uppercase text-5xl sm:text-7xl lg:text-8xl leading-[0.9] tracking-tight text-neutral-900 dark:text-white">
                             Hey, I&apos;m{' '}
@@ -42,9 +42,9 @@ const Hero: React.FC = () => {
                             </a>
                         </div>
                     </div>
-                </Fade>
+                </Reveal>
 
-                <Fade direction="up" delay={150} triggerOnce duration={600} className="lg:w-1/2">
+                <Reveal delay={150} className="lg:w-1/2">
                     <div className="relative max-w-md mx-auto">
                         <div className="absolute -inset-12 rounded-full bg-accent/35 dark:bg-accent/25 blur-3xl" aria-hidden="true" />
                         <div className="absolute inset-0 -translate-x-3 -translate-y-3 rounded-t-[9rem] rounded-b-3xl border border-accent/30 dark:border-accent-light/30" aria-hidden="true" />
@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
                             className="relative rounded-t-[9rem] rounded-b-3xl shadow-xl w-full object-cover aspect-[4/5]"
                         />
                     </div>
-                </Fade>
+                </Reveal>
             </div>
         </section>
     );

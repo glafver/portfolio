@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fade } from 'react-awesome-reveal';
+import Reveal from './Reveal';
 import { FaImage } from 'react-icons/fa';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { useTechLogos } from '../hooks/useTechLogos';
@@ -42,24 +42,23 @@ const Technologies: React.FC = () => {
             )}
 
             <div className="max-w-4xl mx-auto">
-                <Fade direction="up" triggerOnce duration={600}>
+                <Reveal>
                     <h2 className="font-display uppercase text-3xl lg:text-5xl leading-[0.95] tracking-tight text-neutral-900 dark:text-white">
                         {content['technologies.title']}
                     </h2>
-                </Fade>
+                </Reveal>
                 <div className="mt-8 flex justify-center flex-wrap gap-x-10 gap-y-8">
-                    <Fade cascade damping={0.05} direction="up" triggerOnce duration={600}>
-                        {logos.map((logo, index) => (
+                    {logos.map((logo, index) => (
+                        <Reveal key={index} delay={index * 40}>
                             <img
                                 src={logo}
                                 alt=""
                                 className="h-8 lg:h-10 opacity-70 hover:opacity-100 transition"
-                                key={index}
                                 loading="lazy"
                                 decoding="async"
                             />
-                        ))}
-                    </Fade>
+                        </Reveal>
+                    ))}
                 </div>
             </div>
         </section>

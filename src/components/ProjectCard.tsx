@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Fade } from 'react-awesome-reveal';
 import { FaChevronDown, FaChevronUp, FaEdit, FaTrash, FaArrowUp, FaArrowDown, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Project } from '../types';
 import { useAdmin } from '../admin/AdminContext';
@@ -107,13 +106,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
                 </div>
             )}
 
-            <Fade delay={30}>
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={project.link}
-                    className="block relative aspect-[16/10] overflow-hidden bg-neutral-100 dark:bg-neutral-800"
-                >
+            <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={project.link}
+                className="block relative aspect-[16/10] overflow-hidden bg-neutral-100 dark:bg-neutral-800"
+            >
                     {project.video ? (
                         <video
                             ref={videoRef}
@@ -135,8 +133,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
                             />
                         ))
                     )}
-                </a>
-            </Fade>
+            </a>
 
             <div className="px-6 pt-5 flex flex-col flex-1">
                 <a

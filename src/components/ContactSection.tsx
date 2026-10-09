@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fade } from 'react-awesome-reveal';
+import Reveal from './Reveal';
 import { useModal } from '../ModalContext';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { useAdmin } from '../admin/AdminContext';
@@ -14,7 +14,7 @@ const Contact: React.FC = () => {
         <section id="contact" className="relative px-6 lg:px-8 pt-12 lg:pt-14 pb-20 lg:pb-24">
             {isAdmin && <EditButton onClick={() => openContentEditor('contact')} className="absolute top-4 right-4 z-20" />}
 
-            <Fade direction="up" triggerOnce duration={600}>
+            <Reveal>
                 <div className="max-w-3xl mx-auto text-center">
                     <h2 className="font-display text-4xl lg:text-5xl leading-tight tracking-tight text-neutral-900 dark:text-white">
                         {content['contact.title']}
@@ -34,7 +34,7 @@ const Contact: React.FC = () => {
                         </a>
                     </div>
                 </div>
-            </Fade>
+            </Reveal>
         </section>
     );
 };

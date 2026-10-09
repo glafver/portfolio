@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fade } from 'react-awesome-reveal';
+import Reveal from './Reveal';
 import ProjectCard from './ProjectCard';
 import { useProjects } from '../hooks/useProjects';
 import { useSiteContent } from '../hooks/useSiteContent';
@@ -36,7 +36,7 @@ const ProjectsSection: React.FC = () => {
             {isAdmin && <EditButton onClick={() => openContentEditor('projects')} className="absolute top-4 right-4 z-20" />}
 
             <div className="max-w-6xl mx-auto">
-                <Fade direction="up" triggerOnce duration={600}>
+                <Reveal>
                     <div className="mb-14 lg:mb-20">
                         <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-6xl leading-[0.95] tracking-tight text-neutral-900 dark:text-white">
                             {heading}{' '}
@@ -46,20 +46,19 @@ const ProjectsSection: React.FC = () => {
                             {content['projects.subtitle']}
                         </p>
                     </div>
-                </Fade>
+                </Reveal>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-                    <Fade cascade damping={0.15} direction="up" triggerOnce duration={600}>
-                        {displayedProjects.map((project, index) => (
+                    {displayedProjects.map((project, index) => (
+                        <Reveal key={project.id} delay={index * 80} className="h-full">
                             <ProjectCard
-                                key={project.id}
                                 project={project}
                                 index={index}
                                 total={displayedProjects.length}
                                 onMove={(direction) => handleMove(index, direction)}
                             />
-                        ))}
-                    </Fade>
+                        </Reveal>
+                    ))}
                 </div>
             </div>
         </section>
