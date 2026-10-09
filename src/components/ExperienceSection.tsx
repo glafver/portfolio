@@ -6,7 +6,7 @@ import { useTimeline } from '../hooks/useTimeline';
 import { useCertificates } from '../hooks/useCertificates';
 import { useAdmin } from '../admin/AdminContext';
 import EditButton from '../admin/EditButton';
-import type { TimelineEntry } from '../types';
+import type { TimelineEntry, Certificate } from '../types';
 
 const Timeline: React.FC<{ entries: TimelineEntry[] }> = ({ entries }) => (
     <div className="relative pl-8">
@@ -47,6 +47,7 @@ const ExperienceSection: React.FC = () => {
     const { isAdmin, openContentEditor, openExperienceEditor } = useAdmin();
     const [showAllWork, setShowAllWork] = useState(false);
     const [activeTab, setActiveTab] = useState<'work' | 'education'>('work');
+    const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
 
     const education = timeline.filter((t) => t.type === 'education');
     const work = timeline.filter((t) => t.type !== 'education');
@@ -121,25 +122,51 @@ const ExperienceSection: React.FC = () => {
                         </Fade>
                         <div className="flex flex-wrap gap-4">
                             {certificates.map((cert) => (
-                                <a
+                                <button
                                     key={cert.id}
-                                    href={cert.image_url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="block w-36 lg:w-44"
+                                    onClick={() => setSelectedCert(cert)}
+                                    className="block w-36 lg:w-44 text-left"
                                 >
                                     <img
                                         src={cert.image_url}
                                         alt={cert.title || 'Certificate'}
-                                        className="w-full aspect-[4/3] object-cover rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-sm"
+                                        className="w-full aspect-[4/3] object-cover rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-sm hover:opacity-90 transition"
                                         loading="lazy"
                                     />
-                                </a>
+                                    {cert.title && (
+                                        <span className="block text-xs text-neutral-500 dark:text-neutral-400 mt-1.5 text-center">{cert.title}</span>
+                                    )}
+                                </button>
                             ))}
                         </div>
                     </div>
                 )}
             </div>
+
+            {selectedCert && (
+                <div
+                    className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4"
+                    onClick={() => setSelectedCert(null)}
+                >
+                    <button
+                        onClick={() => setSelectedCert(null)}
+                        className="absolute top-4 right-4 text-white text-3xl leading-none hover:text-neutral-300 transition"
+                        aria-label="Close"
+                    >
+                        ×
+                    </button>
+                    <div className="flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
+                        <img
+                            src={selectedCert.image_url}
+                            alt={selectedCert.title || 'Certificate'}
+                            className="max-w-full max-h-[85vh] rounded-lg shadow-xl"
+                        />
+                        {selectedCert.title && (
+                            <p className="text-white text-center mt-3">{selectedCert.title}</p>
+                        )}
+                    </div>
+                </div>
+            )}
         </section>
     );
 };

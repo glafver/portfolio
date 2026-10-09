@@ -13,6 +13,7 @@ const ExperienceManager: React.FC = () => {
     const [editing, setEditing] = useState<TimelineEntry | null>(null);
     const [creating, setCreating] = useState(false);
     const [uploading, setUploading] = useState(false);
+    const [certTitle, setCertTitle] = useState('');
     const [error, setError] = useState('');
 
     const handleDeleteEntry = async (entry: TimelineEntry) => {
@@ -41,7 +42,8 @@ const ExperienceManager: React.FC = () => {
         setError('');
         try {
             const url = await uploadImage(file);
-            await createCertificate(url, '');
+            await createCertificate(url, certTitle.trim());
+            setCertTitle('');
         } catch (e) {
             console.error(e);
             setError('Failed to upload certificate.');
@@ -147,20 +149,29 @@ const ExperienceManager: React.FC = () => {
                             </div>
                         ))}
                     </div>
-                    <label className="inline-flex items-center gap-2 border border-dashed border-neutral-400 rounded-lg px-4 py-2.5 text-sm cursor-pointer hover:bg-neutral-50 transition">
-                        {uploading ? 'Uploading…' : 'Upload certificate'}
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                         <input
-                            type="file"
-                            accept="image/*"
-                            className="hidden"
-                            disabled={uploading}
-                            onChange={(e) => {
-                                const file = e.target.files?.[0];
-                                if (file) handleUploadCert(file);
-                                e.target.value = '';
-                            }}
+                            type="text"
+                            value={certTitle}
+                            onChange={(e) => setCertTitle(e.target.value)}
+                            placeholder="Caption (optional)"
+                            className="border border-neutral-300 rounded-lg px-3 py-2.5 text-sm flex-1"
                         />
-                    </label>
+                        <label className="inline-flex items-center gap-2 border border-dashed border-neutral-400 rounded-lg px-4 py-2.5 text-sm cursor-pointer hover:bg-neutral-50 transition whitespace-nowrap">
+                            {uploading ? 'Uploading…' : 'Upload certificate'}
+                            <input
+                                type="file"
+                                accept="image/*"
+                                className="hidden"
+                                disabled={uploading}
+                                onChange={(e) => {
+                                    const file = e.target.files?.[0];
+                                    if (file) handleUploadCert(file);
+                                    e.target.value = '';
+                                }}
+                            />
+                        </label>
+                    </div>
                 </div>
             )}
         </div>
