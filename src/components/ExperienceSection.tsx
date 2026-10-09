@@ -46,6 +46,7 @@ const ExperienceSection: React.FC = () => {
     const certificates = useCertificates();
     const { isAdmin, openContentEditor, openExperienceEditor } = useAdmin();
     const [showAllWork, setShowAllWork] = useState(false);
+    const [activeTab, setActiveTab] = useState<'work' | 'education'>('work');
 
     const education = timeline.filter((t) => t.type === 'education');
     const work = timeline.filter((t) => t.type !== 'education');
@@ -74,34 +75,41 @@ const ExperienceSection: React.FC = () => {
                     </h2>
                 </Fade>
 
-                {education.length > 0 && (
-                    <div className="mt-12">
-                        <Fade direction="up" triggerOnce duration={600}>
-                            <h3 className="font-display uppercase text-xl lg:text-2xl text-accent dark:text-accent-light mb-6">
-                                {content['education.title']}
-                            </h3>
-                        </Fade>
-                        <Timeline entries={education} />
-                    </div>
-                )}
+                <div className="flex gap-6 mt-10 mb-8 border-b border-neutral-200 dark:border-neutral-700">
+                    <button
+                        onClick={() => setActiveTab('work')}
+                        className={`font-display uppercase text-lg lg:text-xl pb-2 border-b-2 transition ${activeTab === 'work' ? 'border-accent text-neutral-900 dark:text-white' : 'border-transparent text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300'}`}
+                    >
+                        {content['work.title']}
+                    </button>
+                    <button
+                        onClick={() => setActiveTab('education')}
+                        className={`font-display uppercase text-lg lg:text-xl pb-2 border-b-2 transition ${activeTab === 'education' ? 'border-accent text-neutral-900 dark:text-white' : 'border-transparent text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300'}`}
+                    >
+                        {content['education.title']}
+                    </button>
+                </div>
 
-                {work.length > 0 && (
-                    <div className="mt-12">
-                        <Fade direction="up" triggerOnce duration={600}>
-                            <h3 className="font-display uppercase text-xl lg:text-2xl text-accent dark:text-accent-light mb-6">
-                                {content['work.title']}
-                            </h3>
-                        </Fade>
-                        <Timeline entries={visibleWork} />
-                        {work.length > 4 && (
-                            <button
-                                onClick={() => setShowAllWork(!showAllWork)}
-                                className="mt-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-accent dark:hover:text-accent-light transition"
-                            >
-                                {showAllWork ? 'Show less ↑' : 'Show more ↓'}
-                            </button>
-                        )}
-                    </div>
+                {activeTab === 'work' ? (
+                    work.length > 0 ? (
+                        <div>
+                            <Timeline entries={visibleWork} />
+                            {work.length > 4 && (
+                                <button
+                                    onClick={() => setShowAllWork(!showAllWork)}
+                                    className="mt-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-accent dark:hover:text-accent-light transition"
+                                >
+                                    {showAllWork ? 'Show less ↑' : 'Show more ↓'}
+                                </button>
+                            )}
+                        </div>
+                    ) : (
+                        <p className="text-neutral-500">No experience added yet.</p>
+                    )
+                ) : education.length > 0 ? (
+                    <Timeline entries={education} />
+                ) : (
+                    <p className="text-neutral-500">No education added yet.</p>
                 )}
 
                 {certificates.length > 0 && (
