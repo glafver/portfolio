@@ -130,16 +130,25 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
                 className="block relative aspect-[16/10] overflow-hidden bg-neutral-100 dark:bg-neutral-800"
             >
                     {project.video ? (
-                        <video
-                            ref={videoRef}
-                            src={project.video}
-                            poster={project.images[0]}
-                            muted
-                            loop
-                            playsInline
-                            preload="metadata"
-                            className="absolute inset-0 w-full h-full object-cover"
-                        />
+                        <>
+                            {project.images[0] && (
+                                <img
+                                    src={project.images[0]}
+                                    alt={`${project.title} screenshot`}
+                                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}
+                                />
+                            )}
+                            <video
+                                ref={videoRef}
+                                src={project.video}
+                                poster={project.images[0]}
+                                muted
+                                loop
+                                playsInline
+                                preload="metadata"
+                                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+                            />
+                        </>
                     ) : (
                         project.images.map((url, i) => (
                             <img
