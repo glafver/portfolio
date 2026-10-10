@@ -8,6 +8,7 @@ export type ProjectInput = {
     tech: string[];
     images: string[];
     link: string;
+    github?: string;
     important: string | null;
     sort_order: number;
     video?: string;

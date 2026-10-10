@@ -12,6 +12,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
     const [title, setTitle] = useState(initial?.title ?? '');
     const [description, setDescription] = useState(initial?.description ?? '');
     const [link, setLink] = useState(initial?.link ?? '');
+    const [github, setGithub] = useState(initial?.github ?? '');
     const [important, setImportant] = useState(initial?.important ?? '');
     const [tech, setTech] = useState((initial?.tech ?? []).join(', '));
     const [images, setImages] = useState<string[]>(initial?.images ?? []);
@@ -63,6 +64,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
                 title: title.trim(),
                 description: description.trim(),
                 link: link.trim(),
+                github: github.trim() || undefined,
                 important: important.trim() || null,
                 tech: tech.split(',').map((t) => t.trim()).filter(Boolean),
                 images,
@@ -112,6 +114,11 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
                 <div>
                     <label className={labelClass}>Link</label>
                     <input className={inputClass} value={link} onChange={(e) => setLink(e.target.value)} placeholder="https://…" />
+                </div>
+
+                <div>
+                    <label className={labelClass}>GitHub repository (optional)</label>
+                    <input className={inputClass} value={github} onChange={(e) => setGithub(e.target.value)} placeholder="https://github.com/…" />
                 </div>
 
                 <div>

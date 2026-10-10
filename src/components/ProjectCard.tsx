@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FaChevronDown, FaChevronUp, FaEdit, FaTrash, FaArrowUp, FaArrowDown, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp, FaEdit, FaTrash, FaArrowUp, FaArrowDown, FaEye, FaEyeSlash, FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import { Project } from '../types';
 import { useAdmin } from '../admin/AdminContext';
 import { deleteProject, setProjectVisibility } from '../lib/adminApi';
@@ -151,7 +151,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
                     href={project.link}
                     className="font-display uppercase text-xl leading-tight text-neutral-900 dark:text-white group-hover:text-accent dark:group-hover:text-accent-light transition mb-3"
                 >
-                    {project.title}
+                    <span className="inline-flex items-center gap-2">
+                        {project.title}
+                        <FaExternalLinkAlt
+                            size={14}
+                            aria-hidden="true"
+                            className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0"
+                        />
+                    </span>
                     <span className="block h-0.5 w-0 bg-accent dark:bg-accent-light group-hover:w-full transition-all duration-300 mt-1.5" />
                 </a>
                 <p className="text-neutral-600 dark:text-neutral-400 mb-3 line-clamp-3">
@@ -171,15 +178,29 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
                 {openDropdown ? <FaChevronUp /> : <FaChevronDown />}
             </div>
 
-            <div className="px-6 mt-auto mb-4">
-                {project.tech.map((tech, index) => (
-                    <span
-                        key={index}
-                        className={`bg-neutral-100 dark:bg-neutral-700/60 rounded-full px-2.5 py-1 text-xs text-neutral-600 dark:text-neutral-300 mr-2 mb-2 ${openDropdown ? 'inline-block' : 'hidden'} lg:inline-block`}
+            <div className="px-6 mt-auto mb-4 flex items-center justify-between gap-3">
+                <div className="flex flex-wrap">
+                    {project.tech.map((tech, index) => (
+                        <span
+                            key={index}
+                            className={`bg-neutral-100 dark:bg-neutral-700/60 rounded-full px-2.5 py-1 text-xs text-neutral-600 dark:text-neutral-300 mr-2 mb-2 ${openDropdown ? 'inline-block' : 'hidden'} lg:inline-block`}
+                        >
+                            {tech}
+                        </span>
+                    ))}
+                </div>
+                {project.github && (
+                    <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="shrink-0 text-neutral-500 dark:text-neutral-400 hover:text-accent dark:hover:text-accent-light transition"
+                        aria-label={`${project.title} on GitHub`}
+                        title="View source on GitHub"
                     >
-                        {tech}
-                    </span>
-                ))}
+                        <FaGithub size={20} />
+                    </a>
+                )}
             </div>
         </div>
     );
