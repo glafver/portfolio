@@ -179,11 +179,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
             </div>
 
             <div className="px-6 mt-auto mb-4 flex items-center justify-between gap-3">
-                <div className="flex flex-wrap">
+                <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech, index) => (
                         <span
                             key={index}
-                            className={`bg-neutral-100 dark:bg-neutral-700/60 rounded-full px-2.5 py-1 text-xs text-neutral-600 dark:text-neutral-300 mr-2 mb-2 ${openDropdown ? 'inline-block' : 'hidden'} lg:inline-block`}
+                            className={`bg-neutral-100 dark:bg-neutral-700/60 rounded-full px-2.5 py-1 text-xs text-neutral-600 dark:text-neutral-300 ${openDropdown ? 'inline-block' : 'hidden'} lg:inline-block`}
                         >
                             {tech}
                         </span>
