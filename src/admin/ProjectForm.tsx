@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Project } from '../types';
-import { uploadImage, uploadVideo, createProject, updateProject, type ProjectInput } from '../lib/adminApi';
+import { uploadImage, uploadFile, createProject, updateProject, type ProjectInput } from '../lib/adminApi';
 
 interface ProjectFormProps {
     initial: Project | null;
@@ -21,7 +21,6 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
 
     const [saving, setSaving] = useState(false);
     const [uploading, setUploading] = useState(false);
-    const [videoProgress, setVideoProgress] = useState<number | null>(null);
     const [error, setError] = useState('');
 
     const handleUpload = async (file: File) => {
@@ -40,10 +39,9 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
 
     const handleVideoUpload = async (file: File) => {
         setUploading(true);
-        setVideoProgress(0);
         setError('');
         try {
-            const url = await uploadVideo(file, setVideoProgress);
+            const url = await uploadFile(file);
             setVideo(url);
         } catch (e) {
             console.error(e);
@@ -51,7 +49,6 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
             setError(`Failed to upload video: ${msg}`);
         } finally {
             setUploading(false);
-            setVideoProgress(null);
         }
     };
 
@@ -184,14 +181,13 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
                 </div>
 
                 <div>
-                    <label className={labelClass}>Screencast video (optional)</label>
-                    <p className="text-xs text-neutral-500 mb-2">Video is compressed automatically before upload.</p>
+                    <label className={labelClass}>Screencast video (mp4, optional)</label>
                     {video && (
                         <div className="text-xs text-neutral-500 mb-2 break-all">{video}</div>
                     )}
                     <div className="flex items-center gap-2">
                         <label className="inline-flex items-center gap-2 border border-dashed border-neutral-400 rounded-lg px-4 py-2.5 text-sm cursor-pointer hover:bg-neutral-50 transition">
-                            {uploading ? (videoProgress !== null ? `Compressing… ${Math.round(videoProgress * 100)}%` : 'Uploading…') : 'Upload video'}
+                            {uploading ? 'Uploading…' : 'Upload video'}
                             <input
                                 type="file"
                                 accept="video/*"
@@ -214,11 +210,6 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
                             </button>
                         )}
                     </div>
-                    {uploading && videoProgress !== null && (
-                        <div className="mt-2 h-2 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
-                            <div className="h-full bg-accent transition-all" style={{ width: `${Math.round(videoProgress * 100)}%` }} />
-                        </div>
-                    )}
                 </div>
 
                 {error && <p className="text-red-600 text-sm">{error}</p>}

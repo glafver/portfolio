@@ -1,6 +1,5 @@
 import { supabase } from './supabase';
 import { notifyContentChanged } from './refresh';
-import { optimizeImage, optimizeVideo } from './optimize';
 import type { Project, TimelineEntry } from '../types';
 
 export type ProjectInput = {
@@ -57,25 +56,13 @@ export async function reorderProjects(ordered: Project[]): Promise<void> {
 
 export async function uploadImage(file: File): Promise<string> {
     if (!supabase) throw new Error('Supabase is not configured');
-    const optimized = await optimizeImage(file);
-    const fileName = `${Date.now()}-${Math.random().toString(36).slice(2)}.webp`;
+    const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
+    const fileName = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
     const { error } = await supabase.storage
         .from('project-images')
-        .upload(fileName, optimized, { contentType: 'image/webp', cacheControl: '3600', upsert: false });
+        .upload(fileName, file, { cacheControl: '3600', upsert: false });
     if (error) throw error;
     const { data } = supabase.storage.from('project-images').getPublicUrl(fileName);
-    return data.publicUrl;
-}
-
-export async function uploadVideo(file: File, onProgress?: (ratio: number) => void): Promise<string> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    const optimized = await optimizeVideo(file, onProgress);
-    const fileName = `${Date.now()}-${Math.random().toString(36).slice(2)}.webm`;
-    const { error } = await supabase.storage
-        .from('files')
-        .upload(fileName, optimized, { contentType: 'video/webm', cacheControl: '3600', upsert: false });
-    if (error) throw error;
-    const { data } = supabase.storage.from('files').getPublicUrl(fileName);
     return data.publicUrl;
 }
 
