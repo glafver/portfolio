@@ -194,7 +194,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="shrink-0 text-neutral-500 dark:text-neutral-400 hover:text-accent dark:hover:text-accent-light transition"
+                        className={`shrink-0 text-neutral-500 dark:text-neutral-400 hover:text-accent dark:hover:text-accent-light transition ${openDropdown ? 'inline-block' : 'hidden'} lg:inline-block`}
                         aria-label={`${project.title} on GitHub`}
                         title="View source on GitHub"
                     >
