@@ -67,6 +67,8 @@ export async function optimizeVideo(file: File, onProgress?: (ratio: number) => 
     try {
         // Mount the input directly (WORKERFS) instead of copying it into wasm
         // memory — avoids "memory access out of bounds" for large files.
+        // The mount directory must exist before mounting.
+        await ffmpeg.createDir('/work');
         await ffmpeg.mount(FFFSType.WORKERFS, { files: [renamedFile] }, '/work');
         await ffmpeg.exec([
             '-i', `/work/${inputName}`,
