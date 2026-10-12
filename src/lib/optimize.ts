@@ -1,5 +1,5 @@
-import { FFmpeg } from '@ffmpeg/ffmpeg';
-import { fetchFile, toBlobURL } from '@ffmpeg/util';
+import { FFmpeg, FFFSType } from '@ffmpeg/ffmpeg';
+import { toBlobURL } from '@ffmpeg/util';
 
 /**
  * Resize an image client-side (down to a max width) and re-encode it as WebP.
@@ -57,6 +57,7 @@ export async function optimizeVideo(file: File, onProgress?: (ratio: number) => 
     const ext = (file.name.split('.').pop() || 'mp4').toLowerCase();
     const inputName = `input.${ext}`;
     const outputName = 'output.webm';
+    const renamedFile = new File([file], inputName, { type: file.type });
 
     const onProgressEvent = ({ progress }: { progress: number }) => {
         if (onProgress) onProgress(Math.max(0, Math.min(1, progress)));
@@ -64,9 +65,11 @@ export async function optimizeVideo(file: File, onProgress?: (ratio: number) => 
     ffmpeg.on('progress', onProgressEvent);
 
     try {
-        await ffmpeg.writeFile(inputName, await fetchFile(file));
+        // Mount the input directly (WORKERFS) instead of copying it into wasm
+        // memory — avoids "memory access out of bounds" for large files.
+        await ffmpeg.mount(FFFSType.WORKERFS, { files: [renamedFile] }, '/work');
         await ffmpeg.exec([
-            '-i', inputName,
+            '-i', `/work/${inputName}`,
             '-vf', 'scale=1280:800',
             '-c:v', 'libvpx-vp9',
             '-crf', '28',
@@ -80,7 +83,7 @@ export async function optimizeVideo(file: File, onProgress?: (ratio: number) => 
         return new Blob([data as BlobPart], { type: 'video/webm' });
     } finally {
         ffmpeg.off('progress', onProgressEvent);
-        await ffmpeg.deleteFile(inputName).catch(() => {});
+        await ffmpeg.unmount('/work').catch(() => {});
         await ffmpeg.deleteFile(outputName).catch(() => {});
     }
 }
