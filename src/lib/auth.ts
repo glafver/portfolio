@@ -1,29 +1,30 @@
-import { supabase } from './supabase';
-import type { Session } from '@supabase/supabase-js';
+import { request, getAdminToken, setAdminToken, AUTH_CHANGED_EVENT } from './api';
 
-export async function signInAdmin(email: string, password: string): Promise<void> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) throw error;
+export interface Session {
+    token: string;
+}
+
+export async function signInAdmin(_email: string, password: string): Promise<void> {
+    const { token } = await request<{ token: string }>('/login', {
+        method: 'POST',
+        body: { password },
+    });
+    setAdminToken(token);
+    window.dispatchEvent(new Event(AUTH_CHANGED_EVENT));
 }
 
 export async function signOutAdmin(): Promise<void> {
-    if (!supabase) return;
-    await supabase.auth.signOut();
+    setAdminToken(null);
+    window.dispatchEvent(new Event(AUTH_CHANGED_EVENT));
 }
 
-export async function getSession(): Promise<Session | null> {
-    if (!supabase) return null;
-    const { data } = await supabase.auth.getSession();
-    return data.session;
+export function getSession(): Session | null {
+    const token = getAdminToken();
+    return token ? { token } : null;
 }
 
 export function subscribeToAuth(callback: (session: Session | null) => void): () => void {
-    if (!supabase) {
-        return () => {};
-    }
-    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
-        callback(session);
-    });
-    return () => data.subscription.unsubscribe();
+    const handler = () => callback(getSession());
+    window.addEventListener(AUTH_CHANGED_EVENT, handler);
+    return () => window.removeEventListener(AUTH_CHANGED_EVENT, handler);
 }

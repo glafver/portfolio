@@ -12,7 +12,6 @@
   "dependencies": {
     "@neon/config": "^1.10.0",
     "@neon/functions": "^0.11.0",
-    "@supabase/supabase-js": "^2.117.3",
     "hono": "^4.13.16",
     "pg": "^8.23.1",
     "react": "^18.2.0",

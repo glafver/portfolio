@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getSession, subscribeToAuth } from '../lib/auth';
-import type { Session } from '@supabase/supabase-js';
+import type { Session } from '../lib/auth';
 
 export function useAuth() {
     const [session, setSession] = useState<Session | null>(null);
@@ -9,11 +9,8 @@ export function useAuth() {
     useEffect(() => {
         let active = true;
 
-        getSession().then((s) => {
-            if (!active) return;
-            setSession(s);
-            setLoading(false);
-        });
+        setSession(getSession());
+        setLoading(false);
 
         const unsubscribe = subscribeToAuth((s) => {
             if (active) setSession(s);

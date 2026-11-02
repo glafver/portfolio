@@ -1,4 +1,4 @@
-import { supabase } from './supabase';
+import { request } from './api';
 import { notifyContentChanged } from './refresh';
 import type { Project, TimelineEntry } from '../types';
 
@@ -15,76 +15,40 @@ export type ProjectInput = {
 };
 
 export async function createProject(input: ProjectInput): Promise<void> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    const { error } = await supabase.from('projects').insert(input);
-    if (error) throw error;
+    await request('/projects', { method: 'POST', body: input, auth: true });
     notifyContentChanged();
 }
 
 export async function updateProject(id: string, input: ProjectInput): Promise<void> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    const { error } = await supabase.from('projects').update(input).eq('id', id);
-    if (error) throw error;
+    await request(`/projects/${id}`, { method: 'PUT', body: input, auth: true });
     notifyContentChanged();
 }
 
 export async function deleteProject(id: string): Promise<void> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    const { error } = await supabase.from('projects').delete().eq('id', id);
-    if (error) throw error;
+    await request(`/projects/${id}`, { method: 'DELETE', auth: true });
     notifyContentChanged();
 }
 
 export async function setProjectVisibility(id: string, visible: boolean): Promise<void> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    const { error } = await supabase.from('projects').update({ visible }).eq('id', id);
-    if (error) throw error;
+    await request(`/projects/${id}/visible`, { method: 'POST', body: { visible }, auth: true });
     notifyContentChanged();
 }
 
 export async function reorderProjects(ordered: Project[]): Promise<void> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    for (let i = 0; i < ordered.length; i++) {
-        const { error } = await supabase
-            .from('projects')
-            .update({ sort_order: i + 1 })
-            .eq('id', ordered[i].id);
-        if (error) throw error;
-    }
+    await request('/reorder-projects', { method: 'POST', body: ordered, auth: true });
     notifyContentChanged();
 }
 
-export async function uploadImage(file: File): Promise<string> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
-    const fileName = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-    const { error } = await supabase.storage
-        .from('project-images')
-        .upload(fileName, file, { cacheControl: '3600', upsert: false });
-    if (error) throw error;
-    const { data } = supabase.storage.from('project-images').getPublicUrl(fileName);
-    return data.publicUrl;
+export async function uploadImage(_file: File): Promise<string> {
+    throw new Error('Image upload is not wired up yet (Object Storage).');
 }
 
-export async function uploadFile(file: File): Promise<string> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    const ext = (file.name.split('.').pop() || 'pdf').toLowerCase();
-    const fileName = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-    const { error } = await supabase.storage
-        .from('files')
-        .upload(fileName, file, { cacheControl: '3600', upsert: false });
-    if (error) throw error;
-    const { data } = supabase.storage.from('files').getPublicUrl(fileName);
-    return data.publicUrl;
+export async function uploadFile(_file: File): Promise<string> {
+    throw new Error('File upload is not wired up yet (Object Storage).');
 }
 
 export async function saveSiteContent(entries: Record<string, string>): Promise<void> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    const rows = Object.entries(entries).map(([key, value]) => ({ key, value }));
-    const { error } = await supabase
-        .from('site_content')
-        .upsert(rows, { onConflict: 'key' });
-    if (error) throw error;
+    await request('/content', { method: 'PUT', body: entries, auth: true });
     notifyContentChanged();
 }
 
@@ -98,76 +62,41 @@ export type TimelineInput = {
 };
 
 export async function createTimelineEntry(input: TimelineInput): Promise<void> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    const { data } = await supabase
-        .from('timeline')
-        .select('sort_order')
-        .order('sort_order', { ascending: false })
-        .limit(1);
-    const next = (data && data.length > 0 ? data[0].sort_order : 0) + 1;
-    const { error } = await supabase.from('timeline').insert({ ...input, sort_order: next });
-    if (error) throw error;
+    await request('/timeline', { method: 'POST', body: input, auth: true });
     notifyContentChanged();
 }
 
 export async function updateTimelineEntry(id: string, input: TimelineInput): Promise<void> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    const { error } = await supabase.from('timeline').update(input).eq('id', id);
-    if (error) throw error;
+    await request(`/timeline/${id}`, { method: 'PUT', body: input, auth: true });
     notifyContentChanged();
 }
 
 export async function reorderTimeline(ordered: TimelineEntry[]): Promise<void> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    for (let i = 0; i < ordered.length; i++) {
-        const { error } = await supabase
-            .from('timeline')
-            .update({ sort_order: i + 1 })
-            .eq('id', ordered[i].id);
-        if (error) throw error;
-    }
+    await request('/reorder-timeline', { method: 'POST', body: ordered, auth: true });
     notifyContentChanged();
 }
 
 export async function deleteTimelineEntry(id: string): Promise<void> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    const { error } = await supabase.from('timeline').delete().eq('id', id);
-    if (error) throw error;
+    await request(`/timeline/${id}`, { method: 'DELETE', auth: true });
     notifyContentChanged();
 }
 
 export async function createTechLogo(image_url: string): Promise<void> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    const { data } = await supabase
-        .from('tech_logos')
-        .select('sort_order')
-        .order('sort_order', { ascending: false })
-        .limit(1);
-    const next = (data && data.length > 0 ? data[0].sort_order : 0) + 1;
-    const { error } = await supabase.from('tech_logos').insert({ image_url, sort_order: next });
-    if (error) throw error;
+    await request('/tech-logos', { method: 'POST', body: { image_url }, auth: true });
     notifyContentChanged();
 }
 
 export async function deleteTechLogo(id: string): Promise<void> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    const { error } = await supabase.from('tech_logos').delete().eq('id', id);
-    if (error) throw error;
+    await request(`/tech-logos/${id}`, { method: 'DELETE', auth: true });
     notifyContentChanged();
 }
 
 export async function createCertificate(image_url: string, title: string): Promise<void> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    const { error } = await supabase
-        .from('certificates')
-        .insert({ image_url, title, sort_order: 0 });
-    if (error) throw error;
+    await request('/certificates', { method: 'POST', body: { image_url, title }, auth: true });
     notifyContentChanged();
 }
 
 export async function deleteCertificate(id: string): Promise<void> {
-    if (!supabase) throw new Error('Supabase is not configured');
-    const { error } = await supabase.from('certificates').delete().eq('id', id);
-    if (error) throw error;
+    await request(`/certificates/${id}`, { method: 'DELETE', auth: true });
     notifyContentChanged();
 }
