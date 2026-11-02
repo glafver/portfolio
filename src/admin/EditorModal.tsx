@@ -22,11 +22,14 @@ const EditorModal: React.FC<EditorModalProps> = ({ target, onClose }) => {
     return (
         <div
             className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
-            onClick={onClose}
+            onMouseDown={(e) => {
+                // Close only when the click starts directly on the backdrop,
+                // not when the user drags text/selects inside the panel.
+                if (e.target === e.currentTarget) onClose();
+            }}
         >
             <div
                 className="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto relative"
-                onClick={(e) => e.stopPropagation()}
             >
                 <IoMdClose
                     onClick={onClose}

@@ -161,7 +161,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, onMove
                     </span>
                     <span className="block h-0.5 w-0 bg-accent dark:bg-accent-light group-hover:w-full transition-all duration-300 mt-1.5" />
                 </a>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-3 line-clamp-3">
+                <p className="text-neutral-600 dark:text-neutral-400 mb-3">
                     {project.description}
                 </p>
                 {project.important && (
