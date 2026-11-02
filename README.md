@@ -4,7 +4,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat&logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=flat&logo=vite&logoColor=white)
 ![Tailwind](https://img.shields.io/badge/Tailwind-3-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
-![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=flat&logo=supabase&logoColor=white)
+![Neon](https://img.shields.io/badge/Neon-00E0D9?style=flat&logo=neon&logoColor=white)
 
 Personal portfolio website for a Fullstack Developer. Warm terracotta accent, dark mode,
 scroll animations, and a full inline admin panel for editing content — no code changes needed.
@@ -15,7 +15,7 @@ scroll animations, and a full inline admin panel for editing content — no code
 - ✨ Scroll animations: fade-in reveals, 3D card tilt, scroll progress bar
 - 🎬 Project cards: hover to play a screencast, static screenshot otherwise
 - 🖊️ Inline admin panel — edit text, projects, timeline, certificates and tech logos directly on the live site
-- 🗂️ Content and media stored in Supabase (no rebuilds required)
+- 🗂️ Content stored in Neon Postgres, edited through a serverless Function (no rebuilds required)
 - 📄 Editable CV upload + download
 
 ## Tech Stack
@@ -24,7 +24,7 @@ scroll animations, and a full inline admin panel for editing content — no code
 - [TypeScript](https://www.typescriptlang.org/) 5
 - [Vite](https://vitejs.dev/) 5
 - [Tailwind CSS](https://tailwindcss.com/) 3
-- [Supabase](https://supabase.com/) — database, storage, auth
+- [Neon](https://neon.com/) — Postgres, serverless Functions, Object Storage
 - [react-router-dom](https://reactrouter.com/) — routing
 - [react-icons](https://react-icons.github.io/react-icons/)
 - [react-image-gallery](https://www.npmjs.com/package/react-image-gallery) — image carousels
@@ -34,7 +34,7 @@ scroll animations, and a full inline admin panel for editing content — no code
 ### Prerequisites
 
 - Node.js 18+ and npm
-- A [Supabase](https://supabase.com/) project
+- A [Neon](https://neon.com/) project
 
 ### Install
 
@@ -47,23 +47,18 @@ npm install
 Create a `.env.local` file in the project root:
 
 ```bash
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-key
+VITE_API_URL=https://your-function-url.compute.aws.neon.tech
 ```
 
-### Supabase setup
+### Neon setup
 
-Run the SQL files in the Supabase SQL Editor, in this order:
+1. Create a [Neon](https://neon.com/) project.
+2. Run `supabase/neon_schema.sql` in the Neon SQL Editor — creates the schema and seeds the projects.
+3. Deploy the backend Function declared in `neon.ts` with `neon deploy`.
+4. Set `ADMIN_PASSWORD` in the Function environment.
+5. Set `VITE_API_URL` to the Function's public URL.
 
-1. `supabase/schema.sql` — base schema (`projects`, `site_content`, `project-images` bucket)
-2. `supabase/migration_1.sql` — `files` bucket, social links, CV URL
-3. `supabase/migration_2.sql` — project `visible` column
-4. `supabase/migration_3.sql` — project `video` column
-5. `supabase/migration_4.sql` — `timeline` + `certificates` tables
-6. `supabase/migration_5.sql` — `tech_logos` table
-
-Then create a single admin user under **Authentication → Users**. Log in at `/admin/login`
-to start editing.
+Then log in at `/admin/login` to start editing.
 
 ### Development
 
@@ -111,7 +106,7 @@ Visitors only see the read-only site at `/`.
 | `certificates` | Certificate images + captions |
 | `tech_logos` | Tech stack logos |
 
-Storage buckets: `project-images` (screenshots) and `files` (CV).
+Image uploads go to Neon Object Storage (coming soon).
 
 ## Project Structure
 
@@ -121,7 +116,7 @@ src/
 ├── components/        # UI sections (Hero, Navbar, Projects, About, Experience, ...)
 ├── helpers/           # Fallback data + social links helpers
 ├── hooks/             # Data hooks (useProjects, useSiteContent, useTimeline, ...)
-├── lib/               # Supabase client, API, auth, content, download, refresh
+├── lib/               # API client, auth, content, download, refresh
 ├── types.ts           # Shared TypeScript types
 ├── App.tsx            # Root (routing + providers)
 ├── ModalContext.ts    # Contact modal context
@@ -140,7 +135,6 @@ Deployed on [Netlify](https://www.netlify.com/) (Git-connected, deploys from `ma
 
 Set these environment variables in Netlify (**Site settings → Environment variables**):
 
-- `VITE_SUPABASE_URL`
-- `VITE_SUPABASE_ANON_KEY`
+- `VITE_API_URL`
 
 Build settings are detected automatically: build command `npm run build`, publish directory `dist`.
