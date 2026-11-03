@@ -125,7 +125,7 @@ const ExperienceSection: React.FC = () => {
                                 <button
                                     key={cert.id}
                                     onClick={() => setSelectedCert(cert)}
-                                    className="block w-36 lg:w-44 text-left"
+                                    className="flex flex-col w-36 lg:w-44 text-left"
                                 >
                                     <img
                                         src={cert.image_url}
@@ -133,9 +133,9 @@ const ExperienceSection: React.FC = () => {
                                         className="w-full aspect-[4/3] object-cover rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-sm hover:opacity-90 transition"
                                         loading="lazy"
                                     />
-                                    {cert.title && (
-                                        <span className="block text-xs text-neutral-500 dark:text-neutral-400 mt-1.5 text-center">{cert.title}</span>
-                                    )}
+                                    <span className="block text-xs text-neutral-500 dark:text-neutral-400 mt-1.5 text-center line-clamp-2 min-h-8">
+                                        {cert.title || '\u00A0'}
+                                    </span>
                                 </button>
                             ))}
                         </div>
