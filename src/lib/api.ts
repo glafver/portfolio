@@ -29,12 +29,14 @@ export async function request<T>(path: string, options: RequestOptions = {}): Pr
     if (!API_URL) throw new Error('API is not configured');
 
     const token = getAdminToken();
+    const headers: Record<string, string> = {};
+    // Only set Content-Type when there is a body, so simple GETs avoid a CORS preflight.
+    if (options.body !== undefined) headers['Content-Type'] = 'application/json';
+    if (options.auth && token) headers['Authorization'] = `Bearer ${token}`;
+
     const response = await fetch(`${API_URL}${path}`, {
         method: options.method ?? 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            ...(options.auth && token ? { Authorization: `Bearer ${token}` } : {}),
-        },
+        headers,
         body: options.body !== undefined ? JSON.stringify(options.body) : undefined,
     });
 
