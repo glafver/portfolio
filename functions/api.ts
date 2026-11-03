@@ -1,9 +1,17 @@
 import { Hono } from 'hono';
 import { attachDatabasePool } from '@neon/functions';
 import { Pool } from 'pg';
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 5 });
 attachDatabasePool(pool);
+
+const s3 = new S3Client({
+    region: process.env.AWS_REGION,
+    endpoint: process.env.AWS_ENDPOINT_URL_S3,
+    forcePathStyle: true,
+});
+const S3_BUCKET = 'assets';
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD ?? '';
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN ?? '';
@@ -56,6 +64,23 @@ app.post('/login', async (c) => {
         return c.json({ token: ADMIN_TOKEN });
     }
     return c.json({ error: 'Invalid password' }, 401);
+});
+
+// ---- Upload (admin) -> Object Storage ----
+app.post('/upload', async (c) => {
+    const denied = requireAdmin(c); if (denied) return denied;
+    const { name, contentType, data } = await c.req.json().catch(() => ({}));
+    if (!name || !data) return c.json({ error: 'Missing name or data' }, 400);
+    const ext = (name.split('.').pop() || 'bin').toLowerCase();
+    const key = `media/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+    const buffer = Buffer.from(data, 'base64');
+    await s3.send(new PutObjectCommand({
+        Bucket: S3_BUCKET,
+        Key: key,
+        Body: buffer,
+        ContentType: contentType || 'application/octet-stream',
+    }));
+    return c.json({ url: `${process.env.AWS_ENDPOINT_URL_S3}/${S3_BUCKET}/${key}` });
 });
 
 // ---- Projects (admin) ----

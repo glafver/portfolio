@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1161.0",
     "@neon/config": "^1.10.0",
     "@neon/functions": "^0.11.0",
     "hono": "^4.13.16",

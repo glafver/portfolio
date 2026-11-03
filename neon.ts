@@ -11,4 +11,7 @@ export default defineConfig({
       },
     },
   },
+  buckets: {
+    assets: { access: "public_read" },
+  },
 });

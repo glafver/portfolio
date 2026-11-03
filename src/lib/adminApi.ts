@@ -39,12 +39,31 @@ export async function reorderProjects(ordered: Project[]): Promise<void> {
     notifyContentChanged();
 }
 
-export async function uploadImage(_file: File): Promise<string> {
-    throw new Error('Image upload is not wired up yet (Object Storage).');
+function fileToBase64(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve((reader.result as string).split(',')[1]);
+        reader.onerror = () => reject(new Error('Failed to read file'));
+        reader.readAsDataURL(file);
+    });
 }
 
-export async function uploadFile(_file: File): Promise<string> {
-    throw new Error('File upload is not wired up yet (Object Storage).');
+async function uploadToStorage(file: File): Promise<string> {
+    const data = await fileToBase64(file);
+    const { url } = await request<{ url: string }>('/upload', {
+        method: 'POST',
+        body: { name: file.name, contentType: file.type, data },
+        auth: true,
+    });
+    return url;
+}
+
+export async function uploadImage(file: File): Promise<string> {
+    return uploadToStorage(file);
+}
+
+export async function uploadFile(file: File): Promise<string> {
+    return uploadToStorage(file);
 }
 
 export async function saveSiteContent(entries: Record<string, string>): Promise<void> {
