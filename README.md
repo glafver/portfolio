@@ -53,7 +53,7 @@ VITE_API_URL=https://your-function-url.compute.aws.neon.tech
 ### Neon setup
 
 1. Create a [Neon](https://neon.com/) project.
-2. Run `supabase/neon_schema.sql` in the Neon SQL Editor — creates the schema and seeds the projects.
+2. Run `neon_schema.sql` in the Neon SQL Editor — creates the schema and seeds the projects.
 3. Deploy the backend Function declared in `neon.ts` with `neon deploy`.
 4. Set `ADMIN_PASSWORD` in the Function environment.
 5. Set `VITE_API_URL` to the Function's public URL.
@@ -124,9 +124,10 @@ src/
 └── main.tsx           # Entry point
 public/
 └── assets/            # Images (WebP), CV, favicon
-supabase/
-├── schema.sql         # Base schema (projects, site_content, buckets)
-└── migration_1..5.sql # Incremental migrations
+functions/
+└── api.ts             # Neon Function backend (Hono + pg + S3)
+neon.ts                # Neon project config (Function + bucket)
+neon_schema.sql        # Postgres schema + seed for the Neon database
 ```
 
 ## Deployment

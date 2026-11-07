@@ -1,6 +1,6 @@
 import type { Project } from '../types';
 
-// Fallback projects, used while Supabase is not configured or on error.
+// Fallback projects, used when the API is not configured or on error.
 export const fallbackProjects: Project[] = [
     {
         id: '1',

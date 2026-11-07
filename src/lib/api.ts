@@ -1,4 +1,4 @@
-// Thin REST client for the Neon Function backend (replaces Supabase).
+// Thin REST client for the Neon Function backend.
 const API_URL = import.meta.env.VITE_API_URL as string | undefined;
 
 export const isApiConfigured = Boolean(API_URL);
