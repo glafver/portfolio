@@ -32,7 +32,7 @@ const AdminLogin: React.FC = () => {
     };
 
     const inputClass =
-        'w-full border border-neutral-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500 transition';
+        'w-full border border-neutral-300 rounded-lg px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition';
 
     return (
         <div className="min-h-screen bg-neutral-100 flex items-center justify-center px-4">
