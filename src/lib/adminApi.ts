@@ -1,5 +1,6 @@
 import { request } from './api';
 import { notifyContentChanged } from './refresh';
+import { optimizeImage, optimizeVideo } from './optimize';
 import type { Project, TimelineEntry } from '../types';
 
 export type ProjectInput = {
@@ -39,31 +40,39 @@ export async function reorderProjects(ordered: Project[]): Promise<void> {
     notifyContentChanged();
 }
 
-function fileToBase64(file: File): Promise<string> {
+function blobToBase64(blob: Blob): Promise<string> {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = () => resolve((reader.result as string).split(',')[1]);
         reader.onerror = () => reject(new Error('Failed to read file'));
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(blob);
     });
 }
 
-async function uploadToStorage(file: File): Promise<string> {
-    const data = await fileToBase64(file);
+async function uploadToStorage(blob: Blob, name: string, contentType: string): Promise<string> {
+    const data = await blobToBase64(blob);
     const { url } = await request<{ url: string }>('/upload', {
         method: 'POST',
-        body: { name: file.name, contentType: file.type, data },
+        body: { name, contentType, data },
         auth: true,
     });
     return url;
 }
 
 export async function uploadImage(file: File): Promise<string> {
-    return uploadToStorage(file);
+    const optimized = await optimizeImage(file);
+    const name = `${Date.now()}-${Math.random().toString(36).slice(2)}.webp`;
+    return uploadToStorage(optimized, name, 'image/webp');
+}
+
+export async function uploadVideo(file: File, onProgress?: (ratio: number) => void): Promise<string> {
+    const optimized = await optimizeVideo(file, onProgress);
+    const name = `${Date.now()}-${Math.random().toString(36).slice(2)}.mp4`;
+    return uploadToStorage(optimized, name, 'video/mp4');
 }
 
 export async function uploadFile(file: File): Promise<string> {
-    return uploadToStorage(file);
+    return uploadToStorage(file, file.name, file.type || 'application/octet-stream');
 }
 
 export async function saveSiteContent(entries: Record<string, string>): Promise<void> {

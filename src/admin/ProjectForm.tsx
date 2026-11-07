@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Project } from '../types';
-import { uploadImage, uploadFile, createProject, updateProject, type ProjectInput } from '../lib/adminApi';
+import { uploadImage, uploadVideo, createProject, updateProject, type ProjectInput } from '../lib/adminApi';
+import { preloadFFmpeg } from '../lib/optimize';
 
 interface ProjectFormProps {
     initial: Project | null;
@@ -19,12 +20,20 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
     const [video, setVideo] = useState(initial?.video ?? '');
     const [sortOrder, setSortOrder] = useState(initial?.sort_order ?? 0);
 
+    useEffect(() => {
+        // Warm up the ffmpeg WASM core in the background so the first video
+        // upload doesn't wait for the ~9 MB download.
+        preloadFFmpeg().catch(() => {});
+    }, []);
+
     const [saving, setSaving] = useState(false);
-    const [uploading, setUploading] = useState(false);
+    const [uploadingImage, setUploadingImage] = useState(false);
+    const [uploadingVideo, setUploadingVideo] = useState(false);
+    const [videoProgress, setVideoProgress] = useState<number | null>(null);
     const [error, setError] = useState('');
 
     const handleUpload = async (file: File) => {
-        setUploading(true);
+        setUploadingImage(true);
         setError('');
         try {
             const url = await uploadImage(file);
@@ -33,22 +42,24 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
             console.error(e);
             setError('Failed to upload image.');
         } finally {
-            setUploading(false);
+            setUploadingImage(false);
         }
     };
 
     const handleVideoUpload = async (file: File) => {
-        setUploading(true);
+        setUploadingVideo(true);
+        setVideoProgress(null);
         setError('');
         try {
-            const url = await uploadFile(file);
+            const url = await uploadVideo(file, (ratio) => setVideoProgress(ratio));
             setVideo(url);
         } catch (e) {
             console.error(e);
             const msg = e instanceof Error ? e.message : String(e);
             setError(`Failed to upload video: ${msg}`);
         } finally {
-            setUploading(false);
+            setUploadingVideo(false);
+            setVideoProgress(null);
         }
     };
 
@@ -165,12 +176,12 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
                         ))}
                     </div>
                     <label className="inline-flex items-center gap-2 border border-dashed border-neutral-400 rounded-lg px-4 py-2.5 text-sm cursor-pointer hover:bg-neutral-50 transition">
-                        {uploading ? 'Uploading…' : 'Upload image'}
+                        {uploadingImage ? 'Compressing…' : 'Upload image'}
                         <input
                             type="file"
                             accept="image/*"
                             className="hidden"
-                            disabled={uploading}
+                            disabled={uploadingImage}
                             onChange={(e) => {
                                 const file = e.target.files?.[0];
                                 if (file) handleUpload(file);
@@ -187,12 +198,16 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initial, onCancel, onSaved })
                     )}
                     <div className="flex items-center gap-2">
                         <label className="inline-flex items-center gap-2 border border-dashed border-neutral-400 rounded-lg px-4 py-2.5 text-sm cursor-pointer hover:bg-neutral-50 transition">
-                            {uploading ? 'Uploading…' : 'Upload video'}
+                            {uploadingVideo
+                                ? videoProgress !== null
+                                    ? `Compressing… ${Math.round(videoProgress * 100)}%`
+                                    : 'Preparing…'
+                                : 'Upload video'}
                             <input
                                 type="file"
                                 accept="video/*"
                                 className="hidden"
-                                disabled={uploading}
+                                disabled={uploadingVideo}
                                 onChange={(e) => {
                                     const file = e.target.files?.[0];
                                     if (file) handleVideoUpload(file);
